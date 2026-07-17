@@ -1,0 +1,232 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{booktabs}
+\usepackage{xcolor}
+\usepackage{enumitem}
+\usepackage[most]{tcolorbox}
+\usepackage{hyperref}
+\usepackage{setspace}
+
+% 紧凑排版设置
+\geometry{margin=0.7in}
+\linespread{1.15}
+\setlength{\parskip}{3pt}
+\setlength{\parindent}{1.5em}
+
+% 紧凑列表设置
+\setlist[enumerate]{topsep=2pt, itemsep=1pt, partopsep=0pt, parsep=1pt}
+\setlist[itemize]{topsep=2pt, itemsep=1pt, partopsep=0pt, parsep=1pt}
+
+% 紧凑标题设置
+\usepackage{titlesec}
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\subsection}{0pt}{6pt}{3pt}
+\titlespacing*{\subsubsection}{0pt}{4pt}{2pt}
+
+% 定义柔和配色
+\definecolor{notebg}{RGB}{240,248,255}      % 淡蓝
+\definecolor{noteborder}{RGB}{70,130,180}    % 钢蓝
+\definecolor{warningbg}{RGB}{255,248,240}    % 淡橙
+\definecolor{warningborder}{RGB}{205,133,63}  % 秘鲁色
+\definecolor{memorybg}{RGB}{240,255,240}     % 淡绿
+\definecolor{memoryborder}{RGB}{46,139,87}    % 海绿
+\definecolor{exambg}{RGB}{255,240,245}       % 淡粉
+\definecolor{examborder}{RGB}{199,21,133}     % 中紫红
+\definecolor{logicbg}{RGB}{255,255,240}      % 淡黄
+\definecolor{logicborder}{RGB}{218,165,32}    % 金黄
+
+% 定义紧凑版彩色tcolorbox环境
+\newtcolorbox{notebox}{
+    enhanced,
+    colback=notebg,
+    colframe=noteborder,
+    coltitle=white,
+    fonttitle=\bfseries\small,
+    title={要点提示},
+    boxrule=0.4pt,
+    arc=2pt,
+    left=4pt,
+    right=4pt,
+    top=2pt,
+    bottom=2pt,
+    boxsep=1pt,
+    before skip=4pt,
+    after skip=4pt,
+    drop shadow=black!3!white
+}
+\newtcolorbox{warningbox}{
+    enhanced,
+    colback=warningbg,
+    colframe=warningborder,
+    coltitle=white,
+    fonttitle=\bfseries\small,
+    title={易错提醒},
+    boxrule=0.4pt,
+    arc=2pt,
+    left=4pt,
+    right=4pt,
+    top=2pt,
+    bottom=2pt,
+    boxsep=1pt,
+    before skip=4pt,
+    after skip=4pt,
+    drop shadow=black!3!white
+}
+\newtcolorbox{memorybox}{
+    enhanced,
+    colback=memorybg,
+    colframe=memoryborder,
+    coltitle=white,
+    fonttitle=\bfseries\small,
+    title={记忆口诀},
+    boxrule=0.4pt,
+    arc=2pt,
+    left=4pt,
+    right=4pt,
+    top=2pt,
+    bottom=2pt,
+    boxsep=1pt,
+    before skip=4pt,
+    after skip=4pt,
+    drop shadow=black!3!white
+}
+\newtcolorbox{exambox}{
+    enhanced,
+    colback=exambg,
+    colframe=examborder,
+    coltitle=white,
+    fonttitle=\bfseries\small,
+    title={考试重点},
+    boxrule=0.4pt,
+    arc=2pt,
+    left=4pt,
+    right=4pt,
+    top=2pt,
+    bottom=2pt,
+    boxsep=1pt,
+    before skip=4pt,
+    after skip=4pt,
+    drop shadow=black!3!white
+}
+\newtcolorbox{logicbox}{
+    enhanced,
+    colback=logicbg,
+    colframe=logicborder,
+    coltitle=white,
+    fonttitle=\bfseries\small,
+    title={核心思想},
+    boxrule=0.4pt,
+    arc=2pt,
+    left=4pt,
+    right=4pt,
+    top=2pt,
+    bottom=2pt,
+    boxsep=1pt,
+    before skip=4pt,
+    after skip=4pt,
+    drop shadow=black!3!white
+}
+
+% 紧凑定理环境
+\theoremstyle{plain}
+\newtheorem{definition}{定义}[section]
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}{命题}[section]
+\newtheorem{corollary}{推论}[section]
+
+% 定理环境间距调整
+\makeatletter
+\renewenvironment{definition}[1][]
+  {\par\vspace{3pt}\normalfont\textbf{定义 \thedefinition. #1}\itshape}
+  {\par\vspace{2pt}}
+\renewenvironment{theorem}[1][]
+  {\par\vspace{3pt}\normalfont\textbf{定理 \thetheorem. #1}\itshape}
+  {\par\vspace{2pt}}
+\renewenvironment{proposition}[1][]
+  {\par\vspace{3pt}\normalfont\textbf{命题 \theproposition. #1}\itshape}
+  {\par\vspace{2pt}}
+\renewenvironment{corollary}[1][]
+  {\par\vspace{3pt}\normalfont\textbf{推论 \thecorollary. #1}\itshape}
+  {\par\vspace{2pt}}
+\makeatother
+
+\title{\Large \textbf{XXX复习讲稿}\\
+\normalsize 1-N节 知识点梳理与期末备考指南}
+\author{\small 基于 《XXX》教材}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-10pt}
+\tableofcontents
+\vspace{-5pt}
+
+\section{开篇总览：N节内容逻辑脉络}
+\subsection{整体知识框架}
+
+\subsection{逻辑递进关系}
+
+\begin{logicbox}
+整个章节的核心思想：
+\end{logicbox}
+
+\section{XXX}
+\subsection{核心定义}
+\begin{definition}[XXX]
+XXX
+\end{definition}
+
+\begin{notebox}
+\textbf{前提条件}：XXX
+\end{notebox}
+
+\begin{warningbox}
+\textbf{易混点}：XXX
+
+\end{warningbox}
+
+\begin{memorybox}
+XXX
+\end{memorybox}
+
+\begin{definition}[XXX]
+XXX
+\end{definition}
+
+\begin{exambox}
+XXX
+\end{exambox}
+
+\subsection{重要命题与定理}
+\begin{proposition}[XXX]
+XXX
+\end{proposition}
+
+\begin{corollary}
+XXX
+\end{corollary}
+
+\begin{theorem}[XXX定理]
+XXX
+\end{theorem}
+
+\section{XXX}
+\section{XXX}
+
+\section{跨节对比梳理：易混知识点辨析}
+
+\subsection{XXX定理对比}
+
+\subsection{XXX关系图}
+
+\subsection{XXX对照表}
+
+\section{逻辑链条串讲}
+
+\section{期末速记清单}
+
+\section{自测小问题}
+
+\end{document}

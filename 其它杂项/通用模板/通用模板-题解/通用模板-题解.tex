@@ -1,0 +1,85 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\geometry{margin=1in}
+
+% 定义彩色盒子
+\newtcolorbox{solutionbox}{
+    colback=blue!5!white,
+    colframe=blue!75!black,
+    title=解答,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{methodbox}{
+    colback=green!5!white,
+    colframe=green!75!black,
+    title=方法总结与思路提炼,
+    fonttitle=\bfseries
+}
+
+\newtcolorbox{importantbox}{
+    colback=red!5!white,
+    colframe=red!75!black,
+    title=核心要点,
+    fonttitle=\bfseries
+}
+
+\title{XXX第N章习题解答}
+\author{}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{习题XXX 第1题}
+
+PROBLEMPROBLEMPROBLEMPROBLEM
+
+\begin{solutionbox}
+\begin{proof}
+SOLUTIONSOLUTIONSOLUTIONSOLUTION
+\end{proof}
+\end{solutionbox}
+
+\begin{methodbox}
+\begin{itemize}
+\item METHOD1
+
+\item METHOD2
+
+\item METHOD3
+\end{itemize}
+\end{methodbox}
+
+\newpage
+\section{习题XXX 第2题}
+
+PROBLEMPROBLEMPROBLEMPROBLEM
+
+\begin{solutionbox}
+\begin{proof}
+SOLUTIONSOLUTIONSOLUTIONSOLUTION
+\end{proof}
+\end{solutionbox}
+
+\begin{methodbox}
+\begin{itemize}
+\item METHOD1
+
+\item METHOD2
+
+\item METHOD3
+\end{itemize}
+\end{methodbox}
+
+
+\end{document}

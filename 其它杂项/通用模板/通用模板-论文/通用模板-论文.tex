@@ -1,0 +1,128 @@
+\documentclass[12pt,a4paper]{article}
+\usepackage[UTF8]{ctex}
+\usepackage{amsmath,amssymb}
+\usepackage{graphicx}
+\usepackage{cite}
+\usepackage{float}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{url}
+\usepackage{fancyhdr}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{titlesec}
+\usepackage{abstract}
+
+% 页面设置
+\geometry{
+    a4paper,
+    top=2.5cm,
+    bottom=2.5cm,
+    left=2.5cm,
+    right=2.5cm,
+    headheight=1.5cm,
+    footskip=1.2cm
+}
+
+% 字体设置
+\setmainfont{Times New Roman}
+\setCJKmainfont{SimSun}  % 宋体
+\setCJKfamilyfont{hei}{SimHei}  % 黑体
+\setCJKfamilyfont{kai}{KaiTi}   % 楷体
+
+% 页眉页脚设置 - 修正版
+\pagestyle{fancy}
+\fancyhf{} % 清除所有页眉页脚
+% 设置页眉：左-卷期信息，中-空，右-页码
+\fancyhead[L]{\zihao{-5} 左上角-论文名称}
+\fancyhead[C]{} % 中间为空
+\fancyhead[R]{\zihao{-5} 右上角-2025年11月}
+% 设置页脚：居中显示页码
+\fancyfoot[C]{\zihao{-5} \thepage} % 只显示当前页码
+% 或者如果要显示 "第X页 共Y页" 的格式：
+% \fancyfoot[C]{\zihao{-5} 第\thepage 页\quad 共\pageref{LastPage} 页}
+
+\renewcommand{\headrulewidth}{0.4pt} % 页眉横线粗细
+\renewcommand{\footrulewidth}{0pt}  % 页脚横线（不显示）
+
+% 重新定义plain样式（用于章节首页）
+\fancypagestyle{plain}{%
+  \fancyhf{} % 清除所有页眉页脚
+  \fancyhead[L]{\zihao{-5} 左上角-论文名称}
+  \fancyhead[R]{\zihao{-5} 右上角-2025年11月}
+  \fancyfoot[C]{\zihao{-5} \thepage}
+  \renewcommand{\headrulewidth}{0.4pt}
+  \renewcommand{\footrulewidth}{0pt}
+}
+
+% 行距设置
+\renewcommand{\baselinestretch}{1.25}
+
+% 标题格式设置
+\titleformat{\section}{\centering\zihao{-2}\CJKfamily{hei}}{\thesection}{1em}{}
+\titleformat{\subsection}{\zihao{-4}\CJKfamily{hei}}{\thesubsection}{0.5em}{}
+\titleformat{\subsubsection}{\zihao{-4}\CJKfamily{hei}}{\thesubsubsection}{1em}{}
+
+% 摘要和关键词格式
+\renewcommand{\abstractname}{}
+\renewcommand{\absnamepos}{empty}
+
+\renewenvironment{abstract}
+ {\par\vspace{1em}\noindent{\zihao{-4}\CJKfamily{hei} 摘要：}\zihao{-4}\CJKfamily{kai}}
+ {\par\vspace{0.5em}}
+\newcommand{\keywords}[1]{\par\vspace{0.5em}\noindent{\zihao{-4}\CJKfamily{hei} 关键词：}#1}
+
+% 图表标题格式
+\captionsetup[figure]{
+    font=small,
+    labelfont=bf,
+    labelsep=quad,
+    skip=5pt
+}
+\captionsetup[table]{
+    font=small,
+    labelfont=bf,
+    labelsep=quad,
+    skip=5pt
+}
+
+% 参考文献格式
+\bibliographystyle{gbt7714-numerical}
+
+
+\begin{document}
+
+% 标题
+\begin{center}
+    \zihao{-1}\CJKfamily{hei}
+    通用模板论文
+\end{center}
+\vspace{0.5em}
+% 作者信息
+\begin{center}
+    \zihao{-4}
+    周才翔 \\
+    \zihao{-5}
+    (西安交通大学，西安710000)
+\end{center}
+
+\vspace{0.5em}
+% 摘要
+\begin{abstract}
+111
+\end{abstract}
+
+\keywords{111}
+% 正文开始
+\section{111}
+
+\begin{thebibliography}{1}
+\bibitem{[1]} 
+
+\end{thebibliography}
+\newpage
+\section*{附录}
+
+\end{document}

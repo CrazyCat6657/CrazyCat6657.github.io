@@ -1,0 +1,107 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{ctex}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{geometry}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage[most]{tcolorbox}
+\usepackage{xcolor}
+\usepackage{multicol}
+\geometry{margin=0.8in}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{3pt}
+
+% 定义彩色盒子 - 参考讲义风格，简洁提神
+\newtcolorbox{definitionbox}{
+    colback=blue!3!white,
+    colframe=blue!60!black,
+    title=定义,
+    fonttitle=\bfseries\small,
+    left=3pt, right=3pt, top=2pt, bottom=2pt,
+    boxsep=2pt
+}
+
+\newtcolorbox{theorembox}{
+    colback=green!3!white,
+    colframe=green!60!black,
+    title=定理,
+    fonttitle=\bfseries\small,
+    left=3pt, right=3pt, top=2pt, bottom=2pt,
+    boxsep=2pt
+}
+
+\newtcolorbox{methodbox}{
+    colback=orange!3!white,
+    colframe=orange!60!black,
+    title=方法精讲,
+    fonttitle=\bfseries\small,
+    left=3pt, right=3pt, top=2pt, bottom=2pt,
+    boxsep=2pt
+}
+
+\newtcolorbox{warningbox}{
+    colback=red!3!white,
+    colframe=red!60!black,
+    title=易错警示,
+    fonttitle=\bfseries\small,
+    left=3pt, right=3pt, top=2pt, bottom=2pt,
+    boxsep=2pt
+}
+
+\newtcolorbox{summarybox}{
+    colback=gray!5!white,
+    colframe=gray!70!black,
+    title=本节知识主线,
+    fonttitle=\bfseries\small,
+    left=3pt, right=3pt, top=2pt, bottom=2pt,
+    boxsep=2pt
+}
+
+\title{第N章 XXX\\\Large 学习讲义与方法总结}
+\author{以《XXX》为蓝本}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{第N章引言：}
+
+\subsection{本章在XXX中的地位}
+
+\subsection{本章要解决的核心问题}
+
+\subsection{本章知识图谱}
+
+\newpage
+\section{XXX}
+
+\begin{summarybox}
+\textbf{知识主线}：XXX
+
+\textbf{核心思想}：XXX
+\end{summarybox}
+
+\subsection{XXX}
+
+\subsection{本节检查清单}
+
+\newpage
+\section{XXX}
+
+\newpage
+\section{第N章整体总结与备考指南}
+
+\subsection{概念对比表（完整）}
+
+\subsection{定理完整对比}
+
+\subsection{解题方法汇总}
+
+\subsection{考试易错点TOP 5}
+
+\subsection{本章学习建议}
+
+\end{document}

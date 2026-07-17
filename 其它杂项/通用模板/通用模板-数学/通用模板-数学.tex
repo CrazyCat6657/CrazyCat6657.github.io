@@ -1,0 +1,55 @@
+% !TeX program = xelatex 
+\documentclass{article}
+\usepackage{ctex}
+\usepackage[unicode=true, colorlinks,linkcolor=blue]{hyperref}
+\usepackage{latexsym,amssymb,amsmath,amsbsy,amsopn,amstext,amsthm,amsxtra,color,multicol,bm,calc,ifpdf,esint, epsf, }
+\usepackage{graphicx}
+\usepackage[all]{xy}% 示意图
+\usepackage{arydshln}  %分块矩阵
+\usepackage{enumerate}
+\usepackage{epstopdf}
+\usepackage{fancyhdr}
+\usepackage{subfigure}
+\usepackage{listings}
+\usepackage{algorithm}
+\usepackage{algorithmic}
+\usepackage{makeidx}
+\usepackage{extarrows}% 输入各种特殊的箭头
+\def\dbinom{\displaystyle\binom}
+\usepackage{tikz}
+\usepackage{pdfpages}
+\def\red{\color{red}}
+\def\blue{\color{blue}}
+\def\magenta{\color{magenta}}
+\def\white{\color{white}}
+\def\cyan{\color{cyan}}
+\theoremstyle{plain} \newtheorem{theorem}{定理}[section]
+\theoremstyle{plain} \newtheorem{definition}{定义}[section]
+\theoremstyle{plain} \newtheorem{lemma}{引理}[section]
+\theoremstyle{plain} \newtheorem{Proposition}{命题}[section]
+\theoremstyle{plain} \newtheorem{Corollary}{推论}[section]
+\theoremstyle{plain} \newtheorem{example}{例}
+\newcommand{\dis}{\displaystyle}
+%\numberwithin{equation}{section}
+\newenvironment{Proof}{\noindent \textbf{证明~} \rm}{\hfill$\Box$\\ \noindent }
+\textwidth 18cm  \textheight 24cm  \hoffset  -3cm \voffset -2cm
+%---------------设置字的背景颜色
+\usepackage{xcolor}
+\usepackage[normalem]{ulem} % use normalem to protect \emph
+\newcommand\hl{\bgroup\markoverwith
+	{\textcolor{yellow}{\rule[-.5ex]{2pt}{2.5ex}}}\ULon}
+%------------------------------ 
+\begin{document}
+	\pagestyle{empty}
+	\title{}
+	\author{}
+    \date{}
+	\maketitle
+
+\section*{标题}
+
+正文
+
+
+
+\end{document}

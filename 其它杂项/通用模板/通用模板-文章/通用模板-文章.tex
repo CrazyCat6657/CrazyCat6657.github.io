@@ -1,0 +1,54 @@
+\documentclass[12pt,a4paper]{article}
+\title{\fontsize{40}{20}\selectfont title}
+\author{\fontsize{20}{16}\selectfont Das\\Xi'an Jiaotong University}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{geometry,relsize}%页边距
+\usepackage{ctex}
+\usepackage{graphicx}%插入图片
+\usepackage{epstopdf}%插入图片
+\usepackage{fancyhdr}%排版页眉
+\usepackage{lastpage}%总页码
+\usepackage{cite}  %引用
+\usepackage{subfigure}%并排插入图片
+\usepackage{float}%插入图片浮动，给出强制的H
+
+\geometry{a4paper,centering}
+
+\pagestyle{fancy}  %引用fancy宏包
+\fancyhf{}   
+
+\lhead{\leftmark}
+\chead{}
+\rhead{Page\enspace \thepage \enspace of\enspace X}%右上方显示页数
+\cfoot{}
+\rfoot{}
+\lfoot{}
+
+\setlength{\headheight}{14.49998pt} %防止头高12pt过低
+\renewcommand{\headrulewidth}{2pt}  %页眉的装饰线宽度
+
+\geometry{left=2.5cm,right=2.5cm,top=1.5cm,bottom=2cm}  %设置 上、左、下、右 页边距
+\setlength{\topmargin}{-18mm}%控制页眉距离顶部的距离
+\newcommand{\upcite}[1]{\textsuperscript{\textsuperscript{\cite{#1}}}} %上标引用
+
+
+\begin{document}  %正文开始
+\maketitle
+\newpage
+\tableofcontents %目录生成
+\newpage
+
+\begin{sloppypar}%防止行溢出页边距
+\begin{flushleft}
+
+\section{第一章}
+正文
+
+
+
+
+
+\end{flushleft}
+\end{sloppypar}
+
+\end{document}
