@@ -16,10 +16,14 @@
             <ul class="sidebar-nav">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="notes.html" class="active">学习笔记</a></li>
+                <li><a href="links.html">推荐资源</a></li>
             </ul>
             <div class="sidebar-footer">
                 <p>© 2026 周才翔</p>
             </div>
+            <button class="theme-toggle" id="themeToggle" title="切换主题">
+                🌙
+            </button>
         </aside>
 
         <!-- 右侧主内容区 -->
@@ -27,12 +31,12 @@
             <h1 class="page-title">学习笔记</h1>
 
             <div class="section">
-                <p style="margin-bottom: 20px; color: #666;">
+                <p style="margin-bottom: 20px; color: var(--text-secondary);">
                     这里整理了我在学习过程中的各类笔记和资料，按类型分类整理。
                     <span class="notes-stats">📊 目前共整理约 64 份笔记资料</span>
-                    笔记持续更新中，如有错误欢迎指正！
-
-                <p> 【重要提示：大多数文档的内容可能有问题，排版总是有问题。切勿当成"绝对严谨的教科书"或"高度精美的出版物"来阅读。】
+                </p>
+                <p class="warning-box">
+                    <strong>【重要提示】</strong>大多数文档为个人学习整理，内容和排版可能存在问题，仅供参考交流，请勿当作"绝对严谨的教科书"或"高度精美的出版物"来阅读。如有错误欢迎指正！
                 </p>
             </div>
 
@@ -43,7 +47,7 @@
                     <ul class="notes-list">
                         <li>
                             <div class="course-name">📐 数学分析</div>
-                            <div class="note-desc">数学分析Ⅰ-1、Ⅰ-2、Ⅰ-3 课程笔记与复习笔记</div>
+                            <div class="note-desc">数学分析Ⅰ-1、Ⅰ-2、Ⅰ-3 课程笔记与复习笔记，含全命题证明</div>
                             <div class="note-links">
                                 <a href="https://github.com/CrazyCat6657/CrazyCat6657.github.io/releases/download/v1.0-notes/math_analysis_1-1_course_notes.pdf" target="_blank">数学分析Ⅰ-1 课程笔记</a>
                                 <a href="https://github.com/CrazyCat6657/CrazyCat6657.github.io/releases/download/v1.0-notes/math_analysis_1-1_review_notes.pdf" target="_blank">数学分析Ⅰ-1 复习笔记</a>
@@ -98,7 +102,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="course-name">🌀 复变函数</div>
+                            <div class="course-name">🔄 复变函数</div>
                             <div class="note-desc">复变函数简明教程（谭小江，伍胜健）笔记版</div>
                             <div class="note-links">
                                 <a href="https://github.com/CrazyCat6657/CrazyCat6657.github.io/releases/download/v1.0-notes/complex_analysis_tan_wu_notes.pdf" target="_blank">复变函数简明教程 笔记版</a>
@@ -112,7 +116,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="course-name">📖 2025小学期讨论班</div>
+                            <div class="course-name">📚 2025小学期讨论班</div>
                             <div class="note-desc">高代与几何讨论班笔记、域的变换讲稿</div>
                             <div class="note-links">
                                 <a href="https://github.com/CrazyCat6657/CrazyCat6657.github.io/releases/download/v1.0-notes/summer25_gaodai_jihe_seminar_notes.pdf" target="_blank">高代与几何讨论班笔记</a>
@@ -197,7 +201,7 @@
             <div class="section">
                 <h2 class="section-title">🌐 AI翻译的文章</h2>
                 <div class="section-content">
-                    <p style="margin-bottom: 15px; color: #666; font-size: 14px;">使用AI翻译的一些经典数学文献和文章，仅供参考学习</p>
+                    <p style="margin-bottom: 15px; color: var(--text-secondary); font-size: 14px;">使用AI翻译的一些经典数学文献和文章，仅供参考学习</p>
                     <ul class="notes-list">
                         <li>
                             <div class="course-name">分析与PDE相关</div>
@@ -240,7 +244,7 @@
                 <div class="section-content">
                     <ul class="notes-list">
                         <li>
-                            <div class="course-name">🏆 数学建模竞赛</div>
+                            <div class="course-name">数学建模竞赛</div>
                             <div class="note-desc">美赛论文与数模学习笔记</div>
                             <div class="note-links">
                                 <a href="其它杂项/2025数模美赛论文.pdf" target="_blank">2025数模美赛论文</a>
@@ -250,7 +254,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="course-name">🛠️ 工具与杂项</div>
+                            <div class="course-name">工具与杂项</div>
                             <div class="note-desc">LaTeX学习、数学杂文等</div>
                             <div class="note-links">
                                 <a href="其它杂项/Latex学习笔记.pdf" target="_blank">LaTeX学习笔记</a>
@@ -258,7 +262,7 @@
                             </div>
                         </li>
                         <li>
-                            <div class="course-name">📄 LaTeX通用模板</div>
+                            <div class="course-name">LaTeX通用模板</div>
                             <div class="note-desc">数学、文章、讲义、讲稿、论文、题解等LaTeX模板源码</div>
                             <div class="note-links">
                                 <a href="其它杂项/通用模板/通用模板-数学/通用模板-数学.tex" target="_blank">数学模板 (.tex)</a>
@@ -280,7 +284,7 @@
                 <div class="section-content">
                     <ul class="notes-list">
                         <li>
-                            <div class="course-name">📚 学习经验与资源</div>
+                            <div class="course-name">学习经验与资源</div>
                             <div class="note-desc">高中学习经验分享、资源推荐</div>
                             <div class="note-links">
                                 <a href="高中学习资料/对高一新生的建议.docx" target="_blank">对高一新生的建议 (Word)</a>
@@ -293,9 +297,61 @@
 
             <div class="page-footer">
                 <p>笔记持续更新中 · 最后更新：2026年7月17日</p>
+                <div class="visit-counter">
+                    <span class="cat">🐱</span>
+                    <span>已有 <span class="count-number" id="visitCount">0</span> 位小伙伴来过~</span>
+                </div>
             </div>
         </main>
     </div>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+        ↑
+    </button>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // 读取本地存储的主题设置
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        });
+
+        // 访问计数器功能
+        function updateVisitCount() {
+            let count = localStorage.getItem('visitCount_notes') || 0;
+            count = parseInt(count) + 1;
+            localStorage.setItem('visitCount_notes', count);
+            document.getElementById('visitCount').textContent = count;
+        }
+        updateVisitCount();
+
+        // 回到顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+    </script>
 </body>
 
 </html>

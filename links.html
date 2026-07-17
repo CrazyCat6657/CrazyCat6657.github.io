@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>友情链接与推荐资源 - 周才翔</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- 左侧导航栏 -->
+        <aside class="sidebar">
+            <div class="sidebar-title">我的主页</div>
+            <ul class="sidebar-nav">
+                <li><a href="index.html">首页</a></li>
+                <li><a href="notes.html">学习笔记</a></li>
+                <li><a href="links.html" class="active">推荐资源</a></li>
+            </ul>
+            <div class="sidebar-footer">
+                <p>© 2026 周才翔</p>
+            </div>
+            <button class="theme-toggle" id="themeToggle" title="切换主题">
+                🌙
+            </button>
+        </aside>
+
+        <!-- 右侧主内容区 -->
+        <main class="main-content">
+            <h1 class="page-title">🔗 友情链接与推荐资源</h1>
+
+            <div class="section">
+                <p style="margin-bottom: 20px; color: var(--text-secondary);">
+                    这里整理了一些我觉得有用的数学资源、优秀博客、老师同学主页等，持续更新中。
+                </p>
+            </div>
+
+            <!-- 数学资源网站 -->
+            <div class="link-category">
+                <h3>📚 数学资源网站</h3>
+                <div class="links-grid">
+                    <div class="link-card placeholder-text">
+                        <div class="link-card-title">待补充...</div>
+                        <div class="link-card-desc">数学百科、教材资源、在线课程等网站链接</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 优秀数学博客 -->
+            <div class="link-category">
+                <h3>✍️ 优秀数学博客</h3>
+                <div class="links-grid">
+                    <div class="link-card placeholder-text">
+                        <div class="link-card-title">待补充...</div>
+                        <div class="link-card-desc">值得阅读的数学博客、个人主页</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 老师与同学主页 -->
+            <div class="link-category">
+                <h3>👥 老师与同学主页</h3>
+                <div class="links-grid">
+                    <div class="link-card placeholder-text">
+                        <div class="link-card-title">待补充...</div>
+                        <div class="link-card-desc">老师、同学、朋友们的个人主页</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 工具与其他 -->
+            <div class="link-category">
+                <h3>🛠️ 实用工具</h3>
+                <div class="links-grid">
+                    <div class="link-card placeholder-text">
+                        <div class="link-card-title">待补充...</div>
+                        <div class="link-card-desc">LaTeX工具、绘图工具、在线编辑器等</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="page-footer">
+                <p>资源持续更新中 · 最后更新：2026年7月17日</p>
+                <div class="visit-counter">
+                    <span class="cat">🐱</span>
+                    <span>已有 <span class="count-number" id="visitCount">0</span> 位小伙伴来过~</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+        ↑
+    </button>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const html = document.documentElement;
+        const body = document.body;
+
+        // 读取本地存储的主题设置
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        });
+
+        // 访问计数器功能
+        function updateVisitCount() {
+            let count = localStorage.getItem('visitCount_links') || 0;
+            count = parseInt(count) + 1;
+            localStorage.setItem('visitCount_links', count);
+            document.getElementById('visitCount').textContent = count;
+        }
+        updateVisitCount();
+
+        // 回到顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+    </script>
+</body>
+
+</html>

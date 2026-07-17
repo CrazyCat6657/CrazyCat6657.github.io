@@ -16,10 +16,14 @@
             <ul class="sidebar-nav">
                 <li><a href="index.html" class="active">首页</a></li>
                 <li><a href="notes.html">学习笔记</a></li>
+                <li><a href="links.html">推荐资源</a></li>
             </ul>
             <div class="sidebar-footer">
                 <p>© 2026 周才翔</p>
             </div>
+            <button class="theme-toggle" id="themeToggle" title="切换主题">
+                🌙
+            </button>
         </aside>
 
         <!-- 右侧主内容区 -->
@@ -91,17 +95,70 @@
                 <h2 class="section-title">最新动态</h2>
                 <div class="section-content">
                     <ul class="info-list">
-                        <li><span class="date">2026.07.16</span> 更新学习笔记分类，新增大量课程笔记、讲座记录、AI翻译文章</li>
+                        <li><span class="date">2026.07.17</span> 新增暗色模式、访问计数、推荐资源页面</li>
+                        <li><span class="date">2026.07.17</span> 更新学习笔记分类，新增大量课程笔记、讲座记录、AI翻译文章</li>
                         <li><span class="date">2026.07</span> 个人主页上线</li>
                     </ul>
                 </div>
             </div>
 
             <div class="page-footer">
-                <p>最后更新：2026年7月16日 | 用 豆小包 和 HTML 制作</p>
+                <p>最后更新：2026年7月17日 | 用 豆小包 和 HTML 制作</p>
+                <div class="visit-counter">
+                    <span class="cat">🐱</span>
+                    <span>已有 <span class="count-number" id="visitCount">0</span> 位小伙伴来过~</span>
+                </div>
             </div>
         </main>
     </div>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+        ↑
+    </button>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // 读取本地存储的主题设置
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        });
+
+        // 访问计数器功能
+        function updateVisitCount() {
+            let count = localStorage.getItem('visitCount_index') || 0;
+            count = parseInt(count) + 1;
+            localStorage.setItem('visitCount_index', count);
+            document.getElementById('visitCount').textContent = count;
+        }
+        updateVisitCount();
+
+        // 回到顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+    </script>
 </body>
 
 </html>

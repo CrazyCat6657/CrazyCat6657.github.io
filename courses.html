@@ -14,10 +14,14 @@
             <ul class="sidebar-nav">
                 <li><a href="index.html">首页</a></li>
                 <li><a href="notes.html">学习笔记</a></li>
+                <li><a href="links.html">推荐资源</a></li>
             </ul>
             <div class="sidebar-footer">
-                <p>© 2024 周才翔</p>
+                <p>© 2026 周才翔</p>
             </div>
+            <button class="theme-toggle" id="themeToggle" title="切换主题">
+                🌙
+            </button>
         </aside>
 
         <!-- 右侧主内容区 -->
@@ -25,7 +29,7 @@
             <h1 class="page-title">课程资料</h1>
 
             <div class="section">
-                <p style="margin-bottom: 20px; color: #666;">
+                <p style="margin-bottom: 20px; color: var(--text-secondary);">
                     这里整理了我在大学期间修读的课程，以及相关的课程资料和项目。
                     课程成绩和资料持续更新中。
                 </p>
@@ -122,19 +126,71 @@
             <div class="section">
                 <h2 class="section-title">说明</h2>
                 <div class="section-content">
-                    <p style="color: #666; font-size: 14px;">
+                    <p style="color: var(--text-secondary); font-size: 14px;">
                         * 以上课程列表根据数学与应用数学专业（拔尖计划）培养方案整理，具体以实际修读情况为准。
                     </p>
-                    <p style="color: #666; font-size: 14px;">
+                    <p style="color: var(--text-secondary); font-size: 14px;">
                         * 课程相关笔记和大作业请查看「<a href="notes.html">学习笔记</a>」页面。
                     </p>
                 </div>
             </div>
 
             <div class="page-footer">
-                <p>课程资料持续更新中 · 最后更新：2026年7月16日</p>
+                <p>课程资料持续更新中 · 最后更新：2026年7月17日</p>
+                <div class="visit-counter">
+                    <span class="cat">🐱</span>
+                    <span>已有 <span class="count-number" id="visitCount">0</span> 位小伙伴来过~</span>
+                </div>
             </div>
         </main>
     </div>
+
+    <!-- 回到顶部按钮 -->
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" title="回到顶部">
+        ↑
+    </button>
+
+    <script>
+        // 主题切换功能
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // 读取本地存储的主题设置
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.textContent = '☀️';
+        }
+
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-mode');
+            if (body.classList.contains('dark-mode')) {
+                localStorage.setItem('theme', 'dark');
+                themeToggle.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'light');
+                themeToggle.textContent = '🌙';
+            }
+        });
+
+        // 访问计数器功能
+        function updateVisitCount() {
+            let count = localStorage.getItem('visitCount_courses') || 0;
+            count = parseInt(count) + 1;
+            localStorage.setItem('visitCount_courses', count);
+            document.getElementById('visitCount').textContent = count;
+        }
+        updateVisitCount();
+
+        // 回到顶部按钮
+        window.addEventListener('scroll', function() {
+            const backToTop = document.querySelector('.back-to-top');
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+    </script>
 </body>
 </html>
