@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>宿舍 3D 重建 · Three.js v0.3</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+  <div id="app"></div>
+
+  <div id="hud">
+    <div class="title">宿舍 3D 重建 <span>v0.3 · Detail & Orientation Pass</span></div>
+    <div class="help">WASD 移动 · 鼠标环视 · Shift 加速 · R 回门口 · V 鸟瞰 · H 隐藏界面</div>
+    <div class="help sub">1 门→窗 · 2 窗→门 · 3 看右侧桌位 · 4 看左侧桌位</div>
+  </div>
+
+  <div id="minimap" aria-label="宿舍平面示意">
+    <div class="map-label top">窗</div>
+    <div class="map-bed l b1"></div><div class="map-bed l b2"></div>
+    <div class="map-bed r b1"></div><div class="map-bed r b2"></div>
+    <div id="map-dot"></div>
+    <div class="map-label bottom">门</div>
+  </div>
+
+  <div id="info-panel">
+    <div class="info-heading">v0.3 本轮精修</div>
+    <div>地砖标尺：<b>40 × 40 cm</b></div>
+    <div>视点高度：<b>1.57 m</b></div>
+    <div>修正：<b>四套床梯朝向</b>、床帘状态、四桌位独立摆设、门上方管线与窗边杂物。</div>
+    <div class="muted">场景中的程序化细节已改为固定种子，同一版本每次打开不会再随机变样。</div>
+    <a href="./reference/photos_contact_sheet.jpg" target="_blank">查看两批照片对照表</a>
+  </div>
+
+  <div id="start-overlay">
+    <div class="card">
+      <h1>进入宿舍</h1>
+      <p>点击后锁定鼠标，以第一视角在房间内走动。</p>
+      <button id="start-btn">开始走动</button>
+      <small>Esc 释放鼠标；数字 1–4 可快速切换校准视角。</small>
+    </div>
+  </div>
+
+  <div id="crosshair"></div>
+  <div id="mode-pill">第一视角</div>
+
+  <script type="module" src="./main.bundle.js"></script>
+</body>
+</html>

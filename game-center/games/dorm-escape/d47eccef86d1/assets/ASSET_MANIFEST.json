@@ -1,0 +1,87 @@
+{
+  "schema_version": 2,
+  "runtime_status": "hybrid_procedural_plus_glb",
+  "notes": "v0.7 keeps procedural gameplay/collision geometry and adds a real GLB Hero Room for 418. Character/weapon GLB slots remain future-facing.",
+  "hero_rooms": {
+    "418_reference": {
+      "src": "./assets/hero/418_reference.glb",
+      "runtime": "balanced_quality",
+      "scale": 0.8,
+      "fallback": "procedural_418",
+      "source": "user-provided reference model",
+      "mesh_count": 526,
+      "material_count": 494,
+      "triangles_approx": 58175,
+      "policy": "single-room only; do not clone across the building"
+    }
+  },
+  "characters": {
+    "infected_common": {
+      "src": null,
+      "prototype": "procedural_gen2",
+      "required_animations": [
+        "idle",
+        "walk",
+        "run",
+        "attack",
+        "hit",
+        "death"
+      ]
+    },
+    "infected_runner": {
+      "src": null,
+      "required_animations": [
+        "idle",
+        "run",
+        "lunge",
+        "hit",
+        "death"
+      ]
+    },
+    "infected_heavy": {
+      "src": null,
+      "required_animations": [
+        "idle",
+        "walk",
+        "charge",
+        "smash",
+        "stun",
+        "death"
+      ]
+    }
+  },
+  "weapons": {
+    "m9_view": {
+      "src": null,
+      "prototype": "procedural_detail_pass"
+    },
+    "pump_view": {
+      "src": null,
+      "prototype": "procedural_detail_pass"
+    },
+    "mp5_view": {
+      "src": null
+    },
+    "crowbar_view": {
+      "src": null
+    }
+  },
+  "environment": {
+    "dorm_bed": {
+      "src": null,
+      "instancing_preferred": true
+    },
+    "dorm_desk": {
+      "src": null,
+      "instancing_preferred": true
+    },
+    "dorm_chair": {
+      "src": null,
+      "instancing_preferred": true
+    },
+    "dorm_door": {
+      "src": null,
+      "instancing_preferred": true
+    }
+  }
+}

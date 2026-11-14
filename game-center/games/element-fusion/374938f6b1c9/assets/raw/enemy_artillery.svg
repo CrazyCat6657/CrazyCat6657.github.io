@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs>
+    <filter id="shadow"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-opacity=".36"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8c7b1"/><stop offset=".5" stop-color="#8b7568"/><stop offset="1" stop-color="#493b3b"/></linearGradient>
+    </defs><rect width="256" height="256" fill="none"/><ellipse cx="128" cy="219" rx="58" ry="14" fill="#121015" opacity=".3"/><path d="M78 195L89 110Q128 78 167 110L178 195Z" fill="#66506f" stroke="#33283a" stroke-width="9"/>
+<path d="M111 108L128 76L146 108" fill="#8c6c99" stroke="#44344c" stroke-width="7"/>
+<circle cx="111" cy="137" r="7" fill="#ffce8d"/><circle cx="147" cy="137" r="7" fill="#ffce8d"/>
+<path d="M158 121L208 78L220 91L174 139Z" fill="#49434f" stroke="#252229" stroke-width="8"/><circle cx="214" cy="84" r="11" fill="#da81ff" filter="url(#glow)"/>
+<path d="M101 177L87 206M155 177L170 206" stroke="#3e303f" stroke-width="10"/></svg>

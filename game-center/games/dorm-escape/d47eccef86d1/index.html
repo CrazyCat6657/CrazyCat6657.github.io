@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>DormEscape v0.7 — Visual Recovery & Performance</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
+<body>
+<div id="app"></div>
+
+<div id="topbar">
+  <div class="brand">DORM//ESCAPE <span>v0.7</span></div>
+  <div id="floorTag">4F</div>
+  <div id="zone">418 · 起始宿舍</div>
+  <div id="powerState">4F POWER ON</div>
+  <div id="seedText">SEED --</div>
+</div>
+
+<div id="objectiveBox">
+  <div class="eyebrow">CURRENT OBJECTIVE</div>
+  <div id="objective">搜寻 418，找到可以防身的武器</div>
+  <div id="subObjective"></div>
+</div>
+
+<div id="missionBanner" class="hidden"><small>NEW OBJECTIVE</small><b id="missionBannerText"></b></div>
+
+<div id="threatHud"><i></i><span id="threatText">安静</span></div>
+
+<div id="combatHud">
+  <div class="healthRow"><span>HP</span><div class="bar"><i id="hpBar"></i></div><b id="hpText">100</b></div>
+  <div class="staminaRow"><span>ST</span><div class="bar"><i id="staminaBar"></i></div><b id="staminaText">100</b></div>
+  <div class="weaponRow"><span id="weaponName">EMPTY HANDS</span><b id="ammoText">-- / --</b></div>
+  <div id="weaponSlots">
+    <span id="slot1">1 · M9</span><span id="slot2">2 · 霰弹枪</span><span id="slot3">3 · SMG</span><span id="slot4">4 · 撬棍</span>
+  </div>
+</div>
+
+<div id="interactPrompt"></div>
+<div id="crosshair"><i></i><i></i><i></i><i></i><b id="hitmarker"></b></div>
+
+<div id="lootPanel" class="hidden">
+  <div class="lootHead"><b id="lootTitle">搜索结果</b><span>E 全部拿走</span></div>
+  <div id="lootItems"></div>
+</div>
+
+<div id="inventory" class="hidden">
+  <div class="inventoryHead"><b>BACKPACK</b><span>B / Tab 关闭</span></div>
+  <div class="equipment">
+    <div><small>SIDEARM</small><b id="eqPistol">—</b></div>
+    <div><small>PRIMARY</small><b id="eqShotgun">—</b></div>
+    <div><small>PRIMARY 2</small><b id="eqSMG">—</b></div><div><small>MELEE</small><b id="eqMelee">—</b></div>
+  </div>
+  <div class="slots">
+    <div class="slot"><span>9mm 弹药</span><b id="invAmmo">0</b></div>
+    <div class="slot"><span>12G 霰弹</span><b id="invShells">0</b></div>
+    <div class="slot"><span>绷带</span><b id="invBandage">0</b></div>
+    <div class="slot"><span>医疗包</span><b id="invMed">0</b></div>
+    <div class="slot"><span>手雷</span><b id="invGrenade">0</b></div>
+    <div class="slot"><span>燃烧瓶</span><b id="invMolotov">0</b></div>
+    <div class="slot"><span>玻璃瓶诱饵</span><b id="invDecoy">0</b></div>
+    <div class="slot key"><span>维修钥匙</span><b id="invMaint">未获得</b></div>
+    <div class="slot key"><span>宿舍门禁卡</span><b id="invCard">未获得</b></div>
+    <div class="slot key"><span>总门权限</span><b id="invMaster">未获得</b></div>
+  </div>
+  <div class="tip"><b>医疗：</b> F 绷带（快 / +28） · G 医疗包（慢 / +62）<br><b>装备：</b> Q 手雷 · T 燃烧瓶 · C 噪音诱饵 · L 手电<br><b>移动：</b> Shift 静步 · Ctrl 蹲伏 · Space/X 冲刺<br><b>导航：</b> M 楼层地图 · B / Tab 背包 · E 交互 · P 性能 HUD · R 换弹</div>
+</div>
+
+<div id="mapOverlay" class="hidden">
+  <div class="mapPanel">
+    <div class="mapHead"><div><small>DORM FLOOR PLAN</small><b id="mapTitle">4F · 生活区</b></div><span>M 关闭</span></div>
+    <canvas id="mapCanvas" width="760" height="420"></canvas>
+    <div class="mapLegend"><i class="you"></i>你的位置 <i class="goal"></i>主目标区域 <i class="seen"></i>已探索房间 <i class="unknown"></i>未探索</div>
+    <div id="mapObjective">当前目标：</div>
+  </div>
+</div>
+<div id="keyGuide"><span><b>Shift</b> 静步</span><span><b>Ctrl</b> 蹲伏</span><span><b>Space/X</b> 冲刺</span><span><b>M</b> 地图</span><span><b>B</b> 背包</span><span><b>L</b> 手电</span><span><b>P</b> 性能</span></div>
+<div id="tutorialCard" class="hidden"><small>操作提示</small><b id="tutorialTitle"></b><p id="tutorialText"></p></div>
+<div id="floorFade"></div>
+
+<div id="perfHud" class="hidden"><b>PERFORMANCE</b><span>FPS <i id="perfFps">--</i></span><span>FRAME <i id="perfFrame">--</i></span><span>DRAWS <i id="perfCalls">--</i></span><span>TRIS <i id="perfTris">--</i></span><span>ACTIVE AI <i id="perfAi">--</i></span><span>ROOMS <i id="perfRooms">--</i></span><span>ART <i id="perfArt">PROC</i></span></div>
+
+<div id="pauseOverlay">
+  <div class="panel">
+    <div class="kicker">VISUAL RECOVERY & PERFORMANCE</div>
+    <h1>逃离宿舍楼</h1>
+    <p>v0.7 保留 v0.6 的五层骨架与玩法系统，开始正式偿还美术技术债：418 Hero Room 接入真实 GLB 资产、房间级可见性、画质档位、性能保护与第二代视觉原型。</p>
+    <div class="controls">
+      <div><b>WASD</b><span>普通移动</span></div><div><b>Shift</b><span>静步</span></div>
+      <div><b>Ctrl</b><span>蹲伏</span></div><div><b>Space / X</b><span>冲刺</span></div>
+      <div><b>Mouse</b><span>转头</span></div><div><b>LMB</b><span>攻击</span></div>
+      <div><b>RMB</b><span>瞄准</span></div><div><b>R</b><span>换弹</span></div>
+      <div><b>E</b><span>交互</span></div><div><b>Shift+E</b><span>轻推门</span></div>
+      <div><b>Space+E</b><span>快速推门</span></div><div><b>1–4</b><span>切枪</span></div>
+      <div><b>F / G</b><span>绷带 / 医疗包</span></div><div><b>Q / T</b><span>手雷 / 燃烧瓶</span></div><div><b>L</b><span>手电</span></div><div><b>B / Tab</b><span>背包</span></div><div><b>M</b><span>地图</span></div><div><b>C</b><span>噪音诱饵</span></div><div><b>P</b><span>性能 HUD</span></div>
+    </div>
+    <label class="setting">鼠标灵敏度 <input id="sens" type="range" min="0.45" max="1.8" value="1" step="0.05"><b id="sensValue">1.00×</b></label>
+    <label class="setting difficulty">难度 <select id="difficulty"><option value="easy">简单</option><option value="normal" selected>普通</option><option value="hard">困难</option></select><b id="difficultyHint">标准</b></label>
+    <label class="setting quality">画质 <select id="quality"><option value="performance">Performance</option><option value="balanced" selected>Balanced</option><option value="quality">Quality</option></select><b id="qualityHint">418 Hero Room + 动态性能保护</b></label>
+    <button id="startButton">开始游戏</button>
+  </div>
+</div>
+
+<div id="bossHud" class="hidden"><span id="bossName">HEAVY</span><div class="bossBar"><i id="bossBarFill"></i></div><b id="bossHp">100%</b></div>
+<div id="actionProgress" class="hidden"><span id="actionText">使用中…</span><div><i id="actionFill"></i></div></div>
+<div id="damageVignette"></div>
+<div id="toast"></div>
+<div id="endScreen" class="hidden"><div><span>SECTION CLEARED</span><h1>你突破了感染区</h1><p id="endStats"></p><button id="restartButton">重新开始</button></div></div>
+
+<script type="module" src="./main.bundle.js"></script>
+</body>
+</html>

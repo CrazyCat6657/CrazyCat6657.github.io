@@ -1,0 +1,34 @@
+{
+  "gameId": "dorm-sim",
+  "version": "0.6",
+  "revision": "sha256:998e7101464f9e0766e3a4aa4befe362d7b04578faf72cd56f7a12f50ff9c28f",
+  "build": "b710e694e2aa",
+  "adapter": "three.js 0.180.0 bundled locally; CDN import removed",
+  "files": [
+    {
+      "path": "assets/window_view.jpg",
+      "size": 615154,
+      "sha256": "92e767e1d513a74fe264fc5e140e6c2024afb6446418415209ef3ede0178d6b5"
+    },
+    {
+      "path": "index.html",
+      "size": 1919,
+      "sha256": "263c15558eefd30368a3eec720b33c28eb97827b9bd601fd97a60c35142f4800"
+    },
+    {
+      "path": "main.bundle.js",
+      "size": 523902,
+      "sha256": "f4a88a9d3dbb060a00c36c41e92d02f72cf7bd192acae4c1adb11dfd62201c4e"
+    },
+    {
+      "path": "reference/photos_contact_sheet.jpg",
+      "size": 430504,
+      "sha256": "ecd906f8d98a82dd85f3b0420e5ef4cba95973b9b0fc2f6761ee83a3ab87585d"
+    },
+    {
+      "path": "style.css",
+      "size": 3676,
+      "sha256": "d803f14129dcafffcc68cfb4454c820722abf07e11ab357dadc5424113c41428"
+    }
+  ]
+}

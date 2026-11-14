@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs>
+    <filter id="shadow"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-opacity=".36"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8c7b1"/><stop offset=".5" stop-color="#8b7568"/><stop offset="1" stop-color="#493b3b"/></linearGradient>
+    </defs><rect width="256" height="256" fill="none"/><ellipse cx="128" cy="224" rx="96" ry="22" fill="#101510" opacity=".4"/>
+<path d="M46 195L58 101L91 73L111 86L128 43L147 87L170 70L202 106L214 195L177 221H78Z" fill="#4f6241" stroke="#243020" stroke-width="11"/>
+<path d="M94 107L128 82L163 108L155 166H101Z" fill="#34452f" stroke="#1d291b" stroke-width="8"/>
+<circle cx="128" cy="137" r="24" fill="#8fd968" stroke="#3e7136" stroke-width="7" filter="url(#glow)"/>
+<path d="M88 85L54 46M168 87L204 48M128 55L111 21M128 55L148 19" stroke="#6e874f" stroke-width="13" stroke-linecap="round"/>
+<path d="M54 125L23 148L41 195L75 169M202 125L233 148L215 195L181 169" fill="#5d714a" stroke="#2b3925" stroke-width="10"/></svg>

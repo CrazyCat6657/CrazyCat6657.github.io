@@ -1,0 +1,54 @@
+{
+  "gameId": "phase-rift",
+  "version": "1.4.3-rc.1",
+  "revision": "66d0351ffd90127f86d277ea28777b0bd09028dd",
+  "build": "e27ab7e17ada",
+  "adapter": "none",
+  "files": [
+    {
+      "path": "index.html",
+      "size": 1909738,
+      "sha256": "b0b197b4d681167c410fcaf9287d78f9e3a6eaea324c4dc2623691b85e5697f2"
+    },
+    {
+      "path": "licenses/capacitor-android.txt",
+      "size": 1075,
+      "sha256": "9c6ebf3e5ab832ba4d5af38f340978e1fedbfee6e3d23662dfdb8917a9d864dd"
+    },
+    {
+      "path": "licenses/capacitor-app.txt",
+      "size": 1083,
+      "sha256": "e8f989836e88732576472006444b65fd3d7d3c2455becdaaa4d82cd0dd43110f"
+    },
+    {
+      "path": "licenses/capacitor-core.txt",
+      "size": 1075,
+      "sha256": "9c6ebf3e5ab832ba4d5af38f340978e1fedbfee6e3d23662dfdb8917a9d864dd"
+    },
+    {
+      "path": "licenses/capacitor-status-bar.txt",
+      "size": 1083,
+      "sha256": "e8f989836e88732576472006444b65fd3d7d3c2455becdaaa4d82cd0dd43110f"
+    },
+    {
+      "path": "licenses/esbuild.txt",
+      "size": 1069,
+      "sha256": "b40ec5baec7bb34fa5b1c09521fa3cd52d5fad7adafed74932a2010d3612a681"
+    },
+    {
+      "path": "licenses/playwright.txt",
+      "size": 11399,
+      "sha256": "7fab1461b41970ff376f1c9303a637076bfaaeb71cd12dd3a1c44aaf59a1a2b9"
+    },
+    {
+      "path": "licenses/three-r160.txt",
+      "size": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "THIRD_PARTY_NOTICES.md",
+      "size": 1349,
+      "sha256": "9f4d891617bcb6526a5619b66ead23e5ad25b2f0a6a68a6003f821d9b2644290"
+    }
+  ]
+}

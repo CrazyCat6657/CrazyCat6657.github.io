@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs>
+    <filter id="shadow"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-opacity=".35"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="brass" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f0c071"/><stop offset=".52" stop-color="#a9693d"/><stop offset="1" stop-color="#58352b"/></linearGradient>
+    <linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d7d2cb"/><stop offset=".55" stop-color="#85817d"/><stop offset="1" stop-color="#454148"/></linearGradient>
+    <linearGradient id="stone" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#b89870"/><stop offset=".55" stop-color="#765c47"/><stop offset="1" stop-color="#3c302d"/></linearGradient>
+    </defs><rect width="256" height="256" fill="none"/><ellipse cx="128" cy="218" rx="68" ry="15" fill="#10202b" opacity=".25"/><circle cx="128" cy="133" r="67" fill="#225984" stroke="#82dfff" stroke-width="8"/><path d="M128 63V203M67 98L189 168M67 168L189 98M94 78L128 98L162 78M94 188L128 168L162 188M67 124L96 133L67 143M189 124L160 133L189 143" stroke="#e9fbff" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/><circle cx="128" cy="133" r="14" fill="#8be6ff" stroke="#fff" stroke-width="5" filter="url(#glow)"/></svg>

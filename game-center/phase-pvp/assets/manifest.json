@@ -1,0 +1,50 @@
+{
+  "id": "rift-ranger-v1",
+  "original": true,
+  "blender": "4.5.9 LTS",
+  "units": "metres",
+  "forward": "-Z",
+  "height": 1.82,
+  "head": [
+    0,
+    1.57,
+    0
+  ],
+  "bones": 52,
+  "materials": 4,
+  "textures": 0,
+  "clips": [
+    "idle",
+    "walk",
+    "run",
+    "fire",
+    "hit",
+    "death"
+  ],
+  "lods": [
+    {
+      "level": 0,
+      "triangles": 13136,
+      "bytes": 739328,
+      "sha256": "4e3b9a0c5daeeef5225f0602d0be7b80ea7295a03c651bc1a155bc102839cf2f",
+      "file": "rift-ranger-lod0.glb"
+    },
+    {
+      "level": 1,
+      "triangles": 6568,
+      "bytes": 469280,
+      "sha256": "f6b3e26cd1e7825556230ec4f1c3ff233f517139a3c4f6cc62c8d447525ca21d",
+      "file": "rift-ranger-lod1.glb"
+    },
+    {
+      "level": 2,
+      "triangles": 2598,
+      "bytes": 310324,
+      "sha256": "ef9f36b8755ea1edce513ad0562af5d3fa897272d9063e7eabf8b18adfa553e8",
+      "file": "rift-ranger-lod2.glb"
+    }
+  ],
+  "source": "generate_character.py",
+  "editable": "rift-ranger.blend",
+  "collision": "server analytic capsule and head; mesh does not alter fairness"
+}

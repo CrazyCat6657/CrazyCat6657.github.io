@@ -1,0 +1,974 @@
+{
+  "gameId": "element-fusion",
+  "version": "9.2.1",
+  "revision": "6b2c21e573964f9b4816d956a46c954f1792f9e9",
+  "build": "374938f6b1c9",
+  "adapter": "official standalone; legacy PWA registration disabled",
+  "files": [
+    {
+      "path": "assets/atlas.json",
+      "size": 4775,
+      "sha256": "2fddfb92f1d9a0e12cdd24c36bb3d3477463c2c53f33c510ac8aaae9733d5144"
+    },
+    {
+      "path": "assets/atlas.png",
+      "size": 958780,
+      "sha256": "397ee955ba753ddc1ea2375129bc22e31de0287cda302d1357950db4ba2fbb73"
+    },
+    {
+      "path": "assets/icons/icon-192.png",
+      "size": 2076,
+      "sha256": "c1be3ace823346f82067a4986cf2f032f664f02a52f5e3db8908d6159e38967d"
+    },
+    {
+      "path": "assets/icons/icon-512.png",
+      "size": 5701,
+      "sha256": "3a99e9753b49e2afad69f80901428981151270bf039da3ac66c3779ed49558b0"
+    },
+    {
+      "path": "assets/raw/boss_broodmother.png",
+      "size": 14416,
+      "sha256": "d012661d45a88b4e1c5d0819b78c0affb7bd2bd86e6e9a3df3635a464696f766"
+    },
+    {
+      "path": "assets/raw/boss_broodmother.svg",
+      "size": 1313,
+      "sha256": "8aa5aa833a94f4e72793810d56055b9a23c3a9497398b1f2f90e453f82cb53de"
+    },
+    {
+      "path": "assets/raw/boss_ironmarshal.png",
+      "size": 8472,
+      "sha256": "6667c6b4265d586ba66f0057792d934168db97948d3fa0275727301784f8370a"
+    },
+    {
+      "path": "assets/raw/boss_ironmarshal.svg",
+      "size": 1211,
+      "sha256": "97f1ac0d76c07b0af3334c890ef7936bd2ff6a600269445c9e6b16990b13ca01"
+    },
+    {
+      "path": "assets/raw/boss_lava.png",
+      "size": 19493,
+      "sha256": "418a70879aa037d854099c220b490c529e6c26779d5b4d868d97c8e10aef3432"
+    },
+    {
+      "path": "assets/raw/boss_lava.svg",
+      "size": 2213,
+      "sha256": "62bf03620b99f072da73b72a266c07e203199c0df4d30cf6a964c0c444542149"
+    },
+    {
+      "path": "assets/raw/boss_prismarch.png",
+      "size": 12709,
+      "sha256": "8986333f99906d50c6e7444f8ce559c723e541b47e3c47d1b19830a454b7fdab"
+    },
+    {
+      "path": "assets/raw/boss_prismarch.svg",
+      "size": 1137,
+      "sha256": "322591ac7b63460e43aff3d07bd7a3ad2c7433bd435dc37d349b7e1df403df92"
+    },
+    {
+      "path": "assets/raw/boss_riftking.png",
+      "size": 14956,
+      "sha256": "dfc78e817d683c662c9fcc5be44c7d00a87309648fa908a84ad1938140daf9fa"
+    },
+    {
+      "path": "assets/raw/boss_riftking.svg",
+      "size": 1235,
+      "sha256": "5a004d41f9a53518d07add35561a827892e0e9ed552fed2c48a8d61504a607ab"
+    },
+    {
+      "path": "assets/raw/boss_titan.png",
+      "size": 20619,
+      "sha256": "23f1859c314f7260a537c4ae308df094c685fc5da94ae798493187bf04182036"
+    },
+    {
+      "path": "assets/raw/boss_titan.svg",
+      "size": 1344,
+      "sha256": "213a77c7d880f35a28330fbb8e8a4f1635248b4c90147085f2c6cbc7850fe69d"
+    },
+    {
+      "path": "assets/raw/boss_verdant.png",
+      "size": 17177,
+      "sha256": "00547358b5c075112f5fefd6753d9c1d1595c79f50ff7848056191ed978803b3"
+    },
+    {
+      "path": "assets/raw/boss_verdant.svg",
+      "size": 1224,
+      "sha256": "9255ed92d0cda90cda093da41e33abd61afda59f451753d2ff8afb2275d59243"
+    },
+    {
+      "path": "assets/raw/boss_void.png",
+      "size": 17815,
+      "sha256": "06089d18bc2965db12264e98509b6d9fe9e55fbd6c05ad871fce780b1e023e95"
+    },
+    {
+      "path": "assets/raw/boss_void.svg",
+      "size": 1252,
+      "sha256": "ae7a614d4c663ef292f0561a1ccd404462c9d9736c9943e08969147c3e8fde78"
+    },
+    {
+      "path": "assets/raw/castle.png",
+      "size": 5043,
+      "sha256": "3cad3142f21e5526fa81ed4c97c350b95a1329c61407d56e4440c7bf8f014914"
+    },
+    {
+      "path": "assets/raw/castle.svg",
+      "size": 990,
+      "sha256": "5909dc06a6ec0e14cb945d61adb17954ad85608beb6d33531765ba68552b89a2"
+    },
+    {
+      "path": "assets/raw/cave.png",
+      "size": 8394,
+      "sha256": "2c589bdb1c8cb0c423b837422f2ed467ae4cf00bb5c641045aa5b2a22bfebbef"
+    },
+    {
+      "path": "assets/raw/cave.svg",
+      "size": 711,
+      "sha256": "bece8da0daa2400d2d6ed80a321d11877f6af0639138d02bd55a573620b717f2"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_flame.png",
+      "size": 14087,
+      "sha256": "8b4551327c5f30e7fbaf93514093d938a72d4d12d0efda6274374cf5a8a7330b"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_flame.svg",
+      "size": 1225,
+      "sha256": "037c16d6f475f31bf405c54feb49893e74e9492e5e235f9f80a777ea2af92ddb"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_frost.png",
+      "size": 14404,
+      "sha256": "036b215364baea40f6844c7ad93665e50a6eabe0c26026ee91abfe00803eec49"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_frost.svg",
+      "size": 1227,
+      "sha256": "23c3f62f149a54edc3dcd476d2c050a696251cd0ce53590c8b13737497d054ca"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_light.png",
+      "size": 13837,
+      "sha256": "79fb15a32a4437968abf409567df5c91b301e3462dbe69717f8633fb168aca0d"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_light.svg",
+      "size": 1254,
+      "sha256": "1c5a52a5327b46bbed631eaf32cec97f460105c86e97bddb26f3da61d502da1c"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_spark.png",
+      "size": 13897,
+      "sha256": "76308af41069e97266652d00928064ad944ffce71b0b006567caacc109665353"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_spark.svg",
+      "size": 1214,
+      "sha256": "3912c58325146ff4c40e73e8c60c7b87b922ef9b3b32de226ca39ea7305e7758"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_stone.png",
+      "size": 13748,
+      "sha256": "fa42f10280f244ee09cc22d9910ae3c4457142b845dbb10e72ec20ef3286c862"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_stone.svg",
+      "size": 1211,
+      "sha256": "9c496cfbf62719ca1624a6222dbf955faa0981deef49038e946758fc7b75ad86"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_storm.png",
+      "size": 13995,
+      "sha256": "86ddea572bb4b15ee739808e8336507c05f69af555b1d76f06f3f8b737df2a89"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_storm.svg",
+      "size": 1207,
+      "sha256": "cc75edda9ab1fbee444f695aad6789db9a440bb795b3fef832f49ee8ba74afc2"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_void.png",
+      "size": 15724,
+      "sha256": "88a8ea14b47ef69dfb6a380c6e1a91ddd729d5ebd10521b51e44af9a463ad0fd"
+    },
+    {
+      "path": "assets/raw/enemy_aberr_void.svg",
+      "size": 1271,
+      "sha256": "1c13403412eab706e15150925e5c2a218a4a89ce6d7adf969452a095d8dc6461"
+    },
+    {
+      "path": "assets/raw/enemy_artillery.png",
+      "size": 9380,
+      "sha256": "23bb174e8b974d540311ca99f1c752408a293c0fc0c65c54ed5f821cf63cea5b"
+    },
+    {
+      "path": "assets/raw/enemy_artillery.svg",
+      "size": 1157,
+      "sha256": "063155f9c5b93a7ec4d1976a5def17ecba19b2fc1debf5e59f024e9de5a2c950"
+    },
+    {
+      "path": "assets/raw/enemy_banner.png",
+      "size": 7647,
+      "sha256": "d8c59c2977efb60f2f68de46de0a5bed36b08d5bb44e78cb04159adefe6e8752"
+    },
+    {
+      "path": "assets/raw/enemy_banner.svg",
+      "size": 1051,
+      "sha256": "a9ecdb337c8fcb7f6f2396ec34960b2d9a4933edf78cf873fc01839595474350"
+    },
+    {
+      "path": "assets/raw/enemy_bat.png",
+      "size": 12528,
+      "sha256": "3203c07f6bb7f8bbe9f6a493265d3f1c686634b6d1f2757aa84d664f0ff4835b"
+    },
+    {
+      "path": "assets/raw/enemy_bat.svg",
+      "size": 1691,
+      "sha256": "da4817d880107610f6b3526afc8a002462ff6094042ac8a2a37aae3074904eac"
+    },
+    {
+      "path": "assets/raw/enemy_beast_broodguard.png",
+      "size": 12512,
+      "sha256": "642b809623d4c686c5adb63617e46b49122e549ba2407d8da42b3678807c85b7"
+    },
+    {
+      "path": "assets/raw/enemy_beast_broodguard.svg",
+      "size": 1375,
+      "sha256": "86d1ae50cc0558690b657c59904206508868e7b85e0d41ea016f62e8712fc31c"
+    },
+    {
+      "path": "assets/raw/enemy_beast_burrower.png",
+      "size": 12014,
+      "sha256": "3a2602ed370eb4ab7f5dc4bdc4253e06a75eb50382eda269c38b8157f99648e6"
+    },
+    {
+      "path": "assets/raw/enemy_beast_burrower.svg",
+      "size": 1372,
+      "sha256": "29a7bb5424108cc522dda6b4711e8d886f5b5d6c7ac5e49c042b5920e2414d20"
+    },
+    {
+      "path": "assets/raw/enemy_beast_carrier.png",
+      "size": 11379,
+      "sha256": "5101d853bb6d379a942112aefc49ca396cfad83887d25522ef7a6745d4ee00ac"
+    },
+    {
+      "path": "assets/raw/enemy_beast_carrier.svg",
+      "size": 1401,
+      "sha256": "4b5e85ca0a2d566db91a6b56f9fdcad9f8579c1c722eb0b6c2ca69b0dc0bc13a"
+    },
+    {
+      "path": "assets/raw/enemy_beast_predator.png",
+      "size": 11367,
+      "sha256": "04b40637511868e989ca7ce02dfe0806bcd5fa33bf542831d5c8e7b2e02b8e92"
+    },
+    {
+      "path": "assets/raw/enemy_beast_predator.svg",
+      "size": 1384,
+      "sha256": "bd52482d5e7a33a89743e8583e8183519a73a4c1fdc933c5e6ccd42b7ec6ea51"
+    },
+    {
+      "path": "assets/raw/enemy_beast_regenerator.png",
+      "size": 9756,
+      "sha256": "de856a4853023e893d54ac640324724c57ccdaab775e0a81daea973c5449fc28"
+    },
+    {
+      "path": "assets/raw/enemy_beast_regenerator.svg",
+      "size": 1324,
+      "sha256": "e3a0b3cd36cbb1de48e8938fe68ee98653c221111a44d05b46bcba099ff7485a"
+    },
+    {
+      "path": "assets/raw/enemy_beast_swarmling.png",
+      "size": 10894,
+      "sha256": "5b0ba109e190a517493f91dc81b8901a70645f1768336bd4b040f0693110bd83"
+    },
+    {
+      "path": "assets/raw/enemy_beast_swarmling.svg",
+      "size": 1287,
+      "sha256": "b5698bd404b47d39989c07b44fd4a4eb5f3de8310438198ff34f07874a3d9476"
+    },
+    {
+      "path": "assets/raw/enemy_bomber.png",
+      "size": 11429,
+      "sha256": "a1817b47efcad174f1faa29615dd9890a89f7870fad434cefcf6a506faba5dd0"
+    },
+    {
+      "path": "assets/raw/enemy_bomber.svg",
+      "size": 1675,
+      "sha256": "72ec10e963abdbd8e2d35020c977eb59c1f9471f272806243157b25cf38cc6cc"
+    },
+    {
+      "path": "assets/raw/enemy_burrower.png",
+      "size": 11551,
+      "sha256": "bdd016b98613c7c904f19847f846a3c9cffa7f11fe43ad741f0fe022cb01d458"
+    },
+    {
+      "path": "assets/raw/enemy_burrower.svg",
+      "size": 1080,
+      "sha256": "bb99a2bf6d2e7e7772c27d7ea2c155a8446327522bc74d88c36176263bf1c63a"
+    },
+    {
+      "path": "assets/raw/enemy_chrono.png",
+      "size": 10050,
+      "sha256": "f45739be7882d1c72cc2fe1ae117ccb8e2423fa8f92b88829beaf1f09b08fa22"
+    },
+    {
+      "path": "assets/raw/enemy_chrono.svg",
+      "size": 781,
+      "sha256": "57a7c7cd6f0d5413417f1dc48abf29e2889cbb83280c27f41bff5e5bba1af860"
+    },
+    {
+      "path": "assets/raw/enemy_crawler.png",
+      "size": 8725,
+      "sha256": "fd920e381d64d3690cb52b059f03d7a3203ff6013a6a7bb122aa0da048349775"
+    },
+    {
+      "path": "assets/raw/enemy_crawler.svg",
+      "size": 1076,
+      "sha256": "0aa7a2612c2359406b0450e2ff293054d35a33ddeb1a57dbaa83440514a7b20d"
+    },
+    {
+      "path": "assets/raw/enemy_eater.png",
+      "size": 11644,
+      "sha256": "742abe99c8cae031dada575b5bf9a21bc980f5ab00b42e56b6507cd82b722f30"
+    },
+    {
+      "path": "assets/raw/enemy_eater.svg",
+      "size": 1127,
+      "sha256": "59d7a289ee0c9a040dabab4c0703661a2eee269b28d440dfaa4e0cc4159ef4e4"
+    },
+    {
+      "path": "assets/raw/enemy_juggernaut.png",
+      "size": 11672,
+      "sha256": "5a197882d195d5a5492eca22ec37958251e834a35325abc76c05b0a2d6ccf66c"
+    },
+    {
+      "path": "assets/raw/enemy_juggernaut.svg",
+      "size": 1125,
+      "sha256": "39c314e3fde68449d32bd54b16fcd8dbbda43ada6fce317f245b8abf13f36009"
+    },
+    {
+      "path": "assets/raw/enemy_rabbit.png",
+      "size": 13277,
+      "sha256": "557c540825ff68770c07de34830b77b147a059cbc8c158172d4e009ba352282a"
+    },
+    {
+      "path": "assets/raw/enemy_rabbit.svg",
+      "size": 1822,
+      "sha256": "9d7e761bc49ff3b55dfcda6187b95789f1d93fd49a608e80abf8b12b796d2dbb"
+    },
+    {
+      "path": "assets/raw/enemy_rb_alchemist.png",
+      "size": 9420,
+      "sha256": "4edc1d777913f9c69daa9dcf65ad0a49f5bdabd985317ac1dceb1c443632d442"
+    },
+    {
+      "path": "assets/raw/enemy_rb_alchemist.svg",
+      "size": 1365,
+      "sha256": "14b24c1bd475401cbcd128d978a838595b0fec5de0e81f04d55511c854b70b8b"
+    },
+    {
+      "path": "assets/raw/enemy_rb_commander.png",
+      "size": 8447,
+      "sha256": "f9464825b6896674ee6feea619d9891a809d4969b727469ec7add70c4180e88e"
+    },
+    {
+      "path": "assets/raw/enemy_rb_commander.svg",
+      "size": 1409,
+      "sha256": "618f5aaca93ff932e03ebe2186da9fc972fbdccb5fd3605acd979b179f7ae8c5"
+    },
+    {
+      "path": "assets/raw/enemy_rb_engineer.png",
+      "size": 9474,
+      "sha256": "6268eb1cccf787c204d00733ede18535a2be20635dc5bf74d835e5ad713dde07"
+    },
+    {
+      "path": "assets/raw/enemy_rb_engineer.svg",
+      "size": 1384,
+      "sha256": "12e379df2f5ba8aa6885ac8b9243a87038cf12e2910328719e787bee2b257cc9"
+    },
+    {
+      "path": "assets/raw/enemy_rb_guard.png",
+      "size": 9703,
+      "sha256": "faf762e6eae48dc838631185f8e005412c60df5ea457cdcfb65e29a19a241a6d"
+    },
+    {
+      "path": "assets/raw/enemy_rb_guard.svg",
+      "size": 1399,
+      "sha256": "4302cc575ba68689c7750403f7f764dd01dd7bc6e75383c4a139abc4fe6be64c"
+    },
+    {
+      "path": "assets/raw/enemy_rb_line.png",
+      "size": 8553,
+      "sha256": "fcd87ca33a323a343b557e6a72862ea47a3f9942f435315c48f1b2f4f13670dd"
+    },
+    {
+      "path": "assets/raw/enemy_rb_line.svg",
+      "size": 1316,
+      "sha256": "75332265668d7a260e8a8188fe15b92304cdc6a6d29018fe9182bb407f8e6b37"
+    },
+    {
+      "path": "assets/raw/enemy_rb_siegewalker.png",
+      "size": 8873,
+      "sha256": "3f0ab5e72c7e3356dae74b20719b3de5d6b2f5e19b0a70aa023194c4291bdb9d"
+    },
+    {
+      "path": "assets/raw/enemy_rb_siegewalker.svg",
+      "size": 1257,
+      "sha256": "07d47922541e2e0ae9f46c332a86cc748f6ff8057f8d3d76aba2cb54115af640"
+    },
+    {
+      "path": "assets/raw/enemy_rb_sniper.png",
+      "size": 9147,
+      "sha256": "d860d8f4f56692aa93d12deac334f1ba3bed4305ce6b8670cf6ad9c8469ed9dd"
+    },
+    {
+      "path": "assets/raw/enemy_rb_sniper.svg",
+      "size": 1379,
+      "sha256": "7388bf807ae98ce3ba2189ce4df29bcc81c96963dfeee44a4af6370bafc2f7e9"
+    },
+    {
+      "path": "assets/raw/enemy_revenant.png",
+      "size": 7736,
+      "sha256": "7ed70cb0ebc138798c0f0d6e2524e0f9156f5fede7114f649efbcfcca502d2c1"
+    },
+    {
+      "path": "assets/raw/enemy_revenant.svg",
+      "size": 1107,
+      "sha256": "e2d741151ba931b5d6d1a7599a2a9e3eb1f747a8913396065c3962a11b8a9e74"
+    },
+    {
+      "path": "assets/raw/enemy_shaman.png",
+      "size": 9832,
+      "sha256": "5497da973fb949302823050a08bd523d75d0cda86f5404140b5a19ac7354eb53"
+    },
+    {
+      "path": "assets/raw/enemy_shaman.svg",
+      "size": 1763,
+      "sha256": "b9103e44c36fcd68c773c8895f7b9fca9f26cd3d3f01230cd70f375f7e9c1154"
+    },
+    {
+      "path": "assets/raw/enemy_shieldmage.png",
+      "size": 11671,
+      "sha256": "d6fe1b2240069720db71be2fb3c24f19c710619cfc2916e2f3296117f1abfd1d"
+    },
+    {
+      "path": "assets/raw/enemy_shieldmage.svg",
+      "size": 832,
+      "sha256": "70224cc1eb3d317fb766138542b1f3d1e3c2fd799fe6dcf5789a1bf407e97732"
+    },
+    {
+      "path": "assets/raw/enemy_siege_beast.png",
+      "size": 11339,
+      "sha256": "63d31ce7f12fa52c2f846eced2ea17e66d310d1e2aee85c89aca1893c9c5a0ec"
+    },
+    {
+      "path": "assets/raw/enemy_siege_beast.svg",
+      "size": 1418,
+      "sha256": "7c80c4d0fb5e7958eab69a0d78bdb017e29fef3b9d713acbe2dbe5de3c17dd21"
+    },
+    {
+      "path": "assets/raw/enemy_siege_engineer.png",
+      "size": 9641,
+      "sha256": "d9b8a2d9cfc2ec0fc1dc309aef72423b5c4b27147cf5a7a262f652000bd29f7b"
+    },
+    {
+      "path": "assets/raw/enemy_siege_engineer.svg",
+      "size": 1372,
+      "sha256": "cfccc14974a2570402d2dd84f92801bc724c836ffd47a6330f5d171b5adeb798"
+    },
+    {
+      "path": "assets/raw/enemy_siege_mortar.png",
+      "size": 8360,
+      "sha256": "52db6a778d87204e3aefcc0154f25270073757a0f2f68e16526118c39dcefb91"
+    },
+    {
+      "path": "assets/raw/enemy_siege_mortar.svg",
+      "size": 1234,
+      "sha256": "b133916c06607604922a8f94a0c2cf8868a46dcfc956bbc3c696c91fa65ea0ba"
+    },
+    {
+      "path": "assets/raw/enemy_siege_saboteur.png",
+      "size": 9305,
+      "sha256": "a0dac67fbeb962ae897163dcbd4410ea434000a3518decd3a03bba6ca21f4a05"
+    },
+    {
+      "path": "assets/raw/enemy_siege_saboteur.svg",
+      "size": 1413,
+      "sha256": "ce0e89205c7eb226ae9392fb60fe6ef8ec4d0643bc24eb6027bd980d18f83dd4"
+    },
+    {
+      "path": "assets/raw/enemy_silencer.png",
+      "size": 7174,
+      "sha256": "becb9e95768f7c3cdd4423a57c727975a35898e5b3d5825ca9026b0d0fadb2c0"
+    },
+    {
+      "path": "assets/raw/enemy_silencer.svg",
+      "size": 791,
+      "sha256": "e9c1c054956ffa6a652f0bbd52cb3407c4ea2642b47058fe779b160ddaa59a6b"
+    },
+    {
+      "path": "assets/raw/enemy_slime.png",
+      "size": 9530,
+      "sha256": "2f8a1521ad76acb8fd681a55ec354c4eca0b6dde16e74dedd7a3449d4fa329cf"
+    },
+    {
+      "path": "assets/raw/enemy_slime.svg",
+      "size": 1644,
+      "sha256": "77341c6a60cb4d5fd073f13af8a8f22d8f318155733b8a04bb75e4b23fad1bc9"
+    },
+    {
+      "path": "assets/raw/enemy_spider.png",
+      "size": 9236,
+      "sha256": "1667243043d24df7c48faf60b6e6d81684e771dd9e8b5dfb82c9325a11746178"
+    },
+    {
+      "path": "assets/raw/enemy_spider.svg",
+      "size": 776,
+      "sha256": "83de311c1177de82f5aa931e59add0980df7e9dac188c2841271e6616c1791be"
+    },
+    {
+      "path": "assets/raw/enemy_summoner.png",
+      "size": 9632,
+      "sha256": "ff83ce643cb58e861d6e24cce6c2fc0922ff0090d8e9570a31e319c45f0140eb"
+    },
+    {
+      "path": "assets/raw/enemy_summoner.svg",
+      "size": 769,
+      "sha256": "9ebedf39d1a64d7df99f019248c282dee31da508a030ea5a9f92f251b1337056"
+    },
+    {
+      "path": "assets/raw/enemy_thief.png",
+      "size": 7304,
+      "sha256": "f252253dba90e59f3d7abcf43483c63d21fbc2a2d643ee1429c8065597d87a89"
+    },
+    {
+      "path": "assets/raw/enemy_thief.svg",
+      "size": 793,
+      "sha256": "e49600aab3e11c6bf414c97dcdbbe79ab083f34fb12f69014cebe77d129c5cea"
+    },
+    {
+      "path": "assets/raw/enemy_turtle.png",
+      "size": 15794,
+      "sha256": "291e9e79bdb018bdebf71585a5d68316084b6b3676060289956a4918d06cf270"
+    },
+    {
+      "path": "assets/raw/enemy_turtle.svg",
+      "size": 1670,
+      "sha256": "12fbeba662fafa560108870fc2448b989d8d199fb5ecc35db2a11951cd60c8ce"
+    },
+    {
+      "path": "assets/raw/enemy_warlord.png",
+      "size": 12117,
+      "sha256": "a402f62008dbe12e8f02bf0dd272d1854df2be43a675b6388ce843e0347272ca"
+    },
+    {
+      "path": "assets/raw/enemy_warlord.svg",
+      "size": 1133,
+      "sha256": "877ee272af9169678158f0bc78728bcbd4acdfa8446ad960bc2a860ef8224116"
+    },
+    {
+      "path": "assets/raw/enemy_wolf.png",
+      "size": 10221,
+      "sha256": "5037ef770073dc3bbe44542e5ca7a3d3993e0a28d088039d54ae3e8c74c6c8c3"
+    },
+    {
+      "path": "assets/raw/enemy_wolf.svg",
+      "size": 1116,
+      "sha256": "bac69707b5436d816797cbcbfcccfbbe5e9846e58ee8ed2777a7d586b6c16125"
+    },
+    {
+      "path": "assets/raw/skill_freeze.png",
+      "size": 14381,
+      "sha256": "1be3194aea1d6c5c0fd3accb0defbf3a3e87ffc180ac83ab0d02b51de45ad44e"
+    },
+    {
+      "path": "assets/raw/skill_freeze.svg",
+      "size": 1411,
+      "sha256": "522a838c9687b4f92037e5c31ad54346341e334e1738096041a06132d93cd018"
+    },
+    {
+      "path": "assets/raw/skill_meteor.png",
+      "size": 10121,
+      "sha256": "3d6c8f4f87206af5f3ff6315ec7ffbb88456a5714d589bd326b67789f1c58ca1"
+    },
+    {
+      "path": "assets/raw/skill_meteor.svg",
+      "size": 1534,
+      "sha256": "006aa48e8ebbbe4b38755a42dc98a9b10af4b380025a209d5a4864100b54b943"
+    },
+    {
+      "path": "assets/raw/skill_overload.png",
+      "size": 15038,
+      "sha256": "3c39499054e0e9335347649de3a8f952e81d5d41d37da40988a2f0050eac00cc"
+    },
+    {
+      "path": "assets/raw/skill_overload.svg",
+      "size": 1487,
+      "sha256": "a1f2621b78329719dbf0d293eda24a7832d49299afd95b2bbf394c9be2ed6ad0"
+    },
+    {
+      "path": "assets/raw/skill_thunder.png",
+      "size": 9095,
+      "sha256": "db51b732ee197d0029607f743d00d43e843a15530c8f01c2e634cccfb93dcf65"
+    },
+    {
+      "path": "assets/raw/skill_thunder.svg",
+      "size": 1353,
+      "sha256": "b182e18264d97337d759c957ad938a7cc19c75d38d42753e6e140081bd616670"
+    },
+    {
+      "path": "assets/raw/tower_blast.png",
+      "size": 8735,
+      "sha256": "823566147b713ef324440365fb755b1cfd5ee8bb69ffdcf286af179adbce02b8"
+    },
+    {
+      "path": "assets/raw/tower_blast.svg",
+      "size": 1139,
+      "sha256": "8e9f83c96df00a78161871e1548719e8178143e4108a0a625f4901ae65f89f4d"
+    },
+    {
+      "path": "assets/raw/tower_chaos.png",
+      "size": 12272,
+      "sha256": "f76d281a92cf5983e45f1f3bd3323675cd0ee27d09fd4387817e47d8ee51359d"
+    },
+    {
+      "path": "assets/raw/tower_chaos.svg",
+      "size": 988,
+      "sha256": "944b1553185a481e476afeba44e071cfdf2e8d9362f0f8984b4fe83ae685f687"
+    },
+    {
+      "path": "assets/raw/tower_crystal.png",
+      "size": 8236,
+      "sha256": "941feb8f77c8f80df609a31dfe669eaa8986b2f742256f87a4f4e4bdd2e38fdc"
+    },
+    {
+      "path": "assets/raw/tower_crystal.svg",
+      "size": 1075,
+      "sha256": "18f1d443fd01d41b2c678fb41e059f04772b045a394e076c455787af3664baba"
+    },
+    {
+      "path": "assets/raw/tower_dark_A.png",
+      "size": 11362,
+      "sha256": "b5a47b05fdc016f8e6913a1e9d38d878c384d2bff1a26c753135873d97f3b78d"
+    },
+    {
+      "path": "assets/raw/tower_dark_A.svg",
+      "size": 1227,
+      "sha256": "94f915fcdac19370f35901fa3aec096263b40e624c3c1ec1526d9f9a7b0bbdd9"
+    },
+    {
+      "path": "assets/raw/tower_dark_B.png",
+      "size": 10034,
+      "sha256": "d5f9e403ab4fb19bd8d516ec68beba6bf116813db34abc35983ed637e5accebc"
+    },
+    {
+      "path": "assets/raw/tower_dark_B.svg",
+      "size": 1140,
+      "sha256": "1c0244efa335d594ec5c37dbac5e2cb66249944579a354a74a39b81663623b3c"
+    },
+    {
+      "path": "assets/raw/tower_dark.png",
+      "size": 10298,
+      "sha256": "1188f5cf3da819cba94d95929ffa57d4da0e04005ae56125f4edd5df3e0f34de"
+    },
+    {
+      "path": "assets/raw/tower_dark.svg",
+      "size": 1703,
+      "sha256": "eaa59d29148a508ff784d58c89b5fee7caa93ade0d672e097159868fef6feed0"
+    },
+    {
+      "path": "assets/raw/tower_earth_A.png",
+      "size": 10634,
+      "sha256": "6430f09505f7d3beecd77dd3bc1e6b3fa8a80ef8a4f54a164e76e31aee9a31fd"
+    },
+    {
+      "path": "assets/raw/tower_earth_A.svg",
+      "size": 1141,
+      "sha256": "20933c2f054bbe549a0ad336ac7aef980489c1972677938b379f9ed08c03453a"
+    },
+    {
+      "path": "assets/raw/tower_earth_B.png",
+      "size": 10399,
+      "sha256": "785fef61475f6071d0f86de2e401a6c46d03f55f6bde99fa1af345853356bf17"
+    },
+    {
+      "path": "assets/raw/tower_earth_B.svg",
+      "size": 1185,
+      "sha256": "8b127517a0f8900fd69a783a19fd541d1e6f501958598d170b717d550d48e710"
+    },
+    {
+      "path": "assets/raw/tower_earth.png",
+      "size": 10363,
+      "sha256": "b18f6b67a6b60cba964570f616a47834f7714018f2cfd6ddcd5ef8b075723e0e"
+    },
+    {
+      "path": "assets/raw/tower_earth.svg",
+      "size": 1692,
+      "sha256": "b69d1c8fe8dd2981626672443d53a8f34bdb5f2bfd69c710bc8d4d2912139354"
+    },
+    {
+      "path": "assets/raw/tower_fire_A.png",
+      "size": 10009,
+      "sha256": "b00de64d728617152cab60c6e96146e6788e4f5021de9bf36147e210eda36472"
+    },
+    {
+      "path": "assets/raw/tower_fire_A.svg",
+      "size": 1354,
+      "sha256": "295820b1d584511097d62bca461dc6303a35a688ddcaf5ae26fdd8cad2593a2f"
+    },
+    {
+      "path": "assets/raw/tower_fire_B.png",
+      "size": 10821,
+      "sha256": "8315fd3f5aa2e63b5f33b54aae991e6de2f5a76f8e73fdeea2a546624dbacbc6"
+    },
+    {
+      "path": "assets/raw/tower_fire_B.svg",
+      "size": 1256,
+      "sha256": "7e721227fe4b91a75535ef7572e74f4bf461269b2bd3ce6a19a644b9a8374285"
+    },
+    {
+      "path": "assets/raw/tower_fire.png",
+      "size": 13267,
+      "sha256": "873f9c1ee388a90300b5dab6216ba6e1df84d6aea80d891e3e9d381ded9a8669"
+    },
+    {
+      "path": "assets/raw/tower_fire.svg",
+      "size": 1999,
+      "sha256": "08ecd013be96d9abae3f1ffbe8c77af84d85ae7bc5359b4bf6af2f5e2a477959"
+    },
+    {
+      "path": "assets/raw/tower_flash.png",
+      "size": 9390,
+      "sha256": "395b342f06975194c76b9f756018d6f321a1effafaefd8128a92c13db6e9a580"
+    },
+    {
+      "path": "assets/raw/tower_flash.svg",
+      "size": 1082,
+      "sha256": "a31f041578efb133eb6ab2a6196ae391a8b1dd10e0293cfa6be88ad244d39dc8"
+    },
+    {
+      "path": "assets/raw/tower_frost.png",
+      "size": 12479,
+      "sha256": "668abe65901825d1edfd7f4e4a45292084b5c2f1fe4de22585d2c4736cf0772d"
+    },
+    {
+      "path": "assets/raw/tower_frost.svg",
+      "size": 826,
+      "sha256": "3ad9861f6bbd34ad2428819aee3367e216fbafbc077a7d490f8e69a024a74c73"
+    },
+    {
+      "path": "assets/raw/tower_heal.png",
+      "size": 8402,
+      "sha256": "5dee2383582e85c6b95571791818471ccaab3e4546c696feda6945a75f2ffc78"
+    },
+    {
+      "path": "assets/raw/tower_heal.svg",
+      "size": 1068,
+      "sha256": "bb1670e351422df0a184d7295a10e761574dd1134d41059e977b6af96e5a4641"
+    },
+    {
+      "path": "assets/raw/tower_hellfire.png",
+      "size": 9189,
+      "sha256": "f3b14541d5892dccce39880d43b58ebb38ae983cd92728749f9d1bede797fd5b"
+    },
+    {
+      "path": "assets/raw/tower_hellfire.svg",
+      "size": 1187,
+      "sha256": "8b60fef610a308e6dc0261b8799c9670bce280c87ef548ef2075d79189fe8b0f"
+    },
+    {
+      "path": "assets/raw/tower_holyfire.png",
+      "size": 8951,
+      "sha256": "59675657f3e5cc2e54cf34c2ffdae11d5004afd022ca709e4e48f0f95de1c72a"
+    },
+    {
+      "path": "assets/raw/tower_holyfire.svg",
+      "size": 1089,
+      "sha256": "52980df79fdac66f860b7ac5a4765aed050f7e0059943ba65c090d7b0e328e67"
+    },
+    {
+      "path": "assets/raw/tower_lava.png",
+      "size": 9585,
+      "sha256": "a7355c25e4aa1d62672ececff7e69c70671207d819dad946b7e1634664c195d7"
+    },
+    {
+      "path": "assets/raw/tower_lava.svg",
+      "size": 1186,
+      "sha256": "2bb2e7779b1e685a130eff46d58e9680bc0799c883c3f5f0bd05d54f1b2aca37"
+    },
+    {
+      "path": "assets/raw/tower_light_A.png",
+      "size": 9068,
+      "sha256": "a3fd9662e21fe753936881e14b45c73fb0c15872948eef81bc92fa475feeeeb5"
+    },
+    {
+      "path": "assets/raw/tower_light_A.svg",
+      "size": 1093,
+      "sha256": "091905b62728da46a20d3458a5ae12c328d1d8d293987e9ff130810661175b2d"
+    },
+    {
+      "path": "assets/raw/tower_light_B.png",
+      "size": 9726,
+      "sha256": "211601abba995a078ead74333121f2a7e7c0aa7efb3223a68a3ac84a327db519"
+    },
+    {
+      "path": "assets/raw/tower_light_B.svg",
+      "size": 1161,
+      "sha256": "4f1024710a46fe3d2ba54f0373afe173d9cc6f69c37a44d08dda10a5aa850b26"
+    },
+    {
+      "path": "assets/raw/tower_light.png",
+      "size": 9793,
+      "sha256": "f04fdc6d3f573428d172cd8f71ba3645e7a7fc41b51794db982e622f713aa321"
+    },
+    {
+      "path": "assets/raw/tower_light.svg",
+      "size": 1621,
+      "sha256": "0f35df30865c1ad4c67a7d642c0045c4812c00b63b73d697d2656561b1624528"
+    },
+    {
+      "path": "assets/raw/tower_nether.png",
+      "size": 10934,
+      "sha256": "21efa6e4fe8d93decaadb41190957e48345b4eee4d1f1ca398be050e2ec71745"
+    },
+    {
+      "path": "assets/raw/tower_nether.svg",
+      "size": 876,
+      "sha256": "f90b5d73752adc7bd245cbd5b802e13d043b251959506f93109c9b1ea42ee050"
+    },
+    {
+      "path": "assets/raw/tower_poison.png",
+      "size": 9688,
+      "sha256": "b6372cfa5e5829e25858df58f08881d6ace141cd1101d51efdc90ab18f000867"
+    },
+    {
+      "path": "assets/raw/tower_poison.svg",
+      "size": 1047,
+      "sha256": "fdb1e227422e524ea24eaed1dc832745175b25bf8a5dd4f5ff9336612eb53577"
+    },
+    {
+      "path": "assets/raw/tower_sand.png",
+      "size": 10339,
+      "sha256": "60e08fc23032a79b77669e14e9589bc1210e966ef0ada251ac9fb4c9e0dbea1d"
+    },
+    {
+      "path": "assets/raw/tower_sand.svg",
+      "size": 1074,
+      "sha256": "667ffcee0510045df27a519d3b14496b71cb2fe80e79f1c18d84ac915073575d"
+    },
+    {
+      "path": "assets/raw/tower_shadowwind.png",
+      "size": 10107,
+      "sha256": "0088fe4452d096badaaf9ba7a42e5cbe3ea33bf1c787431a298fc444849e0943"
+    },
+    {
+      "path": "assets/raw/tower_shadowwind.svg",
+      "size": 1071,
+      "sha256": "68acff2aa6e6961e33de268a9376e4e72c28d843173d34759d0fabd5784f1e46"
+    },
+    {
+      "path": "assets/raw/tower_steam.png",
+      "size": 11716,
+      "sha256": "a0830c2153cb18fa76b12e0a767ca6959fc67913973c50b4aa8c93ee0ce968e5"
+    },
+    {
+      "path": "assets/raw/tower_steam.svg",
+      "size": 1233,
+      "sha256": "cfed9a985ff44035728fac5588174ac9845238d08e4e88d0ee47d67b5e5521f8"
+    },
+    {
+      "path": "assets/raw/tower_swamp.png",
+      "size": 9580,
+      "sha256": "8a17a610a84d3f0ebbce20861706aa15892c7cac42728b0e066d6124bd310842"
+    },
+    {
+      "path": "assets/raw/tower_swamp.svg",
+      "size": 1167,
+      "sha256": "890025efb62ff3b71e23352608a38472b89337edd88a87e411d2b7cb1e5aac59"
+    },
+    {
+      "path": "assets/raw/tower_water_A.png",
+      "size": 8582,
+      "sha256": "d2feeb40d93f4e8298aa8b40b91acb58dfda66941fe847bdf99c8d2439165e01"
+    },
+    {
+      "path": "assets/raw/tower_water_A.svg",
+      "size": 1135,
+      "sha256": "b53694145b0c71570440726898d3bfdd5dcd3e069b1a83bfb5a1270cdb814383"
+    },
+    {
+      "path": "assets/raw/tower_water_B.png",
+      "size": 10976,
+      "sha256": "dafc1f5704fbdb7104cf472eed2b5383712a4845213b8300ed3b041688bdeff5"
+    },
+    {
+      "path": "assets/raw/tower_water_B.svg",
+      "size": 1205,
+      "sha256": "f8000e02e2958e796bd412a0e195174282b1b9764633418b4b372fb2debc5127"
+    },
+    {
+      "path": "assets/raw/tower_water.png",
+      "size": 12514,
+      "sha256": "f39911b8d35bf4724423513dbf7f238efef88f30cc04637795dbe0299880797e"
+    },
+    {
+      "path": "assets/raw/tower_water.svg",
+      "size": 1815,
+      "sha256": "8c432d43205f20f1be5e4ced7ed95801c63c72075c26869eee1357ee7997f01a"
+    },
+    {
+      "path": "assets/raw/tower_wind_A.png",
+      "size": 14300,
+      "sha256": "1de08376bbe1d154e159782b6bb12bec0cf52a33b31c8d24360a95f4f3784121"
+    },
+    {
+      "path": "assets/raw/tower_wind_A.svg",
+      "size": 1289,
+      "sha256": "af17e940dd1513be9a25a24210f4ed44bde20076a261194d9759097ba64e9e9e"
+    },
+    {
+      "path": "assets/raw/tower_wind_B.png",
+      "size": 9768,
+      "sha256": "158dca68bdf7fe8ae806ca4f130ca1fba162b69559d560a260c8869006918264"
+    },
+    {
+      "path": "assets/raw/tower_wind_B.svg",
+      "size": 1140,
+      "sha256": "14ca5090166991feceae910e949177bc806f594e4f9efe374c5f4c4e2c5fe81d"
+    },
+    {
+      "path": "assets/raw/tower_wind.png",
+      "size": 13186,
+      "sha256": "d491199efcb4f3a368058d463defc6cdb2aa7ff473f0a76adb60d0fb0372600f"
+    },
+    {
+      "path": "assets/raw/tower_wind.svg",
+      "size": 1724,
+      "sha256": "37591ac11127191f03e7d55bc77057c028dce47fd577bc8424135c6b39db0e10"
+    },
+    {
+      "path": "dist/standalone.js",
+      "size": 414281,
+      "sha256": "092e67c5b84437feca57be1bcfc8616ea581e15e242091745ac8e0dfc04f1e03"
+    },
+    {
+      "path": "index.html",
+      "size": 21235,
+      "sha256": "2794d26edd16f4ace6f2e6d88bc55a78a905edcee8bef0fe279b06ef7f94d874"
+    },
+    {
+      "path": "LICENSE.md",
+      "size": 506,
+      "sha256": "8ad02d00905d8090eab3a26c598b9d4a4197b7ededf402140b765db51087844a"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "size": 521,
+      "sha256": "ce39eee3bc2bb2dbed86d0d4764f5ff94f59ee1ab5c6d9026b858d8a0720c8e0"
+    },
+    {
+      "path": "style.css",
+      "size": 49938,
+      "sha256": "8a64b4b097876132f5e9f91cd4aafc6cabb1d23db3f2636f880cac474a2ee8e0"
+    }
+  ]
+}

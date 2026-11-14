@@ -1,0 +1,14 @@
+{
+  "gameId": "echo-seven",
+  "version": "5.3.2",
+  "revision": "sha256:9b6c407de7bda9750f8599cf440e9a429dad51985b1c4b3fce9be08722b87b55",
+  "build": "629e5b66db78",
+  "adapter": "PWA registration disabled in the collection",
+  "files": [
+    {
+      "path": "index.html",
+      "size": 217456,
+      "sha256": "ea75055f31e107a1d7d0a3b8f7ea3a3b174bc4c57e0128deb267f10447490202"
+    }
+  ]
+}

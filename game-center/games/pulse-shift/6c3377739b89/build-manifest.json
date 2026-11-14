@@ -1,0 +1,14 @@
+{
+  "gameId": "pulse-shift",
+  "version": "Final Archive",
+  "revision": "sha256:322f2a73aee7df65de1f7174e1da0152ed1951dfcffdc7c8cb469d47ab2e9d28",
+  "build": "6c3377739b89",
+  "adapter": "uses the original system font fallback in the collection",
+  "files": [
+    {
+      "path": "index.html",
+      "size": 103360,
+      "sha256": "5f1d8aca3ad6a35851deb8ab810a85d3bef468d6120010dbb90f40cf747f7392"
+    }
+  ]
+}

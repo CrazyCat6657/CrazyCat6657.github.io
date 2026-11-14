@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>沉钟回廊 · EMBER DESCENT</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%230a1218'/%3E%3Crect x='5' y='3' width='6' height='9' fill='%235fe0ff'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --accent:#5fe0ff;
+    --accent-dim:#2a7f96;
+    --ink:#dff2f8;
+    --panel:rgba(8,16,22,0.82);
+    --panel-b:rgba(120,200,225,0.28);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html,body{width:100%;height:100%;overflow:hidden;background:#05080b;}
+  body{
+    font-family:"Courier New",Consolas,"Lucida Console",monospace;
+    color:var(--ink);
+    -webkit-font-smoothing:none;
+    user-select:none;
+  }
+  #app{position:fixed;inset:0;}
+  /* 游戏中隐藏系统光标，改由 #reticle 显示"真实弹道准星" */
+  #game{position:absolute;inset:0;width:100%;height:100%;display:block;image-rendering:pixelated;image-rendering:crisp-edges;cursor:none;}
+  #ui{position:absolute;inset:0;pointer-events:none;font-size:clamp(11px,1.15vmin,17px);}
+  /* ---- 精英血条（屏幕平面）----
+     尺寸按用户反馈定：细，并且是"一条直线 + 边框"。
+     总高 6px（含 1px 边框）→ 内部填充 4px，约为上一版 12px 的 1/3。 */
+  #worldbars{position:absolute;inset:0;pointer-events:none;z-index:4;}
+  #worldbars.hidden{display:none;}
+  .ebar{
+    position:absolute;left:0;top:0;width:36px;height:6px;box-sizing:border-box;
+    border:1px solid rgba(8,7,12,.9);background:rgba(14,12,18,.66);border-radius:1px;
+    will-change:transform;
+  }
+  .ebar>i{display:block;height:100%;width:100%;background:#ffc247;}
+  .ebar.dim>i{background:#ff9a3c;}
+  .hidden{display:none !important;}
+
+  /* ---------- HUD ---------- */
+  #hud{position:absolute;inset:0;}
+  /* ---------- PASS3 §36–§38：统一 UI 基面 / 字形 / 稀有度 ---------- */
+  /* 一层面板材质：所有面板共用同一底、同一描边、同一圆角。
+     原先每个面板各自调色，观感才像"开发工具"。 */
+  :root{
+    --panel-bg:linear-gradient(180deg, rgba(14,18,22,.94), rgba(9,12,15,.96));
+    --panel-bd:1px solid rgba(150,180,200,.22);
+    --panel-fg:#d8e4ec;
+    --panel-dim:#93a6b4;
+    --panel-r:6px;
+    --rar-1:#9aa7b2; --rar-2:#6fd0ff; --rar-3:#ffcf6a; --rar-4:#ff8ad8;
+  }
+  /* 字形：内联 SVG，随字号缩放，与文字基线对齐 */
+  .gl{width:1.15em;height:1.15em;vertical-align:-.20em;margin-right:.42em;flex:0 0 auto;opacity:.95;}
+  .bs-item,.bs-act,.bs-w,.bs-row{align-items:center;}
+  .bs-item,.bs-act{gap:.1em;}
+  /* 稀有度色带：颜色只在这里表达稀有度（§38） */
+  .rar-1{color:var(--rar-1);border-color:var(--rar-1);}
+  .rar-2{color:var(--rar-2);border-color:var(--rar-2);}
+  .rar-3{color:var(--rar-3);border-color:var(--rar-3);}
+  .rar-4{color:var(--rar-4);border-color:var(--rar-4);}
+  .panel{
+    background:var(--panel);
+    border:1px solid var(--panel-b);
+    box-shadow:0 0 0 1px rgba(0,0,0,0.6), 0 3px 0 rgba(0,0,0,0.5);
+    padding:.5em .7em;
+  }
+  #hud-tl{position:absolute;left:1.2vmin;top:1.2vmin;display:flex;flex-direction:column;gap:.5em;align-items:flex-start;}
+  #hearts{display:flex;gap:.28em;flex-wrap:wrap;max-width:34vmin;}
+  .heart{
+    width:2.1em;height:1.9em;position:relative;
+    filter:drop-shadow(0 2px 0 rgba(0,0,0,.7));
+  }
+  .heart svg{width:100%;height:100%;display:block;}
+  .heart.empty svg path{fill:#1d2028 !important;}
+  .armor-row{display:flex;gap:.28em;}
+  .armor-pip{width:1.6em;height:1.7em;}
+  .armor-pip svg{width:100%;height:100%;}
+  /* 冲刺（Dash）指示器：常驻显示可用次数与回充进度。
+     旧版本默认 1 次冲刺时完全没有指示，玩家不知道自己还有没有翻滚。 */
+  #dashes{display:flex;gap:.26em;align-items:center;margin-top:.14em;}
+  .dash-pip{
+    width:2.0em;height:.62em;border:2px solid #4a3a6a;border-radius:.16em;
+    background:#171226;position:relative;overflow:hidden;
+    box-shadow:0 2px 0 rgba(0,0,0,.6);
+  }
+  .dash-pip i{position:absolute;inset:0;background:#c07af0;display:block;
+    transition:width .06s linear;width:0%;}
+  .dash-pip.ready i{background:#e0a8ff;box-shadow:0 0 6px #c07af0;}
+  .dash-pip.ready{border-color:#c07af0;}
+  .dash-label{font-size:.85em;color:#c07af0;letter-spacing:.06em;text-shadow:0 2px 0 rgba(0,0,0,.75);margin-left:.2em;}
+  #meta{display:flex;gap:1em;font-size:1.15em;letter-spacing:.06em;}
+  #meta span{display:inline-flex;align-items:center;gap:.3em;text-shadow:0 2px 0 rgba(0,0,0,.75);}
+  .ico{width:1.15em;height:1.15em;display:inline-block;}
+  #coins{color:#ffd24a;}
+  #keys{color:#ffe9a8;}
+
+  /* 常驻状态效果（不遮挡战斗的简洁层级） */
+  #status-row{display:flex;gap:.3em;flex-wrap:wrap;max-width:38vmin;min-height:0;}
+  #status-row:empty{display:none;}
+  .fx{
+    font-size:.86em;letter-spacing:.08em;padding:.06em .5em;
+    border:1px solid #5fe0ff;background:rgba(4,12,18,.8);
+    text-shadow:0 1px 0 #000;
+  }
+
+  /* 本局复苏状态：一行小条。措辞只来自本局已登记的状态（挑战 / 本局设置 / 旧策略），
+     没有可信状态时不渲染（.hidden 由 hud.js 控制）。 */
+  .rv-chip{display:flex;gap:.5em;align-items:baseline;max-width:38vmin;
+    font-size:.86em;letter-spacing:.06em;padding:.06em .55em;
+    border:1px solid #5a6a76;background:rgba(4,12,18,.8);
+    text-shadow:0 1px 0 #000;color:#b8c6d0;}
+  .rv-chip b{font-weight:600;white-space:nowrap;}
+  .rv-chip span{opacity:.75;font-size:.92em;}
+  .rv-chip.ready{border-color:#ffd24a;color:#ffd24a;}
+  .rv-chip.pending{border-color:#ff9a3c;color:#ff9a3c;}
+  .rv-chip.used{border-color:#7a8a96;color:#b8c6d0;}
+  .rv-chip.off{border-color:#4a5a66;color:#8a9aa6;}
+
+  #hud-tr{position:absolute;right:1.2vmin;top:1.2vmin;display:flex;flex-direction:column;align-items:flex-end;gap:.5em;}
+  #floor-info{text-align:right;line-height:1.35;text-shadow:0 2px 0 rgba(0,0,0,.8);}
+  #floor-info b{color:var(--accent);letter-spacing:.18em;font-size:1.3em;}
+  #floor-info small{display:block;opacity:.62;letter-spacing:.22em;font-size:.82em;}
+  #room-name{display:block;opacity:.9;letter-spacing:.1em;font-size:1em;margin-top:.15em;}
+  #minimap-wrap{position:relative;padding:.4em;}
+  #minimap{display:block;width:20vmin;height:20vmin;image-rendering:pixelated;}
+  /* M 键放大小地图：用 class 切换而不是散落的 inline style，
+     这样换局/回标题时可以一次性复位。 */
+  #minimap-wrap.big #minimap{width:52vmin;height:52vmin;}
+
+  #hud-bl{position:absolute;left:1.2vmin;bottom:1.2vmin;display:flex;gap:.6em;}
+  .wslot{
+    position:relative;min-width:15em;padding:.45em .7em;
+    background:var(--panel);border:1px solid var(--panel-b);
+    border-left:3px solid var(--accent-dim);
+  }
+  .wslot.active{border-left-color:var(--accent);background:rgba(14,30,40,.9);}
+  .wslot .wn{font-size:1.05em;letter-spacing:.06em;white-space:nowrap;}
+  .wslot .wa{font-size:1.05em;letter-spacing:.04em;color:var(--accent);}
+  .wslot .wa small{font-size:.55em;opacity:.6;color:var(--ink);}
+  .wslot .wl{font-size:.8em;opacity:.55;letter-spacing:.1em;}
+  /* 资源类型标签（WB-1）：法力 / 普通备弹 / 无限备弹。
+     低法力只是显示提醒色（阈值在 run_status_view.js 里，不参与玩法判定）。 */
+  .wslot .wres{display:inline-block;margin-left:.45em;padding:0 .4em;font-size:.62em;
+    letter-spacing:.12em;border:1px solid rgba(140,190,215,.4);color:#9fd4e8;
+    vertical-align:.22em;text-shadow:0 1px 0 #000;}
+  .wslot .wres.mana{border-color:rgba(150,170,255,.55);color:#a9b8ff;}
+  .wslot .wres.infinite{border-color:rgba(150,215,160,.5);color:#9fe0a8;}
+  .wslot .wres.low{border-color:#ff8a5a;color:#ff8a5a;}
+  .wslot .wnote{font-size:.72em;letter-spacing:.02em;line-height:1.35;max-width:17em;
+    margin-top:.15em;color:#a9c6ff;opacity:.85;}
+  .wslot .wnote.low{color:#ff8a5a;opacity:.95;}
+  .wslot .bar{height:.35em;background:rgba(255,255,255,.12);margin-top:.3em;}
+  .wslot .bar i{display:block;height:100%;background:var(--accent);}
+  .wslot .reload{position:absolute;right:.5em;top:.4em;font-size:.85em;color:#ffd24a;}
+  .wslot .keyhint{position:absolute;right:.45em;bottom:.35em;font-size:.75em;opacity:.45;}
+
+  #hud-br{position:absolute;right:1.2vmin;bottom:1.2vmin;display:flex;flex-direction:column;align-items:flex-end;gap:.5em;}
+  #skill{padding:.45em .7em;min-width:12em;text-align:right;}
+  #skill .sn{font-size:1em;letter-spacing:.06em;color:#ffd6a0;}
+  #skill .sb{height:.35em;background:rgba(255,255,255,.12);margin-top:.3em;}
+  #skill .sb i{display:block;height:100%;background:#ffb347;}
+  #skill .sd{font-size:.78em;opacity:.62;margin-top:.3em;letter-spacing:.03em;max-width:26em;}
+  #skill.ready .sn{color:#9dff5a;}
+  #skill.ready .sb i{background:#9dff5a;}
+  #items{display:flex;gap:.25em;flex-wrap:wrap;justify-content:flex-end;max-width:26vmin;}
+  .item-chip{
+    width:2.1em;height:2.1em;background:var(--panel);border:1px solid var(--panel-b);
+    display:flex;align-items:center;justify-content:center;font-size:.9em;position:relative;
+  }
+  .item-chip svg{width:75%;height:75%;}
+  .item-chip.syn{background:rgba(40,30,4,.85);}
+  .item-chip .cnt{position:absolute;right:0;bottom:0;font-size:.6em;background:#000a;padding:0 .18em;}
+
+  /* 构筑面板按钮（常驻） */
+  #btn-build{
+    pointer-events:auto;cursor:pointer;
+    background:rgba(8,16,22,.82);border:1px solid var(--panel-b);
+    color:var(--ink);font-family:inherit;font-size:.92em;letter-spacing:.14em;
+    padding:.35em .75em;
+  }
+  #btn-build:hover{border-color:var(--accent);color:#fff;}
+  #btn-build.pulse{animation:bpulse .55s ease-in-out 2;border-color:#ffd24a;color:#ffd24a;}
+  @keyframes bpulse{0%,100%{box-shadow:0 0 0 rgba(255,210,74,0);}50%{box-shadow:0 0 14px rgba(255,210,74,.85);}}
+
+  /* Boss 血条 */
+  #bossbar{position:absolute;left:50%;top:9vmin;transform:translateX(-50%);width:64vmin;max-width:80%;}
+  #bossbar .boss-name{
+    text-align:center;letter-spacing:.4em;font-size:1.25em;color:#ffb08a;
+    text-shadow:0 0 10px rgba(255,90,20,.85),0 2px 0 #000;margin-bottom:.25em;
+  }
+  #bossbar .boss-track{
+    height:1.5em;background:rgba(10,4,2,.85);border:1px solid rgba(255,120,60,.45);
+    position:relative;overflow:hidden;
+  }
+  #bossbar .boss-fill{
+    height:100%;width:100%;background:linear-gradient(180deg,#ff8a3c,#c03008);
+    transition:width .18s linear;
+    box-shadow:0 0 14px rgba(255,120,40,.7) inset;
+  }
+  #bossbar .phases{position:absolute;inset:0;display:flex;}
+  #bossbar .phases i{flex:1;border-right:2px solid rgba(0,0,0,.55);}
+  #bossbar .phases i:last-child{border-right:0;}
+  #bossbar .phase-tag{position:absolute;right:.4em;top:0;line-height:1.5em;font-size:.85em;letter-spacing:.2em;color:#ffd24a;text-shadow:0 2px 0 #000;}
+
+  /* ---------- 楼层/剧情横幅（story 级，独占顶部） ---------- */
+  #story-banner{
+    position:absolute;left:50%;top:1vmin;transform:translateX(-50%) translateY(-14px);
+    width:min(78vmin,92%);text-align:center;
+    background:linear-gradient(180deg,rgba(6,14,20,.94),rgba(6,14,20,.66));
+    border:1px solid #5fe0ff;border-left-width:4px;border-right-width:4px;
+    padding:.45em 1.2em;opacity:0;transition:opacity .28s,transform .28s;
+  }
+  #story-banner.show{opacity:1;transform:translateX(-50%) translateY(0);}
+  #story-banner .sb-t{font-size:1.35em;letter-spacing:.36em;text-shadow:0 0 16px rgba(95,224,255,.45),0 2px 0 #000;}
+  #story-banner .sb-s{font-size:.92em;letter-spacing:.16em;opacity:.76;margin-top:.15em;}
+
+  /* ---------- 构筑变化大卡片（build 级，独立展示，停留更久） ---------- */
+  #build-card{
+    position:absolute;left:50%;top:20vmin;transform:translateX(-50%) translateX(-14px);
+    width:min(58vmin,86%);
+    background:rgba(6,14,20,.94);border:1px solid rgba(120,200,225,.3);border-left:6px solid #5fe0ff;
+    box-shadow:0 0 0 1px rgba(0,0,0,.7),0 6px 22px rgba(0,0,0,.6);
+    padding:.6em 1em;opacity:0;transition:opacity .24s,transform .24s;
+  }
+  #build-card.show{opacity:1;transform:translateX(-50%) translateX(0);}
+  #build-card .bc-t{font-size:1.22em;letter-spacing:.2em;text-shadow:0 2px 0 #000;}
+  #build-card .bc-s{font-size:.92em;letter-spacing:.06em;opacity:.82;margin-top:.25em;line-height:1.55;}
+
+  /* ---------- 教学提示（首次情境引导） ---------- */
+  #tips{
+    position:absolute;left:50%;bottom:26vmin;transform:translateX(-50%);
+    background:rgba(6,14,20,.86);border:1px dashed rgba(140,200,220,.42);
+    padding:.35em .9em;font-size:.95em;letter-spacing:.1em;
+    opacity:0;transition:opacity .3s;max-width:70vmin;text-align:center;
+  }
+  #tips.show{opacity:1;}
+
+  /* ---------- 真实弹道准星 ----------
+     位置由"屏幕射线与地面交点"反投影得到，与子弹实际飞行方向完全一致。 */
+  #reticle{position:fixed;left:50%;top:50%;transform:translate(-50%,-50%);pointer-events:none;}
+  .reticle-art svg,#reticle svg{width:100%;height:100%;display:block;overflow:visible;}
+  .reticle-art path,#reticle path{fill:none;stroke-linecap:square;}
+  .reticle-ink{stroke:var(--reticle-color,#f5fbff);stroke-width:var(--reticle-line,1.8);fill:var(--reticle-color,#f5fbff);}
+  .reticle-edge{stroke:var(--reticle-edge,#081018);stroke-width:calc(var(--reticle-line,1.8) + 2.4);fill:var(--reticle-edge,#081018);}
+  .no-outline .reticle-edge,.no-center circle{display:none;}
+  #reticle.hot::after{content:'';position:absolute;inset:-5px;border:1px dotted #ffd24a;border-radius:50%;}
+  .reticle-preview{height:100px;display:grid;place-items:center;background:linear-gradient(90deg,#10151b 50%,#e8c884 50%);margin-bottom:12px;}
+  [data-preferences] label{display:flex;align-items:center;gap:10px;margin:12px 0;}
+  [data-preferences] input{accent-color:var(--accent);padding:6px;max-width:160px;}
+  [data-preferences] input[type=range]{flex:1;max-width:none;}
+  .pref-rgb{display:flex;gap:16px;}.pref-rgb input{width:70px;}
+  #hub-panel:has([data-preferences]) .hub-keys{display:none;}
+  #pref-status{min-height:2.4em;margin:12px 0;}.pref-error{color:#ff9d7a;}
+
+  /* 交互提示 */
+  #interact{    position:absolute;left:50%;bottom:15vmin;transform:translateX(-50%);
+    background:var(--panel);border:1px solid var(--panel-b);padding:.4em .9em;
+    width:max-content;max-width:min(88vmin,calc(100vw - 24px));min-width:min(20em,calc(100vw - 24px));
+    letter-spacing:.1em;white-space:normal;overflow-wrap:anywhere;line-height:1.5;
+  }
+  #interact .interaction-preview{display:block;margin-top:.25em;font-size:clamp(11px,.92em,15px);
+    line-height:1.65;letter-spacing:.04em;white-space:normal;overflow-wrap:anywhere;color:#cfe6f2;}
+  #interact b{color:var(--accent);}
+  #interact.danger{border-color:#ff5a3a;box-shadow:0 0 0 1px rgba(255,90,58,.4);}
+  #interact.danger b{color:#ff8a6a;}
+  #interact.shop{border-color:#6ad86a;}
+  #interact.shop b{color:#8aff8a;}
+  #interact.warn{border-color:#e8c84a;}
+  #interact.warn b{color:#ffe9a8;}
+
+  /* 提示 / 伤害数字 */
+  #toasts{position:absolute;left:50%;top:15vmin;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.35em;}
+  .toast{
+    background:rgba(6,14,20,.88);border-left:3px solid var(--accent);padding:.32em .8em;
+    min-width:22em;text-align:left;
+    animation:toastIn .18s ease-out;
+  }
+  .toast .tt{letter-spacing:.1em;font-size:1.02em;}
+  .toast .td{opacity:.72;font-size:.85em;letter-spacing:.04em;}
+  @keyframes toastIn{from{opacity:0;transform:translateY(-6px);}to{opacity:1;transform:none;}}
+
+  /* 失败信息独立通道（靠在战斗区近处，短促） */
+  #toasts-fail{
+    position:absolute;left:50%;bottom:21vmin;transform:translateX(-50%);
+    display:flex;flex-direction:column;align-items:center;gap:.3em;
+  }
+  #toasts-fail .toast{
+    min-width:0;border-left-color:#ff6a3a;background:rgba(30,8,6,.9);
+    font-size:.95em;animation:failIn .16s ease-out;
+  }
+  @keyframes failIn{from{opacity:0;transform:translateY(6px) scale(.96);}to{opacity:1;transform:none;}}
+
+  #popups{position:absolute;inset:0;overflow:hidden;}
+  .popup{
+    position:absolute;font-size:1.4em;font-weight:bold;letter-spacing:.02em;
+    text-shadow:0 2px 0 #000,0 0 8px rgba(0,0,0,.8);white-space:nowrap;
+    transform:translate(-50%,-50%);
+  }
+  .damage-popup{font-size:1.25em;pointer-events:none;color:#fff;font-variant-numeric:tabular-nums;}
+  .damage-popup .damage-crit{font-size:.65em;color:#ffd24a;}
+  .damage-popup.crit-all{color:#ffd24a;font-size:1.65em;}
+  .damage-popup.crit-some .damage-value{color:#fff;}
+  /* 世界标签（常驻）：训练靶 / 危险源说明。与弹字同一套投影，但不会自己消失。 */
+  #world-labels{position:absolute;inset:0;overflow:hidden;pointer-events:none;}
+  .wlb{
+    position:absolute;white-space:nowrap;transform:translate(-50%,-100%);
+    font-size:.92em;letter-spacing:.06em;padding:.12em .5em;border-radius:2px;
+    background:rgba(6,14,20,.72);border:1px solid rgba(138,216,255,.35);color:#cfe6f2;
+    text-shadow:0 1px 0 rgba(0,0,0,.9);
+  }
+  .wlb .hp{color:#9ffcff;font-variant-numeric:tabular-nums;}
+  .wlb.warn{border-color:rgba(255,138,138,.55);color:#ffd9d9;}
+  #center-msg{
+    position:absolute;left:50%;top:40%;transform:translate(-50%,-50%);
+    text-align:center;pointer-events:none;
+  }
+  #center-msg .cm-t{font-size:3.2em;letter-spacing:.34em;color:var(--accent);text-shadow:0 0 24px rgba(95,224,255,.6),0 4px 0 #000;opacity:0;transition:opacity .25s;}
+  #center-msg .cm-s{font-size:1.1em;letter-spacing:.5em;opacity:0;transition:opacity .3s;margin-top:.5em;}
+  #center-msg.show .cm-t,#center-msg.show .cm-s{opacity:1;}
+
+  /* ---------- 全屏界面 ---------- */
+  .screen{
+    position:absolute;inset:0;pointer-events:auto;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:1.2em;
+    background:radial-gradient(circle at 50% 40%,rgba(10,28,40,.72),rgba(2,5,8,.95));
+    backdrop-filter:blur(2px);
+  }
+  .screen h1{
+    font-size:clamp(28px,6.4vmin,86px);letter-spacing:.30em;color:#eaf8ff;
+    text-shadow:0 0 30px rgba(95,224,255,.55),0 6px 0 rgba(0,0,0,.8);
+    text-align:center;line-height:1.1;
+  }
+  .screen h2{font-size:clamp(18px,3.2vmin,40px);letter-spacing:.4em;color:#ffd24a;text-shadow:0 4px 0 #000;text-align:center;}
+  .screen .sub{letter-spacing:.6em;opacity:.6;font-size:clamp(10px,1.5vmin,16px);text-align:center;}
+  .screen .desc{max-width:76vmin;text-align:center;line-height:1.9;opacity:.86;font-size:clamp(11px,1.5vmin,17px);letter-spacing:.06em;}
+  .btn{
+    pointer-events:auto;cursor:pointer;background:rgba(10,26,36,.92);
+    border:1px solid rgba(120,200,225,.42);color:#eaf8ff;
+    padding:.7em 2.4em;letter-spacing:.28em;font-family:inherit;font-size:clamp(12px,1.7vmin,20px);
+    transition:.14s;margin:.2em;
+  }
+  .btn:hover{background:rgba(24,58,76,.95);border-color:var(--accent);transform:translateY(-1px);}
+  .btn.primary{border-color:var(--accent);box-shadow:0 0 18px rgba(95,224,255,.24);}
+  .btn.small{padding:.45em 1.4em;letter-spacing:.2em;font-size:clamp(11px,1.4vmin,16px);}
+  .controls{
+    display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.35em 2.4em;
+    font-size:clamp(10px,1.4vmin,16px);opacity:.85;letter-spacing:.06em;
+  }
+  .controls div{white-space:nowrap;}
+  .controls kbd{
+    display:inline-block;min-width:2.4em;text-align:center;
+    background:#123;border:1px solid rgba(140,200,220,.4);border-bottom-width:2px;
+    padding:.06em .4em;margin-right:.5em;color:var(--accent);font-family:inherit;
+  }
+  .row{display:flex;gap:.6em;flex-wrap:wrap;justify-content:center;}
+  .stat-grid{display:grid;grid-template-columns:repeat(2,auto);gap:.3em 2.6em;font-size:clamp(11px,1.5vmin,17px);letter-spacing:.06em;}
+  .stat-grid b{color:var(--accent);}
+  #screen-loading{background:#05080b;}
+  #load-bar{width:44vmin;height:.7em;background:#0d1620;border:1px solid rgba(120,200,225,.3);}
+  #load-bar i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s;}
+  .tagline{letter-spacing:.36em;font-size:clamp(10px,1.5vmin,16px);opacity:.5;}
+  .seedbox{font-size:clamp(10px,1.4vmin,15px);letter-spacing:.16em;opacity:.72;}
+  .seedbox b{color:#ffd24a;}
+  /* 操作说明：点击「操作说明」展开的玩法要点。
+     旧实现只是把控制列表的透明度在 0.85/0.25 之间切一下，等于什么也没说明。 */
+  #helpbox{
+    display:none;max-width:64vmin;text-align:left;
+    font-size:clamp(10px,1.35vmin,15px);line-height:1.65;letter-spacing:.04em;
+    background:rgba(8,20,30,.72);border:1px solid rgba(120,200,225,.28);
+    padding:.8em 1.1em;color:#cfe6f2;
+  }
+  #helpbox.show{display:block;}
+  #helpbox b{color:var(--accent);}
+  #helpbox i{color:#ffd24a;font-style:normal;}
+  .ver{position:absolute;right:1.2vmin;bottom:1.0vmin;font-size:clamp(9px,1.1vmin,13px);
+    opacity:.42;letter-spacing:.14em;}
+  .run-items{display:flex;gap:.4em;flex-wrap:wrap;justify-content:center;max-width:70vmin;}
+  .run-items span{background:rgba(10,26,36,.9);border:1px solid rgba(120,200,225,.3);padding:.2em .6em;font-size:.95em;}
+  .run-items span.syn{border-color:#ffd24a;color:#ffd24a;background:rgba(40,30,4,.9);}
+  .hint-sm{font-size:clamp(9px,1.25vmin,14px);opacity:.5;letter-spacing:.1em;}
+
+  /* ---------- 本局构筑（TAB） ---------- */
+  /* 通用 ChoicePanel（§41）——三个系统共用，而不是各写一套 */
+  #choice-panel{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(6,10,14,.55);backdrop-filter:blur(2px);z-index:45;pointer-events:auto;cursor:auto;}
+  #choice-panel.hidden{display:none;}
+  .choice-box{width:min(760px,92vw);max-height:86vh;overflow:auto;text-align:center;overscroll-behavior:contain;}
+  #choice-cards{display:flex;gap:12px;justify-content:center;margin:14px 0 8px;}
+  .choice-card{flex:1;min-width:0;padding:14px 12px;border-radius:8px;cursor:pointer;
+    border:1px solid rgba(140,190,215,.22);background:rgba(16,26,34,.72);
+    transition:transform .1s,border-color .1s,background .1s;}
+  #choice-panel.multi .choice-box{width:min(1160px,96vw);}
+  #choice-panel.multi #choice-cards{position:relative;padding-bottom:52px;}
+  .choice-card.picked{background:rgba(130,100,20,.7);box-shadow:0 0 0 2px #ffd24a inset;}
+  .doctrine-confirm{position:absolute;bottom:0;left:50%;transform:translateX(-50%);}
+  .choice-card:hover{transform:translateY(-2px);}
+  .choice-card.sel{border-color:#8ad8ff;background:rgba(40,90,115,.6);
+    box-shadow:0 0 0 1px rgba(138,216,255,.35) inset;}
+  .choice-card .ck{font-size:.78em;opacity:.6;font-variant-numeric:tabular-nums;}
+  .choice-card .cn{font-weight:700;margin:6px 0 6px;}
+  .choice-card .cd{font-size:.9em;opacity:.85;line-height:1.45;}
+  .choice-card .ct{display:inline-block;margin-top:8px;font-size:.78em;padding:1px 7px;
+    border-radius:4px;background:rgba(138,216,255,.16);}
+  .choice-keys{margin-top:6px;opacity:.7;}
+
+  /* 静火（§10.4）：暗角 + 轻微去饱和。用 CSS 覆盖层实现，避免后处理开销（§56） */
+  #hud.deadeye::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:5;
+    background:radial-gradient(ellipse at center, rgba(0,0,0,0) 42%, rgba(8,16,24,.58) 100%);
+    backdrop-filter:saturate(.82);}
+
+
+  /* 大厅态：隐藏战斗专属 HUD（小地图 / 房间横幅 / Boss 条） */
+  #hud.hub #minimap,#hud.hub #floor-info,#hud.hub #boss-bar,#hud.hub #room-banner{display:none !important;}
+  /* 大厅面板 */
+  #hub-panel{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;
+    background:rgba(6,10,14,.62);backdrop-filter:blur(3px);z-index:40;pointer-events:auto;cursor:auto;}
+  .hub-panel{width:min(680px,88vw);max-height:78vh;overflow:auto;overscroll-behavior:contain;}
+  .panel-heading{display:flex;align-items:center;justify-content:space-between;gap:1em;}
+  .panel-heading .btn{flex-shrink:0;}
+  .relic-preview{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:14px 0;}
+  .relic-preview section{padding:12px 15px;border:1px solid #3d6558;border-radius:8px;background:#13231f;font-size:15px;line-height:1.65;}
+  .relic-preview section.cost{border-color:#8d5446;background:#2a1c1a;}
+  .relic-preview h3{margin:0 0 8px;color:#92f0bd;font-size:17px;}
+  .relic-preview .cost h3{color:#ffad91;}
+  .relic-preview p{margin:6px 0;}
+  .relic-preview .relic-notes{grid-column:1/-1;margin:0;padding:6px 2px;line-height:1.6;color:#ced5cf;font-size:14px;}
+  @media(max-width:620px){.relic-preview{grid-template-columns:1fr;}}
+  #hub-sub{line-height:1.6;margin:.5em 0;opacity:.85;}
+  .hub-keys{line-height:1.6;margin-top:.8em;}
+  #hub-shortcuts{display:none;position:absolute;left:50%;bottom:10vmin;transform:translateX(-50%);
+    max-width:88vw;text-align:center;pointer-events:auto;background:rgba(6,14,20,.86);padding:.5em .8em;}
+  #hud.hub #hub-shortcuts{display:block;}
+  #hub-shortcuts .hint-sm{line-height:1.7;opacity:.8;}
+  #developer-status{color:#ffd24a;}
+  #save-tools{display:none;position:absolute;left:50%;bottom:1vmin;transform:translateX(-50%);
+    width:min(700px,94vw);text-align:center;pointer-events:auto;cursor:auto;}
+  #ui:has(#screen-title:not(.hidden)) #save-tools,
+  #ui:has(#screen-pause:not(.hidden)) #save-tools,
+  #ui:has(#hud.hub:not(.hidden)) #save-tools{display:block;}
+  #save-tools .hint-sm{line-height:1.5;opacity:.85;}
+  #build-body{overscroll-behavior:contain;}
+  .hub-row{display:flex;gap:12px;align-items:baseline;padding:8px 12px;margin:4px 0;border-radius:6px;
+    border:1px solid rgba(140,190,215,.16);background:rgba(16,26,34,.55);cursor:pointer;
+    transition:background .12s,border-color .12s;}
+  .hub-row:hover{border-color:rgba(140,220,255,.4);}
+  .hub-row.sel{background:rgba(40,90,115,.55);border-color:#67e8ff;box-shadow:0 0 0 1px rgba(103,232,255,.35) inset;}
+  .hub-row.lock{opacity:.72;cursor:not-allowed;}
+  .hub-row .rn{font-weight:600;min-width:8.5em;}
+  .hub-row .rd{opacity:.82;font-size:.94em;flex:1;}
+  .hub-row .rc{font-variant-numeric:tabular-nums;color:#ffd27a;white-space:nowrap;}
+  .hub-row .rt{font-size:.82em;padding:1px 6px;border-radius:4px;background:rgba(103,232,255,.16);white-space:nowrap;}
+  .hub-keys{margin-top:10px;opacity:.7;}
+  #hub-panel.hidden{display:none;}
+  #screen-build{
+    position:absolute;inset:0;pointer-events:auto;cursor:auto;z-index:50;
+    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1vmin;
+    background:radial-gradient(circle at 50% 45%,rgba(8,22,32,.93),rgba(2,5,8,.97));
+    padding:3vmin 4vmin;
+  }
+  #screen-build h2{font-size:clamp(16px,2.6vmin,30px);letter-spacing:.42em;}
+  #build-body{
+    display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1.2vmin;
+    width:min(132vmin,96%);max-height:66vmin;overflow-y:auto;
+    font-size:clamp(10px,1.32vmin,15px);letter-spacing:.04em;
+    scrollbar-width:thin;
+  }
+  #build-body .bs-col{
+    background:rgba(6,14,20,.82);border:1px solid rgba(120,200,225,.22);padding:.8em 1em;
+  }
+  #build-body h3{
+    font-size:1.05em;letter-spacing:.26em;color:var(--accent);font-weight:normal;
+    border-bottom:1px solid rgba(120,200,225,.22);padding-bottom:.3em;margin:.9em 0 .5em;
+  }
+  #build-body .bs-col h3:first-child{margin-top:0;}
+  #build-body .bs-row{display:flex;justify-content:space-between;gap:1em;padding:.14em 0;}
+  #build-body .bs-row b{color:#eaf8ff;}
+  #build-body .bs-rows{display:flex;flex-direction:column;}
+  #build-body .bs-w,#build-body .bs-item,#build-body .bs-act,#build-body .bs-syn{
+    border-left:3px solid var(--panel-b);padding:.32em .6em;margin-bottom:.4em;
+    background:rgba(10,22,30,.6);
+  }
+  #build-body .bs-w.on,#build-body .bs-act.on{border-left-color:var(--accent);background:rgba(14,34,46,.75);}
+  #build-body .bs-w b,#build-body .bs-item b,#build-body .bs-act b,#build-body .bs-syn b{display:block;letter-spacing:.1em;}
+  #build-body .bs-w span,#build-body .bs-item span,#build-body .bs-act span,#build-body .bs-syn span{opacity:.74;line-height:1.5;}
+  #build-body .bs-wm{font-size:.86em;opacity:.6;margin-top:.2em;}
+  #build-body .bs-syn{border-left-color:#ffd24a;}
+  #build-body .bs-empty{opacity:.42;padding:.3em 0;line-height:1.6;}
+  #build-body .bs-logs{display:flex;flex-direction:column;gap:.16em;opacity:.86;}
+  #build-body .bs-log i{opacity:.6;font-style:normal;}
+  /* 改装：备用配件与已装配件都可点击（数字键之外的可发现路径） */
+  #build-body .bs-item.clk{cursor:pointer;transition:background .12s,border-left-color .12s;}
+  #build-body .bs-item.clk:hover{background:rgba(20,52,70,.9);border-left-color:#8ad8ff;}
+  #build-body .bs-at{cursor:pointer;font-style:normal;border:1px solid rgba(138,216,255,.45);
+    border-radius:2px;padding:.02em .32em;margin-right:.24em;font-size:.86em;color:#8ad8ff;display:inline-block;}
+  #build-body .bs-at.none{cursor:default;opacity:.5;border-color:rgba(255,255,255,.16);color:#cfe6f2;}
+  #build-body .bs-at:not(.none):hover{border-color:#ff8a8a;color:#ff8a8a;}
+  #build-body .bs-tip{color:var(--accent);}
+  #build-body .equipment-target{outline:1px solid var(--accent);outline-offset:1px;}
+  #build-body .equipment-gun canvas{width:100%;height:auto;display:block;image-rendering:pixelated;margin:.45em 0;}
+  #build-body .equipment-choose,#build-body .equipment-pick{font:inherit;color:inherit;border:0;background:transparent;text-align:left;width:100%;cursor:pointer;padding:.4em 0;}
+  #build-body button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
+  #build-body .equipment-slots{display:flex;gap:.35em;flex-wrap:wrap;}
+  #build-body .equipment-slot{flex:1;min-width:6em;border:1px dashed var(--panel-b);padding:.3em;}
+  #build-body .equipment-slot button{font:inherit;color:var(--ink);background:transparent;border:0;width:100%;cursor:pointer;min-height:2.5em;}
+  #build-body .equipment-confirm{border:1px solid var(--accent-dim);padding:.7em;margin-bottom:.8em;}
+  #build-body .equipment-confirm p{line-height:1.7;}
+  #build-body .equipment-status,#build-body .equipment-reason{font-size:.9em;color:#8ad8ff;line-height:1.5;padding:.3em 0;}
+  #build-body .equipment-drop{display:flex;gap:.3em;margin-top:.4em;}
+  #build-body .equipment-over{background:rgba(42,127,150,.45);outline:2px solid var(--accent);}
+  #build-body .equipment-spare{cursor:grab;}
+  #build-body .equipment-pick.selected{box-shadow:inset 3px 0 var(--accent);padding-left:.6em;}
+  @media(max-width:700px){#build-body{grid-template-columns:1fr;width:100%;max-height:72vh;font-size:12px;}#screen-build{padding:2vmin;}#build-body .equipment-gun canvas{max-height:130px;object-fit:contain;}}
+  #build-body .bs-active-help{color:#93a6b4;font-size:.85em;line-height:1.6;margin:.4em 0;}
+  #build-body .bs-active-choice{display:block;width:100%;text-align:left;font:inherit;color:inherit;background:rgba(10,24,32,.7);border:0;border-left:3px solid var(--panel-b);cursor:pointer;}
+  #build-body .bs-active-choice small{display:block;margin-top:.25em;color:#93a6b4;}
+  #build-body .bs-active-choice.on{border-left-color:#9dff5a;background:rgba(26,56,40,.7);}
+  #build-body .bs-active-choice.on b{color:#9dff5a;}
+  #build-body .bs-active-choice:hover:not(:disabled),#build-body .bs-active-choice:focus-visible{outline:1px solid #8ad8ff;outline-offset:1px;}
+  #build-body .bs-active-choice:disabled{cursor:default;opacity:.7;}
+
+  /* ---------- 失败提示页（file:// 直开等） ---------- */
+  #boot-fail .err{
+    font-family:Consolas,monospace;font-size:clamp(10px,1.3vmin,15px);
+    background:#0a1016;border:1px solid rgba(255,106,106,.4);padding:.7em 1em;
+    color:#ffb0b0;text-align:left;max-width:80vmin;white-space:pre-wrap;line-height:1.7;
+  }
+.pref-group{margin:.7em 0 .3em;color:#c8e4e7}.pref-note{font-size:.85em;opacity:.8}.pref-presets{display:flex;gap:.3em;flex-wrap:wrap}.pref-presets select{max-width:100%}
+</style>
+<style>
+  #e2-candidate-badge{position:fixed;right:12px;top:10px;z-index:1000;padding:5px 10px;background:#251e16ed;color:#f6d896;border:1px solid #b9934c;border-radius:5px;font:12px/1.4 sans-serif;text-decoration:none;max-width:240px;}
+  .e2-rule-details{padding:8px 10px;margin:8px 0;border:1px solid #415665;border-radius:5px;color:#cbd8df;font-size:13px;line-height:1.6;overflow-wrap:anywhere;}
+  .e2-rule-details summary{cursor:pointer;color:#a9d5e5;}
+  .e2-rule-details p{white-space:pre-line;}
+  /* E2: 常驻界面只保留状态；说明与备份按需展开。 */
+  #mana-status{display:flex;flex-direction:column;gap:.25em;max-width:32vw;color:#afc5ff;}
+  .mana-pool{padding:.3em .6em;background:rgba(13,24,45,.88);border:1px solid #647eb1;border-radius:4px;line-height:1.45;overflow-wrap:anywhere;}
+  .mana-pool.low{color:#ffb080;border-color:#c77e54;}
+  #hud-br #hero-skill{padding:.45em .7em;max-width:30vw;text-align:right;}
+  #hero-skill .sn{color:#b8e8f5;}
+  #hero-skill .sb{height:.35em;background:rgba(255,255,255,.12);margin-top:.3em;}
+  #hero-skill .sb i{display:block;height:100%;}
+  #hero-skill .sd{font-size:.82em;line-height:1.5;margin-top:.3em;color:#b6c6d3;}
+  #save-tools{z-index:42;width:min(700px,94vw);border:1px solid #527386;border-radius:6px;background:rgba(7,17,24,.97);}
+  #save-tools:not([open]){width:auto;min-width:11em;}
+  #save-tools summary,.pause-controls summary{padding:.65em 1em;cursor:pointer;color:#b8d5e4;}
+  #save-tools .save-content{display:flex;flex-direction:column;gap:.8em;padding:.5em 1.2em 1em;max-height:34vh;overflow:auto;}
+  #save-tools #save-alert{color:#ffb080;}
+  #ui:has(#hub-panel:not(.hidden)) #save-tools,#ui:has(#screen-build:not(.hidden)) #save-tools{display:none;}
+  #helpbox{width:min(960px,90vw);max-width:none;max-height:46vh;overflow:auto;box-sizing:border-box;}
+  #helpbox .help-notes{margin-top:1em;}
+  #helpbox .controls div,.pause-controls .controls div{white-space:normal;line-height:1.65;}
+  .pause-controls{width:min(960px,90vw);max-height:42vh;overflow:auto;background:rgba(7,17,24,.85);border-radius:5px;}
+  .pause-controls .controls{padding:.5em 1em 1em;text-align:left;}
+  .choice-keys:empty{display:none;}
+  #screen-title,#screen-pause{box-sizing:border-box;padding:5vmin 3vmin 9vmin;}
+  @media(max-height:760px){
+    #screen-title{gap:1.6vmin;}
+    #screen-title h1{font-size:8vmin;}
+    #screen-title .desc{margin:1vmin 0;font-size:14px;}
+    #helpbox{max-height:39vh;font-size:11px;}
+    #helpbox .controls,.pause-controls .controls{font-size:11px;gap:.2em 1em;}
+    #save-tools .save-content{max-height:30vh;}
+    #hud-br{max-width:35vw;}
+    #hud-br #skill,#hud-br #hero-skill{min-width:0;max-width:35vw;}
+    #weapons .wslot{min-width:10em;max-width:24vw;}
+  }
+  .e2-cost{color:#f0b986;font-size:inherit;line-height:1.6;overflow-wrap:anywhere;}
+</style>
+</head>
+<body>
+<div id="app">
+  <canvas id="game"></canvas>
+  <div id="ui">
+    <!-- 精英血条层：**屏幕平面**的 2D 绘制。
+         为什么不用 3D 平面：透视相机会把离屏中心稍远的四边形压成梯形，
+         看起来"是斜的、带 3D 感、像跟着怪物转"。投影到屏幕坐标后画直线就没有这些问题，
+         而且永远是水平的、线宽恒为 1px（与分辨率无关）。 -->
+    <div id="worldbars"></div>
+    <div id="hud" class="hidden">
+      <div id="hud-tl">
+        <div id="hearts"></div>
+        <div class="armor-row" id="armor"></div>
+        <div id="dashes"></div>
+        <div id="mana-status" class="hidden" aria-label="法力"></div>
+        <div id="meta">
+          <span id="coins"></span>
+          <span id="keys"></span>
+          <button id="btn-build" title="查看本局构筑（TAB）">构筑 TAB</button>
+        </div>
+        <div id="status-row"></div>
+        <!-- 本局复苏状态（WB-1）：只描述本局已登记的事实；无本局状态时整体隐藏。 -->
+        <div id="revival-chip" class="rv-chip hidden"></div>
+      </div>
+      <div id="hub-shortcuts" class="panel">
+        <div class="row">
+          <button class="btn small" id="btn-hub-preferences">出征准备</button>
+          <button class="btn small" id="btn-hub-training">训练配装</button>
+        </div>
+        <div class="hint-sm" id="developer-status">开发模式：关闭</div>
+      </div>
+      <div id="hud-tr">
+        <div id="floor-info">
+          <b id="floor-name">沉钟回廊</b>
+          <small id="floor-sub">THE SUNKEN KEEP</small>
+          <span id="room-name">起始厅堂</span>
+        </div>
+        <div id="minimap-wrap" class="panel"><canvas id="minimap" width="180" height="180"></canvas></div>
+      </div>
+      <div id="hud-bl"><div id="weapons"></div></div>
+      <div id="hud-br">
+        <div id="skill" class="panel"><div class="sn">无技能</div><div class="sb"><i style="width:100%"></i></div></div>
+        <!-- 职业能力（统一 C 键）：与 F 主动技能并存，互不替代（§4 / §5） -->
+        <div id="hero-skill" class="panel"><div class="sn">[C] 职业能力</div><div class="sb"><i style="width:100%"></i></div></div>
+        <div id="items"></div>
+      </div>
+      <div id="bossbar" class="hidden">
+        <div class="boss-name"></div>
+        <div class="boss-track"><div class="boss-fill"></div><div class="phases"><i></i><i></i><i></i></div><span class="phase-tag">I</span></div>
+      </div>
+      <div id="story-banner"></div>
+      <div id="toasts"></div>
+      <div id="build-card"></div>
+      <div id="tips"></div>
+      <div id="toasts-fail"></div>
+      <div id="interact" class="hidden"></div>
+      <div id="center-msg"><div class="cm-t"></div><div class="cm-s"></div></div>
+      <div id="reticle">
+      </div>
+    </div>
+    <div id="popups"></div>
+    <div id="world-labels"></div>
+
+    <!-- 加载 -->
+    <div id="screen-loading" class="screen">
+      <h1>沉 钟 回 廊</h1>
+      <div class="tagline">E M B E R &nbsp; D E S C E N T</div>
+      <div id="load-bar"><i></i></div>
+      <div class="hint-sm" id="load-text">正在生成地牢…</div>
+    </div>
+
+    <!-- 标题 -->
+    <div id="screen-title" class="screen hidden">
+      <h1>沉 钟 回 廊</h1>
+      <div class="tagline">E M B E R &nbsp; D E S C E N T</div>
+      <div class="desc">钟声从地下深处传来。<br>带上武器，去看看回廊尽头还藏着什么。</div>
+      <div class="row">
+        <button class="btn primary" id="btn-start">进 入 大 厅</button>
+        <button class="btn primary" id="btn-continue">继 续 远 征</button>
+        <button class="btn" id="btn-help" aria-controls="helpbox" aria-expanded="false">操 作 说 明</button>
+      </div>
+      <div id="helpbox">
+        <div class="controls" id="ctl-list"></div>
+        <div class="help-notes">
+        <div>· 找到下行阶梯，继续探索更深处的回廊。</div>
+        <div>· 战斗房进入即<i>封锁</i>，清空全部敌人才会开门；房间名旁边会显示剩余敌人数。</div>
+        <div>· <i>闪避</i>期间无敌，可以穿过弹幕；左上角显示剩余次数与回充进度。</div>
+        <div>· 靠近桌子后使用交互键，可以翻倒它作为掩体。柱子和掩体也能挡住子弹。</div>
+        <div>· 铁壁卫兵 / 守界棱卫的盾牌<i>可以打崩</i>：持续正面输出会破盾并造成硬直；爆炸伤害直接无视盾牌。</div>
+        <div>· 橙色方块是<i>风险宝库</i>（可选精英房，高额奖励）；发光秘门后是隐藏房。</div>
+        <div>· 武器与遗物之间可能触发<b>协同</b>，可以在本局构筑中查看。</div>
+        </div>
+      </div>
+      <!-- 版本号由 src/core/version.js 唯一提供，main.js 启动时写入；不要在这里写死。 -->
+      <div class="ver" id="build-version"></div>
+    </div>
+
+    <!-- 暂停 -->
+    <div id="screen-pause" class="screen hidden">
+      <h2>暂 停</h2>
+      <details class="pause-controls"><summary>操作说明</summary><div class="controls" id="ctl-list2"></div></details>
+      <div class="seedbox">本局种子：<b id="seed-text">------</b></div>
+      <div class="row">
+        <button class="btn primary" id="btn-resume">继 续</button>
+        <button class="btn" id="btn-pause-layout">按键布局</button><button class="btn" id="btn-pause-preferences">设置</button>
+        <button class="btn" id="btn-pause-build">查看本局构筑</button>
+        <button class="btn" id="btn-save-quit">保存并退出</button>
+        <button class="btn" id="btn-quit">结束远征并返回大厅</button>
+      </div>
+      <div class="hint-sm">按 ESC 继续</div>
+    </div>
+
+    <!-- 本局构筑 -->
+    <!-- 通用 ChoicePanel（任务书 §41）：铸枪师配件 / 老兵教条 / 驯炉人进化共用同一套 UI -->
+    <div id="choice-panel" class="hidden" tabindex="-1">
+      <div class="choice-box">
+        <div class="panel-heading"><h3 id="choice-title">选择</h3><button class="btn small" id="btn-choice-close">关闭 ESC</button></div>
+        <div id="choice-sub" class="hint-sm"></div>
+        <div id="choice-cards"></div>
+        <div class="hint-sm choice-keys"></div>
+      </div>
+    </div>
+
+    <!-- 大厅功能面板：英雄选择 / 军械 / 商行 / 功勋墙 / 档案馆 / 楼层练习门 -->
+    <div id="hub-panel" class="hidden" tabindex="-1">
+      <div class="panel hub-panel">
+        <div class="panel-heading"><h3 id="hub-title">钟炉前厅</h3><button class="btn small" id="btn-hub-close">关闭 ESC</button></div>
+        <div id="hub-sub" class="hint-sm"></div>
+        <div id="hub-rows"></div>
+      </div>
+    </div>
+
+    <div id="screen-build" class="hidden" tabindex="-1">
+      <h2>本 局 构 筑</h2>
+      <div id="build-body"></div>
+      <div class="row">
+        <button class="btn small hidden" id="btn-pending-choice">继续楼层奖励选择</button>
+        <button class="btn primary small" id="btn-build-close">返 回 战 斗</button>
+      </div>
+      <div class="hint-sm">按 TAB 或 ESC 关闭</div>
+    </div>
+
+    <details id="save-tools">
+      <summary>存档与备份 <span id="save-alert" role="status"></span></summary>
+      <div class="save-content">
+      <div id="save-status" class="hint-sm" aria-live="polite"></div>
+      <div class="row">
+        <button class="btn small" id="btn-export-save">导出存档备份</button>
+        <button class="btn small" id="btn-import-save">导入存档</button>
+      </div>
+      <div class="hint-sm">存档保存在当前浏览器与地址。更换浏览器或地址前，请导出备份。</div>
+      <input type="file" id="save-import-file" accept=".json" class="hidden">
+      </div>
+    </details>
+
+    <!-- 胜利 -->
+    <div id="screen-victory" class="screen hidden">
+      <!-- 标题与副标题由 victoryVerdict() 按结算类型写入；旧三层/章完成/三章通关各说各的。 -->
+      <h2 id="victory-title"></h2>
+      <div class="tagline" id="victory-sub"></div>
+      <div class="stat-grid" id="victory-stats"></div>
+      <div class="run-items" id="victory-items"></div>
+      <div class="row">
+        <button class="btn" id="btn-victory-build">查看最终构筑</button>
+        <button class="btn" id="btn-victory-hub">返回大厅</button>
+        <button class="btn" id="btn-victory-title">返回标题</button>
+        <button class="btn primary" id="btn-victory-again">再 来 一 局</button>
+      </div>
+    </div>
+
+    <!-- 死亡 -->
+    <div id="screen-death" class="screen hidden">
+      <h2>倒 在 了 深 渊 中</h2>
+      <div class="stat-grid" id="death-stats"></div>
+      <div class="run-items" id="death-items"></div>
+      <div class="row">
+        <button class="btn" id="btn-death-build">查看最终构筑</button>
+        <button class="btn" id="btn-death-hub">返回大厅</button>
+        <button class="btn" id="btn-death-title">返回标题</button>
+        <button class="btn primary" id="btn-death-again">重 新 开 始</button>
+      </div>
+      <div class="hint-sm">按 R 快速重开 · ESC 关闭构筑面板</div>
+    </div>
+
+    <!-- 启动失败说明（例如直接双击 index.html） -->
+    <div id="boot-fail" class="screen hidden">
+      <h2>启 动 方 式 不 正 确</h2>
+      <div class="desc" id="boot-fail-msg">
+        本游戏使用 ES Module 加载，需要通过本地服务器打开，<br>直接双击 index.html（file:// 协议）会被浏览器安全策略拦截。
+      </div>
+      <div class="err" id="boot-fail-err"></div>
+      <div class="desc">
+        正确做法：双击游戏目录里的启动脚本 —— 项目主目录是 <b>启动稳定版.bat</b>，独立电脑包是 <b>START_GAME.cmd</b>。<br>
+        也可以在该目录执行 <b>node tools/launch.mjs</b>（独立电脑包用 <b>node serve.mjs</b>），再访问提示的地址。
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  // 兜底：若 6 秒后仍停留在加载页（模块脚本未能执行 / 加载失败），给出明确中文提示。
+  window.__booted = false;
+  window.__bootFail = function (msg) {
+    var f = document.getElementById('boot-fail');
+    var s = document.getElementById('screen-loading');
+    if (s) s.classList.add('hidden');
+    if (f) f.classList.remove('hidden');
+    var e = document.getElementById('boot-fail-err');
+    if (e && msg) e.textContent = String(msg);
+  };
+  setTimeout(function () {
+    if (window.__booted || window.__bootStarted) return;
+    var s = document.getElementById('screen-loading');
+    if (s && !s.classList.contains('hidden')) {
+      window.__bootFail(location.protocol === 'file:'
+        ? '检测到 file:// 协议，模块加载被浏览器拦截。'
+        : '模块脚本未能在 6 秒内启动，请查看控制台错误信息。');
+    }
+  }, 6000);
+  window.addEventListener('error', function (ev) {
+    if (!window.__booted) window.__bootFail((ev && ev.message) || '未知脚本错误');
+  }, true);
+</script>
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>

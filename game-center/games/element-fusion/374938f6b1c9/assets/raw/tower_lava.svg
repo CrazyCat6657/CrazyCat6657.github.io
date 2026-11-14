@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs>
+<filter id="shadow"><feDropShadow dx="0" dy="6" stdDeviation="5" flood-opacity=".35"/></filter>
+<filter id="glow"><feGaussianBlur stdDeviation="5" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#e6b06b"/><stop offset="1" stop-color="#724936"/></linearGradient>
+</defs><rect width="256" height="256" fill="none"/>
+<ellipse cx="128" cy="211" rx="72" ry="20" fill="#2b201c" opacity=".3"/>
+<path d="M65 191L82 218H174L191 191Z" fill="#6b4934" stroke="#34231d" stroke-width="8"/>
+<path d="M82 185L92 111L128 72L167 112L175 186Z" fill="#5c4a3d" stroke="#2b2420" stroke-width="8"/>
+<path d="M94 144L114 119L126 92L140 119L164 145L151 179L107 179Z" fill="#ff6b32" stroke="#7c2f20" stroke-width="6" filter="url(#glow)"/>
+<path d="M117 83L127 55L139 83" fill="#d35f32" stroke="#41261e" stroke-width="7"/>
+<path d="M105 116L84 94M151 116L176 91" stroke="#f6b05b" stroke-width="7" stroke-linecap="round"/>
+<circle cx="85" cy="93" r="11" fill="#ff9a42"/><circle cx="177" cy="90" r="11" fill="#ff9a42"/>
+</svg>

@@ -1,0 +1,1119 @@
+{
+  "gameId": "bell-corridor",
+  "version": "1.7.0",
+  "revision": "482eb52491217855113b3731591d101dde703f8b",
+  "build": "7e2d4c1a77de",
+  "adapter": "none",
+  "files": [
+    {
+      "path": "index.html",
+      "size": 45874,
+      "sha256": "ecd193039451de152330ad1642280f2bdd4a47d369a5a6de09d02c124a46d7fc"
+    },
+    {
+      "path": "src/art/actor_assets.js",
+      "size": 5553,
+      "sha256": "c10e30d760de5d6923b2a9d8ed232bd98f66193ad2f2686ed46a75d0fb7f74e7"
+    },
+    {
+      "path": "src/art/actor_bindings.js",
+      "size": 2554,
+      "sha256": "9bc1410d734e8d0364eaf2b969ce6665ffcd07795e49d0758881a55c7083ed05"
+    },
+    {
+      "path": "src/art/actor_catalog.js",
+      "size": 4453,
+      "sha256": "7ae1ce99fd35735cd858a5a254c52a4ceada8ba8a48a572f742f77f0bd56e4c7"
+    },
+    {
+      "path": "src/art/arsenal_assets_data.js",
+      "size": 11669,
+      "sha256": "863c36d1c04ade4371a5317e75843ed9bb986e8e4508e77a3fb71a21ea7c07a2"
+    },
+    {
+      "path": "src/art/assets/actors-beast.glb",
+      "size": 278288,
+      "sha256": "c07ba73b33eff78af0e4e7ccf4d7686b090c934e7b161e2db16a904d53b5082a"
+    },
+    {
+      "path": "src/art/assets/actors-bosses.glb",
+      "size": 1869748,
+      "sha256": "b856ce0c360962b83dd26dd3a879bbe1d905fc59981f0bafcc7557eb1b209688"
+    },
+    {
+      "path": "src/art/assets/actors-chapter1.glb",
+      "size": 257824,
+      "sha256": "fd081c01879e54dfe151d13af7ef81cd91753f08200dcdc8ce854354a60ccc72"
+    },
+    {
+      "path": "src/art/assets/actors-creatures.glb",
+      "size": 652156,
+      "sha256": "523a5dcd2ee8ba21fce578469745cbb2a3551c5026e5182b67dcc65d8267e5a4"
+    },
+    {
+      "path": "src/art/assets/actors-guards.glb",
+      "size": 192548,
+      "sha256": "d3c0fdf008e915278651a87cd6bd84e94ed72526f37d4b27faf3533f0dbc246a"
+    },
+    {
+      "path": "src/art/assets/actors-humanoids.glb",
+      "size": 906184,
+      "sha256": "99342289d871dd72f62f201c10619b9bbfa31478e2ab1445f0fdc2f706a84b10"
+    },
+    {
+      "path": "src/art/assets/arsenal-curios.glb",
+      "size": 1486500,
+      "sha256": "592633f8ba1996a34902e34e9100ecc2bbebd51b555ab71750c9421559c7df3b"
+    },
+    {
+      "path": "src/art/assets/arsenal-energy.glb",
+      "size": 1728344,
+      "sha256": "083fab0429f8a6891ebf0132bef8818959452f6a8bb70fa8cced80e0859dd6be"
+    },
+    {
+      "path": "src/art/assets/arsenal-mechanical.glb",
+      "size": 2105228,
+      "sha256": "dfb38b74b6e83796664da578359c003ea152f98c9b95f3b08d48b0c87e6b973e"
+    },
+    {
+      "path": "src/art/assets/basic-guns.glb",
+      "size": 266912,
+      "sha256": "94a49321c5f471bccbe470a431aa77fddeab480b2c3c91cab896ec7dd30e7dd4"
+    },
+    {
+      "path": "src/art/assets/dungeon-props.glb",
+      "size": 682144,
+      "sha256": "bf3d797689ab9dce6c0cdae6e469206cc5b3b1228f71d762df5845ef721d6924"
+    },
+    {
+      "path": "src/art/assets/elite-guns.glb",
+      "size": 109784,
+      "sha256": "154e248bca38a919079f3501ead8399a24c278ffe24d270cdcb99fd12acdc7fe"
+    },
+    {
+      "path": "src/art/assets/tactical-guns.glb",
+      "size": 172532,
+      "sha256": "a71f10dce46fb2762069a0642ee4deb304c41ba37b096fc4475825f2e0424408"
+    },
+    {
+      "path": "src/art/assets/white-steel-chest.glb",
+      "size": 86300,
+      "sha256": "e857c43b6f527a8d15a11ccd7dd4ed1a35d38762b5dfa0ff126959dade8c494b"
+    },
+    {
+      "path": "src/art/chest_asset.js",
+      "size": 3131,
+      "sha256": "18bd9c9579cb97e38dfb5650b8c35114093fd532db89a0210e75befac1840e17"
+    },
+    {
+      "path": "src/art/gun_assets.js",
+      "size": 5998,
+      "sha256": "bf04159765ffee771a9c1940cd03026aac38e86ea2e097584d377e8906ea39c4"
+    },
+    {
+      "path": "src/art/gun_reflections.js",
+      "size": 1611,
+      "sha256": "f1af96eed73c4abd8039bfca76164f24299be94813cee49e8408b7db3eff8091"
+    },
+    {
+      "path": "src/art/guns.js",
+      "size": 17533,
+      "sha256": "919555966a9de8e8f0096f9231d9f4fb393d1d8a803e484311b108b78b89aa02"
+    },
+    {
+      "path": "src/art/materials.js",
+      "size": 26338,
+      "sha256": "913fabab77876d69b9bea7afb8a3b28149cbb00ded5f6582afbd35d292aa2e94"
+    },
+    {
+      "path": "src/art/models.js",
+      "size": 48735,
+      "sha256": "b01810517adcb9afdca8459c042b462ed949764adbe496b8a34c671c468c346c"
+    },
+    {
+      "path": "src/art/prop_assets.js",
+      "size": 3727,
+      "sha256": "5edcc2123b36383fc681a24224729b9632aa767a13a5e9a02e20d18299d5b896"
+    },
+    {
+      "path": "src/art/props.js",
+      "size": 37444,
+      "sha256": "804076d2fc8bf918fb2f51ce6c04b9a3054004eefa2f8a24f18330ecc8f739d1"
+    },
+    {
+      "path": "src/art/weapon_assets_models.js",
+      "size": 20688,
+      "sha256": "6ba56c8b4b8d755b72f6000ff69218a01311dad1a9c593d5de616a246448686e"
+    },
+    {
+      "path": "src/art/weapon_assets_recipes.js",
+      "size": 32663,
+      "sha256": "dbdbcba50880ce3344c7465de76b6700f07388840fc2ee56eb23575f796339fd"
+    },
+    {
+      "path": "src/art/weapon_assets_units.js",
+      "size": 4693,
+      "sha256": "55dfa91d49f4c471f3a95547e9843dad7f7168f06c707060ded69be2cd927017"
+    },
+    {
+      "path": "src/art/weapon_pickup_marker.js",
+      "size": 2566,
+      "sha256": "12b54c8adae4a5897cd61f6e45fa6e2675c8430551f39956ca09ae49bffcf4f5"
+    },
+    {
+      "path": "src/core/audio.js",
+      "size": 26961,
+      "sha256": "9bec0a17fe75537b0c28806c1f2cd67aa74b6bcb4f2eb7f4f9508b90bbecf27a"
+    },
+    {
+      "path": "src/core/constants.js",
+      "size": 6594,
+      "sha256": "99915955bb89f4856970cb4bb54e8dd4f84dd614a41410d046f83a3e6bcf42a0"
+    },
+    {
+      "path": "src/core/control_actions.js",
+      "size": 3154,
+      "sha256": "c641d8e6fe21b0b19fffe77bb78578365bfdbf3f0d108c70e740ca976ba29e25"
+    },
+    {
+      "path": "src/core/control_bindings.js",
+      "size": 8983,
+      "sha256": "b431019660478a915dedf8d8265989fc8cf4a39451fa2d8fe8df993b8b72758d"
+    },
+    {
+      "path": "src/core/coop_ledger_codec.js",
+      "size": 2223,
+      "sha256": "438437a8854a088d3789fa5e35409a898de5a6564a5ed444c5379f245036788a"
+    },
+    {
+      "path": "src/core/format.js",
+      "size": 1268,
+      "sha256": "9a63c9a1d0747af4a169335a3c812393407713c18f178f10c8ed6c516251721d"
+    },
+    {
+      "path": "src/core/input.js",
+      "size": 8191,
+      "sha256": "5a8275df8d60cb5d9c32dab4399e22e788e287ceebf79d617e3cf5b992fbdb3d"
+    },
+    {
+      "path": "src/core/native.js",
+      "size": 2024,
+      "sha256": "af8091ce6cbfc5855f3a4c1c7afdbac2dca7f7a5cdf421f2ef1cbe3d930ba087"
+    },
+    {
+      "path": "src/core/rng.js",
+      "size": 2033,
+      "sha256": "5a747ce3a2eadd614b0de7e6d2146e4736a911edac14bd7937a819bd7e114566"
+    },
+    {
+      "path": "src/core/touch.js",
+      "size": 27575,
+      "sha256": "4d59351c8393be40130a9589310c4f98e9502f80bedf063fd343693f89474dbe"
+    },
+    {
+      "path": "src/core/version.js",
+      "size": 809,
+      "sha256": "37e4a1e300a4771551638d5029aaf9480e768fa7278b0d8a9fd0580de06f4c3a"
+    },
+    {
+      "path": "src/experimental/combat/controller.js",
+      "size": 7681,
+      "sha256": "764093c6bb06ab0b82f916f8545ee4fb2fc26b9070800fb437d25b6328641f6f"
+    },
+    {
+      "path": "src/experimental/combat/fold_hero.js",
+      "size": 1428,
+      "sha256": "2e3e819f22fc41c7673e2648853a56221e4dc85d42d82d8bddbc166e6aef293a"
+    },
+    {
+      "path": "src/experimental/combat/fold_shadow.js",
+      "size": 14860,
+      "sha256": "6b0fbdd8fcee4dcb269ed7a9ffbf87fb17669151a7799e7b25ec92be3ca294c5"
+    },
+    {
+      "path": "src/experimental/combat/fold_visuals.js",
+      "size": 10985,
+      "sha256": "4de362aefaaa762927d1c619648fca8a9aed20ddbfe769148fe249895572dc5f"
+    },
+    {
+      "path": "src/experimental/combat/mode.js",
+      "size": 2098,
+      "sha256": "d17ff92039aac320977e5475b80578aea9f425fd59aace4ef21c2a34a2ff5e6d"
+    },
+    {
+      "path": "src/experimental/combat/page.js",
+      "size": 7430,
+      "sha256": "45e1997b0a489cbc3b1635e7e6e28e999e8b44f942cbb6d79fe542eb66004cd3"
+    },
+    {
+      "path": "src/experimental/comparison/config.js",
+      "size": 3551,
+      "sha256": "1e92574a5b36e8f1afccd03bce6636663224b3686b8772f33d9c12a55f80959a"
+    },
+    {
+      "path": "src/experimental/comparison/page.js",
+      "size": 4595,
+      "sha256": "6ea30ed38498d3b0c6dad5b42edd2754c3202639e00c18a3921a2d3ffe772661"
+    },
+    {
+      "path": "src/experimental/comparison/report.js",
+      "size": 6315,
+      "sha256": "dae9d27bfdaa7a7d38de2302f725a67a3170fb8b61fbec2baeca46ff980a5c15"
+    },
+    {
+      "path": "src/experimental/consumables/host_state.js",
+      "size": 927,
+      "sha256": "12b9897acf7307d2de8bca5ea32410c6e599addb01b5b510c3ec1030197b5b56"
+    },
+    {
+      "path": "src/experimental/consumables/index.js",
+      "size": 1479,
+      "sha256": "69fc9815a89828c344a3ae50252862da0add71b974521d8abf84c13d943c4844"
+    },
+    {
+      "path": "src/experimental/consumables/inventory.js",
+      "size": 6350,
+      "sha256": "660eb8b05c1d0c757aed901d6a7e96d1818cfb8b614dbeccd95dbb2f8f1ce027"
+    },
+    {
+      "path": "src/experimental/consumables/items.js",
+      "size": 5165,
+      "sha256": "334f0fd79bbe67aee7bc7b52847e4d021f75ee440b6f6fbc2cd7e6b1cc3e4bef"
+    },
+    {
+      "path": "src/experimental/consumables/page.js",
+      "size": 5889,
+      "sha256": "b23d4be43b5fc5c350256aa83d3b2120ad23632cef2e48a206278640ea136c71"
+    },
+    {
+      "path": "src/experimental/consumables/runtime.js",
+      "size": 9323,
+      "sha256": "d5035c9573430cbff765c85ecf473e1b19383ae648d911f773d6e60ab5e108ee"
+    },
+    {
+      "path": "src/experimental/consumables/state.js",
+      "size": 8605,
+      "sha256": "2bf6fff65fafa123e332dd614c7cc4c21f9a3a501f48a602e330b43cd5f8363a"
+    },
+    {
+      "path": "src/experimental/consumables/use.js",
+      "size": 14925,
+      "sha256": "2a8ce89ddc176c5d689030428cbe24cb247c482fdc948a09a52819f3d841290e"
+    },
+    {
+      "path": "src/experimental/consumables/view.js",
+      "size": 2226,
+      "sha256": "39d54de2f489637eb07ec77603be8cc8cc3883b5afc7a890f4bdbe6945fd6d09"
+    },
+    {
+      "path": "src/experimental/consumables/visibility.js",
+      "size": 2871,
+      "sha256": "5a997f8750eacec29e9f018487e1dfefd513aa510d0bbc173e3500190a20411a"
+    },
+    {
+      "path": "src/fx/enemy_projectile_outline.js",
+      "size": 1992,
+      "sha256": "b55e98dec1a146b284c0bdd5b594ac1bf9796de6c894f0f963a6529d0f96ec59"
+    },
+    {
+      "path": "src/fx/lights.js",
+      "size": 4341,
+      "sha256": "fdb8a4f6aa3288e482f0bd702234df323ed9f8b1fc8f19ca69fd74ad6143d853"
+    },
+    {
+      "path": "src/fx/particles.js",
+      "size": 13902,
+      "sha256": "2fb533eae2998370ec910fab8ef3d1ff44b36479eae295fd03300f021a44ceef"
+    },
+    {
+      "path": "src/fx/postfx.js",
+      "size": 8854,
+      "sha256": "260780af839e0daae684915ca5d13dbb60981baaef3ece2090a53f7f673a8b64"
+    },
+    {
+      "path": "src/fx/weapon_assets_fx.js",
+      "size": 11885,
+      "sha256": "4919b6d6323193cf421101cb58ae7fe41e107a33004cce2394974705c7447a5b"
+    },
+    {
+      "path": "src/fx/weapon_projectile_profiles.js",
+      "size": 26873,
+      "sha256": "72d96c1aa40858f39e06a48b7dc66aa5da8b4e92e889443cce1c869b7d0e21a4"
+    },
+    {
+      "path": "src/fx/weapon_projectile_renderer.js",
+      "size": 8835,
+      "sha256": "b349aee7fc7c702cd12624c17e2390ac1db4f6aa9eda3e0064a72dce481d5bdb"
+    },
+    {
+      "path": "src/game/achievements.js",
+      "size": 6102,
+      "sha256": "a8012163e045c2acfc5fc5558ae833b0b12eaac1c5117964353194438f95ddc4"
+    },
+    {
+      "path": "src/game/acquisition_projection.js",
+      "size": 5999,
+      "sha256": "94d4212e1eefd08d55b00651c74c94ab27112e6d86da7c6d965cce9037d3c6c6"
+    },
+    {
+      "path": "src/game/active_promises.js",
+      "size": 1175,
+      "sha256": "4c3333528eef2d9a1aed548c28c80d7a6e66193cc5d54708e363b2722fcb29d3"
+    },
+    {
+      "path": "src/game/active_selection.js",
+      "size": 1342,
+      "sha256": "c1b0f09cd9b32ce008345daa25ba132dd5fc0cd5392b17f0bcb865787cb2a9d3"
+    },
+    {
+      "path": "src/game/actor_context.js",
+      "size": 13944,
+      "sha256": "70258f72a82ec877424b68820f11c5cbbec657182a59aea529f2c5691a4d2cd5"
+    },
+    {
+      "path": "src/game/altar_effects.js",
+      "size": 1027,
+      "sha256": "94e91a33728a46bba06393a4dbe02959e8d4666592751e5698473e0eaf0a9f79"
+    },
+    {
+      "path": "src/game/ash_status.js",
+      "size": 1278,
+      "sha256": "62f1568ab08ad4cae0997c31b3dea7e49fb89f1008e5316354078b258d77bb1f"
+    },
+    {
+      "path": "src/game/attachments.js",
+      "size": 10669,
+      "sha256": "4c098edd14f60e07c0b80000ab7c87aa2f4b101979b4a2f497dc2150db563f8b"
+    },
+    {
+      "path": "src/game/boss_beast.js",
+      "size": 18773,
+      "sha256": "2a86364e438bc6ebbd5462e8c7e07a0f88d76d46e356ee74eb6ad998a9419e8f"
+    },
+    {
+      "path": "src/game/boss_chapter_actions.js",
+      "size": 4140,
+      "sha256": "627b220c23fb0ec137ba32bcac1c3c2b41b94f585afcf908f8249c59b6d80558"
+    },
+    {
+      "path": "src/game/boss_helpers.js",
+      "size": 6190,
+      "sha256": "6674121acecf75ee65a813ec07f2c17d52b6df98d64d924ce4aeb321a824ef46"
+    },
+    {
+      "path": "src/game/boss_priest.js",
+      "size": 15822,
+      "sha256": "4ef2836a39948473d524541e82ff5dd22d33b85dda189b3bf771e691b7db4519"
+    },
+    {
+      "path": "src/game/boss_variants.js",
+      "size": 13669,
+      "sha256": "31adcf608f6e9dc7bf15e9a401a9340a284ea96b08f820749d266caccb8d6d7b"
+    },
+    {
+      "path": "src/game/boss.js",
+      "size": 22105,
+      "sha256": "d5a0754130c9e4e5e1dbdf406fc4852d8fd60802c9c63c54e27ef55ae9581a4d"
+    },
+    {
+      "path": "src/game/bosses.js",
+      "size": 5460,
+      "sha256": "fcc1b463b3b53a8498a5e491370e98cf077d032b10760a39defa003749275044"
+    },
+    {
+      "path": "src/game/build_content_data.js",
+      "size": 12506,
+      "sha256": "a228f13f166d9f799bbacdbd4d77d71c65dd2c2a3f4ad03560107523a7706ccf"
+    },
+    {
+      "path": "src/game/build_effects.js",
+      "size": 8030,
+      "sha256": "96f573f7c455f8726bcb47cc4531369bc6440f4872f784a913c71f6f78a21f85"
+    },
+    {
+      "path": "src/game/build_hit_effects.js",
+      "size": 2460,
+      "sha256": "1be23b07e741b105db23b794e3e8a32cb66b476d5658a2ba5dfe75566f95a7c4"
+    },
+    {
+      "path": "src/game/build_supply_bridge.js",
+      "size": 11817,
+      "sha256": "4c07b88357266f79840822c21e3fcd0d397f754626762d8f48b71906d1189f34"
+    },
+    {
+      "path": "src/game/build_supply.js",
+      "size": 26249,
+      "sha256": "17f50e9a60ca44aa6a8876c9c2d91feb6b34c8e36e44edd2962bef75a525b645"
+    },
+    {
+      "path": "src/game/chapter_encounters.js",
+      "size": 3266,
+      "sha256": "e8c1ea931eafd20f6ed2fe7e6c6d152f315f902a0048e256fdf36396d1b4fc05"
+    },
+    {
+      "path": "src/game/chapter_rewards.js",
+      "size": 3333,
+      "sha256": "4d7b7aee7896cc3efea4fe39d28c6315fdf78c111a0d91ff8cb8aedccb9b8797"
+    },
+    {
+      "path": "src/game/chapter_waves.js",
+      "size": 4738,
+      "sha256": "7fc42158e9383d863a27961259fecb3129857b875b15a3045344cca1b9672685"
+    },
+    {
+      "path": "src/game/chest_rules.js",
+      "size": 5138,
+      "sha256": "408179812d6d3d936a2f59837378097dc5ac882a869f7e0e668b6c20fd1f4671"
+    },
+    {
+      "path": "src/game/chest_transaction.js",
+      "size": 5072,
+      "sha256": "37369468acc297980fa70ea06b2f65fb7893fe2dcf740957f51645ef98f37efc"
+    },
+    {
+      "path": "src/game/codex.js",
+      "size": 5733,
+      "sha256": "0ad7f33aa25a04658d841d277cf419033ca0f177ef02f5dbaa4f894091e74366"
+    },
+    {
+      "path": "src/game/collide.js",
+      "size": 7789,
+      "sha256": "40b6fd686e2d8d8852e987f379435ac909a61809d98ecd25eabbee30aa353995"
+    },
+    {
+      "path": "src/game/companion.js",
+      "size": 17353,
+      "sha256": "229c1857697fbdbe2fddde8bcee46ae0232d3a7a7ce68f25a0a578b98f32736b"
+    },
+    {
+      "path": "src/game/connector.js",
+      "size": 13426,
+      "sha256": "e369b13a6aa6e145c2db038a872f83af0ab4349cfa6dfe7e9ce4a0dd9ff2a9ed"
+    },
+    {
+      "path": "src/game/coop_rewards.js",
+      "size": 16409,
+      "sha256": "18bf653c0e4d9ce230ef5fc8f69b85ccf2bb60ffa36a4e8920b33348cf9a0bbf"
+    },
+    {
+      "path": "src/game/coop_session.js",
+      "size": 20276,
+      "sha256": "99a3026f4156d310a98f5ef30652d1bc01db2eca492e85d370fb91b372eba9cb"
+    },
+    {
+      "path": "src/game/damage_context.js",
+      "size": 3781,
+      "sha256": "dc9890dc43472f0abf087561e89d39132150b8c306da47f847677ad92e8f3709"
+    },
+    {
+      "path": "src/game/damage_feedback.js",
+      "size": 4684,
+      "sha256": "dd585acc04692417b60387b6551f5c08757194d88f94c84e84f17b0fdb5b4414"
+    },
+    {
+      "path": "src/game/data.js",
+      "size": 39374,
+      "sha256": "5a88dda3611ac112f669977fcba8098f01394067691bc2c23ac6c4c69cc8fb22"
+    },
+    {
+      "path": "src/game/doctrine_choice_v3.js",
+      "size": 3242,
+      "sha256": "d3c12f2bb8064c05ac61fc33c97c663bacb7c2c378b969d5c7782b292a19f19f"
+    },
+    {
+      "path": "src/game/doctrine_state_v3.js",
+      "size": 957,
+      "sha256": "91f493515255e1c8085abef998a8da936f6deaaba900751196eca83786d37f3b"
+    },
+    {
+      "path": "src/game/doctrines.js",
+      "size": 3490,
+      "sha256": "cf8c996deda987ef27cd3dab5266f0f3108d3942eefca09317dff6d932ea057a"
+    },
+    {
+      "path": "src/game/economy.js",
+      "size": 6295,
+      "sha256": "7289d3cdde07591b24af807e9a092f3f39ef24a4900a23c074b940543e977cb6"
+    },
+    {
+      "path": "src/game/enemies.js",
+      "size": 44723,
+      "sha256": "e93bb1536558f364209459212fe56953a64b7486e89f12091576589f9bd4c30b"
+    },
+    {
+      "path": "src/game/equipment_drops.js",
+      "size": 3458,
+      "sha256": "78987575189a9699fa243c1687765c7732c50ed383acdf1934037865b36fa40c"
+    },
+    {
+      "path": "src/game/equipment_transaction.js",
+      "size": 8442,
+      "sha256": "a729b9c4d328df785527aab5cc0c99df634dd6bf183cb6b2c4d70a25a6713964"
+    },
+    {
+      "path": "src/game/game.js",
+      "size": 303742,
+      "sha256": "70434f3e58760bd4b79aabb1176405a9515cfc8d683fa2a52c49a4d6d27be06a"
+    },
+    {
+      "path": "src/game/hero_feedback.js",
+      "size": 975,
+      "sha256": "9ed54c8f948a579ba7b64dd7defd3f3fe97720431dd5e85d80d3d7f632d28a58"
+    },
+    {
+      "path": "src/game/hero_growth_v3.js",
+      "size": 8282,
+      "sha256": "ae79238cfeafb83dec5913125b68cf725e5b628240741d6ed9f8602c4e4dd468"
+    },
+    {
+      "path": "src/game/hero_integration_v3.js",
+      "size": 4189,
+      "sha256": "c7964010708b5f2d192748c0bec20554170eb319108826e04f4dd18fb5266930"
+    },
+    {
+      "path": "src/game/hero_p2.js",
+      "size": 6175,
+      "sha256": "ba33397fde7f76d207b037036b1e8c5831c8c556b6df5fc769cbe70c6fa2fc5a"
+    },
+    {
+      "path": "src/game/hero_rules_v3.js",
+      "size": 19566,
+      "sha256": "7c656c8b261c954a6c727cd51a5e39d5c3f64668451166f90ea8262f9449efee"
+    },
+    {
+      "path": "src/game/hero_rules.js",
+      "size": 5030,
+      "sha256": "5c8b711761ee9b3ad0b3d9d80e5bfa3e08d99ca5d1d599f94691ec7b83fbbed2"
+    },
+    {
+      "path": "src/game/hero_state_v3.js",
+      "size": 4867,
+      "sha256": "432960462ced6edb9438b2d0029a327ce9759477c634850b49ddfaddc67335cd"
+    },
+    {
+      "path": "src/game/heroes.js",
+      "size": 38378,
+      "sha256": "88730192291e024dd5e198e36f412db4375a9d578a454114a11bf348782f429c"
+    },
+    {
+      "path": "src/game/hub_preparation.js",
+      "size": 3687,
+      "sha256": "7ca701cc1b65a9b07afaad02e6b39dff0f06caffb3d780859c1242b98399480e"
+    },
+    {
+      "path": "src/game/hub.js",
+      "size": 43832,
+      "sha256": "fe07c0edafd5d67f925422d70cef312d7baba9d49350dccb8384ed7f5c682efb"
+    },
+    {
+      "path": "src/game/hud.js",
+      "size": 63632,
+      "sha256": "1eabdcc0e976bc21ea78517668a2fffe7dec4e2bec1a1e8bf8dee178c636412b"
+    },
+    {
+      "path": "src/game/meta.js",
+      "size": 9783,
+      "sha256": "b5e72269eb1195a41d669cb002802f8cdea9994dc4a0e830b31ba8efdec3c15c"
+    },
+    {
+      "path": "src/game/objects.js",
+      "size": 26118,
+      "sha256": "71325fe5c55c6b900a72c2271cea5d57fb907eef5a8e0a42c95e1bfbb84ca5e2"
+    },
+    {
+      "path": "src/game/party_acquisition.js",
+      "size": 14242,
+      "sha256": "c03ab7ed6d05f681199c5754e541fca6ee4d178a2c5e860459568257d74ed663"
+    },
+    {
+      "path": "src/game/party_business.js",
+      "size": 5368,
+      "sha256": "dd4b4b07411b0bd0befe6c07829ffe025b0f60e93c9b8b10d9553184a55057b8"
+    },
+    {
+      "path": "src/game/party_lifecycle_transactions.js",
+      "size": 8394,
+      "sha256": "5493d17cc9426774438854e7d1694f957dbf4e726d49f1d84218cefa3a7f6194"
+    },
+    {
+      "path": "src/game/party_rewards.js",
+      "size": 18986,
+      "sha256": "b908181f3edfa9a33b4f5e943bd721bc6eddb7b07f587e79a51d5b715d29aba7"
+    },
+    {
+      "path": "src/game/party_session_store.js",
+      "size": 20773,
+      "sha256": "7c2d23c62c3212942cd7ef8bff9cd399b67000121d63aa08a12f26ad4d2644bf"
+    },
+    {
+      "path": "src/game/party_ui.js",
+      "size": 8924,
+      "sha256": "97b29733fd78a9f18dab0f0a5910d02883dd30e42ed600c17da694fc6a839d5c"
+    },
+    {
+      "path": "src/game/pickup_path.js",
+      "size": 1116,
+      "sha256": "8449f8e71bc68ec11ba8dfd38cf07e859b8ea7b427d59b473c738c26a42dcf1c"
+    },
+    {
+      "path": "src/game/player.js",
+      "size": 62539,
+      "sha256": "2fb4b3e353e39dac5b0811ccfdf8e61289dc8c4eb715f5e6be1db3ba4cff766f"
+    },
+    {
+      "path": "src/game/portal.js",
+      "size": 5427,
+      "sha256": "dbe9cd082771a8ca2fd1200600c0b40155f954b7d79580ac3615e1a54e437a7c"
+    },
+    {
+      "path": "src/game/preferences.js",
+      "size": 13271,
+      "sha256": "01f02909dbe5384e3c38ec9a7f12f79a24c68579d5e4cf7aad0fed013f1b67cf"
+    },
+    {
+      "path": "src/game/progress_label.js",
+      "size": 1168,
+      "sha256": "10b6037e18dd7e60a98de76a55581c5596607a78097dc8336b047146e9921c1c"
+    },
+    {
+      "path": "src/game/projectiles.js",
+      "size": 19763,
+      "sha256": "f33d0cbb0b721ee74228cdc12bfce4b8e0088124ba8cbf0c6aafe81351cd9c50"
+    },
+    {
+      "path": "src/game/relic_pickup.js",
+      "size": 4572,
+      "sha256": "ef4f930930fe15528288f98ee395a64d744afc89aa6e3762c768fe34217a7510"
+    },
+    {
+      "path": "src/game/relic_risks.js",
+      "size": 2937,
+      "sha256": "2cd38102ce3a4ad33210677bf4ec5513a0d78676b5fe109a3b9804a339df50a9"
+    },
+    {
+      "path": "src/game/resource_observation.js",
+      "size": 5155,
+      "sha256": "b3f07b6863e9c002d7344adcc6d9faa885bc1b11c7b9a8d3fecc922143310568"
+    },
+    {
+      "path": "src/game/revival.js",
+      "size": 5302,
+      "sha256": "144872e34b276e25969fe5d978b5ba8c8f2eae9d7325ff359a3b651c5ff0560b"
+    },
+    {
+      "path": "src/game/room_diagnostics.js",
+      "size": 5587,
+      "sha256": "35a2a776db732df053984faaab874ce81758965dd5caced5194097c003d771bf"
+    },
+    {
+      "path": "src/game/room.js",
+      "size": 54048,
+      "sha256": "b09bcc55e0766ad85cbf2a48f57992ae634c073a47ad36a4c6bbda594c548e83"
+    },
+    {
+      "path": "src/game/save.js",
+      "size": 9116,
+      "sha256": "5c88fe94be7f0b710d4d93892c9cb06d23bd41028b5d85a4261e1737dc2ea509"
+    },
+    {
+      "path": "src/game/session.js",
+      "size": 53300,
+      "sha256": "9c74e2575c105e19792b55193b509cbab515812a2e4d70797d74d6daac3c4d6a"
+    },
+    {
+      "path": "src/game/shared_mana.js",
+      "size": 2294,
+      "sha256": "d99521dc364aefcb1ff823cba74bb1a6367c902a28a6e6d6fbe89c83e97fc966"
+    },
+    {
+      "path": "src/game/shop_transaction.js",
+      "size": 15693,
+      "sha256": "bd5ab6bd17995a24bd53334dcdf8e08f05f8cadcc776c51c98f90a0bc051fa1f"
+    },
+    {
+      "path": "src/game/spells.js",
+      "size": 6995,
+      "sha256": "0d4f2e4f6d42c3639b9716b7123df3623c53e7822a9130d247a14e4edcae327c"
+    },
+    {
+      "path": "src/game/stage_flow.js",
+      "size": 9571,
+      "sha256": "a441efaf3143d3f42d337cc669b47baa0a3c1c92f807b346a0529ae30c0bf81e"
+    },
+    {
+      "path": "src/game/stage_profiles.js",
+      "size": 1586,
+      "sha256": "1d394529cf128c73e9065a3214bd09ac16e943a3a43e1941c25d43595726fd64"
+    },
+    {
+      "path": "src/game/team_colors.js",
+      "size": 6740,
+      "sha256": "5b584baaf01cfcc84abaa8fd90245db4ea741b455870efe078f327d8cb89cee9"
+    },
+    {
+      "path": "src/game/telemetry.js",
+      "size": 4466,
+      "sha256": "755b0e83b105ff92fd907eeba97c8c9aa619c3dc5a5467620c55bd3aef5c98b5"
+    },
+    {
+      "path": "src/game/text_e2_data.js",
+      "size": 63132,
+      "sha256": "7364c7454d06cbad68fdc56f2faca79ddb975acbe22a5d23ea897d9cdc466284"
+    },
+    {
+      "path": "src/game/tracking.js",
+      "size": 1760,
+      "sha256": "5a88f8f39bdc0eaf91027562fb5e24bd0476337b96f48cb01cfcde3cdcf434ec"
+    },
+    {
+      "path": "src/game/training.js",
+      "size": 9981,
+      "sha256": "f8ca02d3506de269ee9c36552481844358bcd02bb74e5158bfa3845b67c5b71f"
+    },
+    {
+      "path": "src/game/victory_copy.js",
+      "size": 1115,
+      "sha256": "aa61c70375efa789530db64f8992e64a1f5c08fa36b99c9e7c51300b08959e48"
+    },
+    {
+      "path": "src/game/weapon_assets/attachment_rules.js",
+      "size": 3438,
+      "sha256": "ec633040d60b772c9d6c1ce56b7243344253ac0171bbd1b9764c3bd0beda2761"
+    },
+    {
+      "path": "src/game/weapon_assets/deployment_budget.js",
+      "size": 2105,
+      "sha256": "fababe98eaff828160eec98d7f2dc94196d6acb4e9e595f5073d3721e27f0e4b"
+    },
+    {
+      "path": "src/game/weapon_assets/energy.js",
+      "size": 25116,
+      "sha256": "a9c9161267abfc8ed4e2f368462b5d26b63357f2078cc94c8d81a1fb0f81a26b"
+    },
+    {
+      "path": "src/game/weapon_assets/geometry.js",
+      "size": 16818,
+      "sha256": "29d2c9854aa27508e114351d485d53c32e4eb42b44330d8a8c25a41ac1e1a2ae"
+    },
+    {
+      "path": "src/game/weapon_assets/lottery_actions.js",
+      "size": 26017,
+      "sha256": "b8280b40a20412549a52b96d6973ba9bf4c969f460c669edc49620e676c189ee"
+    },
+    {
+      "path": "src/game/weapon_assets/mechanical.js",
+      "size": 29573,
+      "sha256": "ff1fffcc40f0a57a4c29a52f6129d1d60e6ad4ab3143255cbb9b23883782dfa7"
+    },
+    {
+      "path": "src/game/weapon_assets/precision.js",
+      "size": 13821,
+      "sha256": "ac57698e8a753d86da559ad575d0155985d4f6128834cbb958451fbbf3c62c34"
+    },
+    {
+      "path": "src/game/weapon_assets/revisions.js",
+      "size": 43131,
+      "sha256": "2a5ebbc17bbb34973e1e71d262b0039a2326dae1c71849c776d1f07a24040bb4"
+    },
+    {
+      "path": "src/game/weapon_assets/specs.js",
+      "size": 29537,
+      "sha256": "409e627c6dc0edbe8751e4a05229d4cba622646f6fa3db28fc2e332640d7dd90"
+    },
+    {
+      "path": "src/game/weapon_assets_data.js",
+      "size": 137686,
+      "sha256": "25bba0b5b63e90926bf6af40f0b02fe7c8e0f5b54abcd120d9304dd609927989"
+    },
+    {
+      "path": "src/game/weapon_assets_enabled.js",
+      "size": 1740,
+      "sha256": "0f7b3770b6762ab11907abcbd40735ec3b9241a29e985913d2debf6b4645c33b"
+    },
+    {
+      "path": "src/game/weapon_assets_pool.js",
+      "size": 973,
+      "sha256": "4b328596ae8fadd39b2a8ad97991d6fed70c486c84c4e3004574c40dff8f14a5"
+    },
+    {
+      "path": "src/game/weapon_assets_runtime.js",
+      "size": 75433,
+      "sha256": "e92f9f4cf077bf6b5484b5508c3b4e4bd80d5f7e06c5d21eb3e16900390efb2f"
+    },
+    {
+      "path": "src/game/weapon_assets_specs.js",
+      "size": 1089026,
+      "sha256": "f56303073b1a43b310e6c5ba07aad5bb0ad82e49759098d2496a0bcb1f111837"
+    },
+    {
+      "path": "src/game/weapon_compatibility.js",
+      "size": 2473,
+      "sha256": "78d751aed82789876bb868f08c79bfad87d1593142cd762adde1d6bbb3054987"
+    },
+    {
+      "path": "src/game/weapon_revisions_data.js",
+      "size": 5145,
+      "sha256": "a2a27a34a337ec8648fd3c7bf538027667f1f17c4bcfb1ad60a81435e2f25afb"
+    },
+    {
+      "path": "src/game/weapon_text_repair.js",
+      "size": 9690,
+      "sha256": "f927e4eed9798c573673ed2e84fff1457a5ab3cabfe90296f87b5fa1579177f1"
+    },
+    {
+      "path": "src/game/weapon_versions.js",
+      "size": 996,
+      "sha256": "c1968212060bec88b9cf14c6eb7368cdb69a89357fdebcd77c963ffe684adaba"
+    },
+    {
+      "path": "src/game/world_weapon_services.js",
+      "size": 3909,
+      "sha256": "f4b780765386c57b38a979167f8c63bda90cf9ed72478048fab5303b286fc9aa"
+    },
+    {
+      "path": "src/gen/chapter_layout.js",
+      "size": 9774,
+      "sha256": "c0341c871dbf7fd7bd9bb3c930a374046a588d5581f678d5d7a32afc4e4e0044"
+    },
+    {
+      "path": "src/gen/dungeon.js",
+      "size": 19442,
+      "sha256": "64a6c1a1bf3aaa626db307fb63f3f8a1eeb0b6bd34b9d9edb381a5317b66b287"
+    },
+    {
+      "path": "src/gen/encounters.js",
+      "size": 10492,
+      "sha256": "8a169a773ea5a5b4df1f96933362eabf239e66f9de8800b88f95e0c28c933bc5"
+    },
+    {
+      "path": "src/gen/expanded_stage_dungeon.js",
+      "size": 13817,
+      "sha256": "fccae7eda3720667d6356da26e6fc5ea6fa7f765b96799b67d2fd5bfaa301f87"
+    },
+    {
+      "path": "src/gen/stage_dungeon.js",
+      "size": 6910,
+      "sha256": "82230dd4b5b9f886f1f16ae9ba60540c3a7b745fba889b33980e4fddb1ad0cc8"
+    },
+    {
+      "path": "src/main.js",
+      "size": 7309,
+      "sha256": "5642042fa6605549145382e8f222eb66856110b884d1831d4ac6969086503e34"
+    },
+    {
+      "path": "src/runtime/browser_presentation.js",
+      "size": 23140,
+      "sha256": "813784ae18d65a2cbb6658e6aac5a79cf504c625c4e41701f69abb4b828cb074"
+    },
+    {
+      "path": "src/runtime/checkpoint_actor_contract.js",
+      "size": 4950,
+      "sha256": "15e7fc6d3bbaa5b00f7eba2e2bb97502ef399bf82d8a1c2e74c91f43f473d731"
+    },
+    {
+      "path": "src/runtime/coop_game_session.js",
+      "size": 52043,
+      "sha256": "3cbf8961123e5da56e9f2b095aa1bcf90c33f8aab957cd6df472b0d26769c69f"
+    },
+    {
+      "path": "src/runtime/coop_profile.js",
+      "size": 2244,
+      "sha256": "f1f033af9f45fd7ceff6845e5314c7a848b48ee71a8d930aa37259bfd53295c8"
+    },
+    {
+      "path": "src/runtime/coop_transport.js",
+      "size": 6001,
+      "sha256": "d2ae2084c277cad63cd79c1a6d7313b290342f6c8f0a7ee3ac3fae556fb8f9af"
+    },
+    {
+      "path": "src/runtime/game_platform.js",
+      "size": 2856,
+      "sha256": "668b35959249158cb3361a20932975e5e6d1107047a68973eafc4a2ef4cd19c9"
+    },
+    {
+      "path": "src/runtime/game_session.js",
+      "size": 34986,
+      "sha256": "5a401834084130b6e5ce8d00408dbefe6c4cadab6e4bcf11d2018bb09454a2d0"
+    },
+    {
+      "path": "src/runtime/headless_game.js",
+      "size": 4351,
+      "sha256": "047bbd3ccf23472e74c03a0ddcb28710d7f835e0ed6b07408e59d8926553294e"
+    },
+    {
+      "path": "src/runtime/headless_hud.js",
+      "size": 6338,
+      "sha256": "5725ed703e6e94f3e1b6a90b7d87c4a5ca71d0d9b67fa1c34ade14d6dc281661"
+    },
+    {
+      "path": "src/runtime/headless_input.js",
+      "size": 2846,
+      "sha256": "9ec1696fe04edeb32947997bb1a137ec626437c8885053f435187a89468db7ca"
+    },
+    {
+      "path": "src/runtime/party_file_storage.mjs",
+      "size": 1723,
+      "sha256": "5b2ea3b3affa5807e1a47e266d3187efc5903e21efda16aa2672bb3b451f000d"
+    },
+    {
+      "path": "src/runtime/party_lifecycle.js",
+      "size": 11653,
+      "sha256": "a82532a39da6148dd9573a479ec8777623f99ab1858b497e1e7f284d7c5499f1"
+    },
+    {
+      "path": "src/runtime/presentation_pose.js",
+      "size": 2234,
+      "sha256": "b1c44ba90c1b280ae34fa2ce4d719a35b2b0f361875ffc952db8a86ee5a5a81a"
+    },
+    {
+      "path": "src/runtime/session_worker.mjs",
+      "size": 2653,
+      "sha256": "0e83eef6cdf1b7aeb46a7e3e5555d1f2d0b2f19aae79c9f94e260e6f461ad3c4"
+    },
+    {
+      "path": "src/runtime/source_identity.mjs",
+      "size": 902,
+      "sha256": "7070d0298d237d6b109ccfbf98757d090dfb78b40bd1628de02285f3a76c1f12"
+    },
+    {
+      "path": "src/runtime/tick_scheduler.js",
+      "size": 3912,
+      "sha256": "43395df46339e515d7eac9c55696f031c8c25e4432aaf83822cdad95358d968d"
+    },
+    {
+      "path": "src/runtime/worker_session.mjs",
+      "size": 7147,
+      "sha256": "924e6e5b3085533a8391119f30fd1254db65463a5fce3336667a41d5b85ef174"
+    },
+    {
+      "path": "src/ui/active_selector.js",
+      "size": 2853,
+      "sha256": "e629636eba84b948a6ed43c6bbb9001b1c3886669eae2bee403a8c99333619a0"
+    },
+    {
+      "path": "src/ui/controls_view.js",
+      "size": 11154,
+      "sha256": "e539df85fdbe12b8a6960955f92615840b74af1b2f837441d50e24a764d3780e"
+    },
+    {
+      "path": "src/ui/copy_review_state.js",
+      "size": 2517,
+      "sha256": "28e0763927e5363b47e19066182263db604ae1088cb51724344b844763fefa67"
+    },
+    {
+      "path": "src/ui/copy_review.css",
+      "size": 3434,
+      "sha256": "66653aace780d51baf15639f9477efaf532422cd6f608d4016ad11422cfc0feb"
+    },
+    {
+      "path": "src/ui/copy_review.js",
+      "size": 15158,
+      "sha256": "bfa8500711641b3a810798146422143b10289a6ea648a0fa97c5de12db711f09"
+    },
+    {
+      "path": "src/ui/damage_feedback_view.js",
+      "size": 3464,
+      "sha256": "5ae2beaa66787c34c3bd20096ff74b5233d72c0a89d7a045bb2f3831c1878c6a"
+    },
+    {
+      "path": "src/ui/equipment_models.js",
+      "size": 3704,
+      "sha256": "af2b7e35fd7aaff7b9f4a2b58f17bf1786ff508f45610e839995cbf67ec1f835"
+    },
+    {
+      "path": "src/ui/equipment_view.js",
+      "size": 10463,
+      "sha256": "4e26b3b8d84db9766faee940606d68e5dd8e6c377b8ebbaf450e5f33bf9bf075"
+    },
+    {
+      "path": "src/ui/experimental/consumables/consumables_bar.js",
+      "size": 9438,
+      "sha256": "e8733043850b559a33cb1508e7b3845f0d424bf61383eecd6796aa09e52e40ab"
+    },
+    {
+      "path": "src/ui/experimental/consumables/consumables.css",
+      "size": 6730,
+      "sha256": "a65bf5e9db3438b85ef3945c21e4624dd756d53e0987ec89d7945605e7fbe593"
+    },
+    {
+      "path": "src/ui/glyphs.js",
+      "size": 6211,
+      "sha256": "714859aff0dc74bbaedf2584377a3c2eace787379e139b805493f1e921192619"
+    },
+    {
+      "path": "src/ui/preferences_view.js",
+      "size": 12909,
+      "sha256": "7567cb09c4271feef14e17a375d300bc8aede5218a647d73428ee21bbcb9c916"
+    },
+    {
+      "path": "src/ui/relic_preview.js",
+      "size": 884,
+      "sha256": "6c9934403ae89885df4cb596d454b5d59a9bfdb3881b83a1decbc75f8f4701ec"
+    },
+    {
+      "path": "src/ui/run_status_view.js",
+      "size": 7750,
+      "sha256": "7cd14f9f0d700df837c660cf8bc0bedf5f983d00af53915ac3250f0072f3f2b8"
+    },
+    {
+      "path": "src/ui/text_e2_view.js",
+      "size": 1938,
+      "sha256": "230073c3baeb0ee5a1d69613fb1e6a4b7ee916e568d5a70c7c38404244641d9c"
+    },
+    {
+      "path": "src/ui/touch_controls.js",
+      "size": 25047,
+      "sha256": "d7b562317318ac03b354a7ddf42abf5bc0f6d91760e1965de24a06bd763a1e1d"
+    },
+    {
+      "path": "src/ui/worldbars.js",
+      "size": 3134,
+      "sha256": "d04a39b9d41408768540caad13d031abe14e873e815cbdfb6ab98bd7fd293c08"
+    },
+    {
+      "path": "src/weapon_assets_config.js",
+      "size": 946,
+      "sha256": "6154f5de052c16ab52cc2d912340602d32808f50cd8fd3bd334b6eccbd733023"
+    },
+    {
+      "path": "src/weapon_gallery.js",
+      "size": 3721,
+      "sha256": "18008173a247f22475691fed456caf69d325bd36cddb3a6bdb80c5e8559fa3d3"
+    },
+    {
+      "path": "src/weapon_lab_bridge.js",
+      "size": 6260,
+      "sha256": "eb24976cc99c84e121cf5f72285599f2058f9ad7efa2a13c1956097dc386a3ec"
+    },
+    {
+      "path": "src/weapon_lab.css",
+      "size": 2284,
+      "sha256": "39f0ce8a9f532af063dedfe4d163b2bf0521fe65c68a927a355cfb4cd3756e9e"
+    },
+    {
+      "path": "src/weapon_lab.js",
+      "size": 3808,
+      "sha256": "8b4b2c969d254b058b13e4e1473e2707ceb95e625d726d5cf0ac7ab66205c9ca"
+    },
+    {
+      "path": "vendor/loaders/GLTFLoader.js",
+      "size": 108535,
+      "sha256": "0fec32c41d0cd912f38ccfcd87b003f83e984c22ed3ac54aaa73d91cc1a418a5"
+    },
+    {
+      "path": "vendor/THREE-LICENSE.txt",
+      "size": 1081,
+      "sha256": "852e0e8699169bf9f6fdc6bda3e682d078dcbc738b5d33e74df594721bff271d"
+    },
+    {
+      "path": "vendor/three.module.js",
+      "size": 1272972,
+      "sha256": "76dea8151bc9352aef3528b4262e249b2604f62543828328db978d060d61a495"
+    },
+    {
+      "path": "vendor/utils/BufferGeometryUtils.js",
+      "size": 31919,
+      "sha256": "6f7a59439dd3f4399b25e9214aef65e5969422ed467083f406272b9b1fcef48c"
+    }
+  ]
+}

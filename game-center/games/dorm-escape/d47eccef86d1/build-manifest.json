@@ -1,0 +1,39 @@
+{
+  "gameId": "dorm-escape",
+  "version": "0.7",
+  "revision": "sha256:9bbfc418d6c420248bc7c0a67c3ef55335839e97fefc3ccafb4a3a3384dea991",
+  "build": "d47eccef86d1",
+  "adapter": "three.js 0.180.0 bundled locally; CDN import removed",
+  "files": [
+    {
+      "path": "assets/ASSET_MANIFEST.json",
+      "size": 1856,
+      "sha256": "372a7c763115fb81850cc018365ee43a1b4af4b025aafca1915ac70df7bbd003"
+    },
+    {
+      "path": "assets/hero/418_reference.glb",
+      "size": 36055396,
+      "sha256": "a87b223b204139a02b822a2633c0c9bb27e90c790230086feea008c787bc2eba"
+    },
+    {
+      "path": "assets/README.md",
+      "size": 303,
+      "sha256": "fe79b7a044efbcb8f22d84af225c2f0f375b2b6e14917feba70b5be13d779a1c"
+    },
+    {
+      "path": "index.html",
+      "size": 7035,
+      "sha256": "6ad6569fc7169441719c6a98d8c1cf1d4f1f69469b3d90432e5f163cb4a564f6"
+    },
+    {
+      "path": "main.bundle.js",
+      "size": 681250,
+      "sha256": "f713d608c41848c95d7755edf86953d8928f56c32e3613962f0ce0fffdcb56f7"
+    },
+    {
+      "path": "style.css",
+      "size": 13259,
+      "sha256": "838da5a0a2e88fc4f3fe37df47de6aab6e2124fc92713027984499a99bdfaf83"
+    }
+  ]
+}

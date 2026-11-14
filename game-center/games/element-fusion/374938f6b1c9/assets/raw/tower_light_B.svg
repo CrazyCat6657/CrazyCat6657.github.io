@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs>
+    <filter id="shadow"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-opacity=".36"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8c7b1"/><stop offset=".5" stop-color="#8b7568"/><stop offset="1" stop-color="#493b3b"/></linearGradient>
+    </defs><rect width="256" height="256" fill="none"/><ellipse cx="128" cy="220" rx="80" ry="18" fill="#171217" opacity=".34"/><path d="M52 194L76 222H180L204 194Z" fill="#665044" stroke="#2c2323" stroke-width="8"/><path d="M88 191L96 116L128 84L160 116L168 191Z" fill="#c8ab58" stroke="#68552d" stroke-width="8"/>
+<path d="M128 34L145 82L128 116L111 82Z" fill="#fff" stroke="#f4df75" stroke-width="8" filter="url(#glow)"/>
+<circle cx="128" cy="140" r="31" fill="#fff3a8" stroke="#b99a3f" stroke-width="7"/>
+<circle cx="128" cy="140" r="10" fill="#fff" filter="url(#glow)"/>
+<path d="M96 142L67 131M160 142L190 131" stroke="#ecd56e" stroke-width="8"/></svg>

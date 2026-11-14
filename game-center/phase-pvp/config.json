@@ -1,0 +1,8 @@
+{
+  "serverUrl": "",
+  "clientBuild": "phase-pvp-0.7.0",
+  "protocolVersion": 1,
+  "gameId": "phase-rift",
+  "mode": "pvp",
+  "contentHash": "92aed550470e3c954a7124d8bfe6aca94b8a8180867824aee358ad81782c3ba0"
+}

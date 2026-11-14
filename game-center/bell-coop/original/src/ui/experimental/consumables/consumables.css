@@ -1,0 +1,136 @@
+/* ============================================================
+   四格消耗品 · 界面样式（与正式 HUD 同一套面板语汇）
+   ------------------------------------------------------------
+   只用 em 与 vmin，跟随 #ui 的基准字号；不写死 px 字号。
+   ============================================================ */
+.cons-root{
+  --cons-accent:#5fe0ff;
+  --cons-panel:linear-gradient(180deg, rgba(14,18,22,.94), rgba(9,12,15,.96));
+  --cons-bd:1px solid rgba(150,180,200,.22);
+  position:absolute; left:1.2vmin; bottom:1.2vmin;
+  display:flex; flex-direction:column; gap:.35em;
+  pointer-events:none; z-index:6;
+  font-size:1em;
+  /* 宿主容器可能为了消掉 canvas 行内间隙把 line-height 设为 0；
+     这里是文字界面，必须显式恢复行高，否则每个 chip 只剩边框高度。 */
+  line-height:1.45;
+}
+.cons-effects{display:flex; gap:.3em; flex-wrap:wrap; max-width:44vmin;}
+.cons-chip{
+  position:relative; display:inline-flex; align-items:center; gap:.4em;
+  padding:.12em .55em; font-size:.86em; letter-spacing:.06em;
+  border:1px solid rgba(150,180,200,.35); background:rgba(4,12,18,.86);
+  color:#d8e4ec; overflow:hidden;
+}
+.cons-chip b{font-weight:600;position:relative;z-index:1;}
+.cons-chip>span{position:relative;z-index:1;}
+.cons-chip-bar{position:absolute; inset:0 auto 0 0; background:rgba(95,224,255,.18); z-index:0;}
+.cons-chip-rage{border-color:#ff9a3c; color:#ffc78a;}
+.cons-chip-veil{border-color:#9d8cff; color:#cfc6ff;}
+.cons-chip-ward{border-color:#6fd0ff; color:#bfeaff;}
+
+.cons-bar{display:flex; gap:.35em; pointer-events:auto;}
+.cons-slot{
+  position:relative; width:3.2em; height:3.2em;
+  display:flex; align-items:center; justify-content:center;
+  background:var(--cons-panel); border:var(--cons-bd); border-radius:2px;
+  color:#d8e4ec; cursor:pointer; padding:0;
+  box-shadow:0 2px 0 rgba(0,0,0,.55);
+}
+.cons-slot:hover{border-color:rgba(120,200,225,.55);}
+.cons-slot.sel{border-color:var(--cons-accent); box-shadow:0 0 0 1px rgba(95,224,255,.45), 0 2px 0 rgba(0,0,0,.55);}
+.cons-slot.disabled{opacity:.5;}
+.cons-slot.disabled .cons-icon-wrap{filter:grayscale(.7);}
+.cons-slot.empty{background:rgba(6,10,14,.6); border-style:dashed;}
+.cons-key{
+  position:absolute; left:.18em; top:.05em; font-size:.72em; color:#8fa4b2; letter-spacing:.04em;
+}
+.cons-icon-wrap{
+  width:1.75em; height:1.75em; color:var(--tone, #5fe0ff);
+  display:flex; align-items:center; justify-content:center;
+  filter:drop-shadow(0 1px 0 rgba(0,0,0,.8));
+}
+.cons-icon{width:100%; height:100%; fill:none; stroke:currentColor; stroke-width:1.8; stroke-linejoin:round; stroke-linecap:round;}
+.cons-count{
+  position:absolute; right:.18em; bottom:.02em; font-size:.78em; letter-spacing:.02em;
+  color:#fff; text-shadow:0 1px 0 #000;
+}
+.cons-empty-mark{color:#3a4a56; font-size:1.2em;}
+
+.cons-detail{
+  pointer-events:none; max-width:38vmin; padding:.3em .55em;
+  background:rgba(4,10,14,.9); border:var(--cons-bd); border-left:2px solid var(--cons-accent);
+  font-size:.84em; line-height:1.45; color:#c6d6e0;
+  display:flex; flex-direction:column; gap:.12em;
+}
+.cons-detail[data-empty="1"]{color:#7d8f9c;}
+.cons-detail b{color:#eaf6ff; font-weight:600;}
+.cons-detail-short{color:#9fe8ff;}
+.cons-detail-detail{color:#9fb1bd;}
+.cons-detail-warn{color:#ffb0a0;}
+
+.cons-toast{
+  pointer-events:none; align-self:flex-start;
+  padding:.2em .6em; font-size:.86em; letter-spacing:.04em;
+  background:rgba(4,10,14,.92); border:1px solid rgba(150,180,200,.35);
+  opacity:0; transform:translateY(.3em); transition:opacity .12s linear, transform .12s linear;
+}
+.cons-toast[data-show="1"]{opacity:1; transform:none;}
+.cons-toast[data-kind="ok"]{border-color:#6fd0ff; color:#bfeaff;}
+.cons-toast[data-kind="error"]{border-color:#ff7a6a; color:#ffc0b8;}
+.cons-toast[data-kind="neutral"]{border-color:#9aa7b2; color:#ccd8e0;}
+
+/* ---- 满栏选择 ---- */
+.cons-modal-root{position:fixed; inset:0; pointer-events:none; z-index:40;}
+.cons-modal-root[data-open="1"]{pointer-events:auto;}
+.cons-prompt-backdrop{position:absolute; inset:0; background:rgba(2,5,8,.66);}
+.cons-prompt{
+  position:absolute; left:50%; top:50%; transform:translate(-50%,-50%);
+  width:min(34em, 88vw); padding:.9em 1em;
+  background:var(--cons-panel); border:var(--cons-bd); border-top:2px solid var(--cons-accent);
+  box-shadow:0 0 0 1px rgba(0,0,0,.7), 0 8px 0 rgba(0,0,0,.45);
+  color:#d8e4ec; font-size:1em; line-height:1.5;
+}
+.cons-prompt h3{font-size:1.05em; letter-spacing:.1em; margin-bottom:.35em; color:#eaf6ff; font-weight:600;}
+.cons-prompt-line{font-size:.9em; color:#b8c8d4; margin-bottom:.6em;}
+.cons-prompt-slots{display:grid; grid-template-columns:1fr 1fr; gap:.35em; margin-bottom:.7em;}
+.cons-prompt-slot{
+  display:flex; align-items:center; gap:.5em; padding:.4em .55em;
+  background:rgba(8,14,19,.9); border:var(--cons-bd); color:#d8e4ec;
+  font:inherit; font-size:.9em; cursor:pointer; text-align:left;
+}
+.cons-prompt-slot.sel{border-color:var(--cons-accent); box-shadow:0 0 0 1px rgba(95,224,255,.4) inset;}
+.cons-prompt-actions{display:flex; flex-wrap:wrap; gap:.4em;}
+.cons-prompt .btn{
+  font:inherit; font-size:.88em; letter-spacing:.04em; padding:.35em .7em;
+  background:rgba(10,18,24,.95); border:var(--cons-bd); color:#d8e4ec; cursor:pointer;
+}
+.cons-prompt .btn:hover{border-color:rgba(120,200,225,.6);}
+.cons-prompt .btn.primary{border-color:var(--cons-accent); color:#eafaff;}
+.cons-prompt .btn.primary:disabled{opacity:.45; cursor:not-allowed;}
+.cons-prompt .btn.ghost{color:#93a6b4;}
+
+@media (max-width:640px){
+  .cons-bar{gap:.25em;}
+  .cons-slot{width:2.9em; height:2.9em;}
+  .cons-detail{max-width:52vmin;}
+}
+
+/* Host placement applies only to the independent experiment page. */
+#experiment-consumables{
+  position:fixed; left:50%; bottom:1.2vmin; transform:translateX(-50%);
+  display:flex; flex-direction:column; align-items:center; gap:.35em;
+  max-width:70vw; pointer-events:none; z-index:12;
+  font-size:clamp(11px,1.6vmin,14px); line-height:1.45;
+}
+#experiment-consumables[hidden], #experiment-consumables [hidden]{display:none;}
+#experiment-consumables .cons-root{position:relative; left:auto; bottom:auto; align-items:center;}
+#experiment-consumables .cons-detail{max-width:min(34em,65vw);}
+#experiment-consumables .cons-effects{justify-content:center;}
+#experiment-consumables .cons-toast{align-self:center;}
+#experiment-consumables .cons-supply-button{
+  pointer-events:auto; padding:.35em .8em; border:1px solid #73cbd0;
+  color:#e0f5f1; background:#081720ed; font:inherit; cursor:pointer;
+}
+#experiment-consumables .cons-supply-button:disabled{opacity:.5;cursor:default;}
+#experiment-consumables button:focus-visible{outline:2px solid #a8e2ff;outline-offset:3px;}

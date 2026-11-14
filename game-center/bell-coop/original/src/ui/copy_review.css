@@ -1,0 +1,29 @@
+#copy-review{position:fixed;inset:0;pointer-events:none;z-index:100000;font:14px/1.6 "Microsoft YaHei","PingFang SC",sans-serif;color:#e6eef1;user-select:text;}
+#copy-review *{box-sizing:border-box;}
+#copy-review [hidden]{display:none!important;}
+#copy-review .cr-toolbar{position:absolute;right:12px;top:12px;display:flex;align-items:center;gap:6px;padding:7px;background:rgba(10,20,27,.94);border:1px solid #45616c;border-radius:8px;pointer-events:auto;box-shadow:0 4px 20px #0008;}
+#copy-review button,#copy-review .cr-file{font:inherit;line-height:1.4;cursor:pointer;color:#e6eef1;border:1px solid #4e6871;border-radius:5px;padding:7px 10px;background:#1b303a;}
+#copy-review button:hover{background:#294653;border-color:#87cfcd;}
+#copy-review button:focus-visible,#copy-review textarea:focus{outline:2px solid #8ae0cf;outline-offset:2px;}
+#copy-review .cr-primary{background:#22544e;border-color:#7bcbb6;}
+#copy-review .cr-count{font-size:12px;color:#adbec5;}
+#copy-review .cr-instruction{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);max-width:90vw;padding:9px 16px;border:1px solid #668c8b;border-radius:8px;background:#0c2029f2;pointer-events:none;text-align:center;}
+#copy-review .cr-hit{position:absolute;pointer-events:auto;padding:0;background:transparent;border:0;border-radius:2px;min-width:8px;min-height:10px;box-shadow:inset 0 -1px #8ae0cf44;}
+#copy-review .cr-hit:hover,#copy-review .cr-hit:focus-visible{background:#7cdec72c;outline:1px solid #9aeddd;}
+#copy-review .cr-targets{position:absolute;inset:0;pointer-events:none;overflow:hidden;}
+#copy-review .cr-shade{position:absolute;inset:0;pointer-events:auto;background:#0005;}
+#copy-review .cr-panel{position:absolute;right:16px;top:74px;width:min(430px,calc(100vw - 32px));max-height:calc(100dvh - 96px);overflow:auto;pointer-events:auto;border:1px solid #70958f;border-radius:10px;background:#0d1d26fa;box-shadow:0 10px 50px #000a;padding:18px;}
+#copy-review .cr-panel h2{font-size:19px;font-weight:600;line-height:1.5;margin:0 0 8px;}
+#copy-review .cr-panel p{margin:8px 0;}
+#copy-review .cr-muted{font-size:12px;color:#acbec4;}
+#copy-review .cr-original{padding:10px 12px;border-left:3px solid #77bcaf;background:#142c35;white-space:pre-wrap;overflow-wrap:anywhere;max-height:22vh;overflow:auto;}
+#copy-review label{display:block;margin-top:12px;}
+#copy-review textarea{display:block;width:100%;min-height:100px;max-height:32vh;resize:vertical;margin-top:5px;padding:9px;color:#eff7f5;background:#09161e;border:1px solid #55727d;border-radius:5px;font:inherit;user-select:text;}
+#copy-review textarea.cr-notes{min-height:66px;}
+#copy-review .cr-actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px;}
+#copy-review .cr-list{display:flex;flex-direction:column;gap:8px;margin-top:12px;}
+#copy-review .cr-list button{text-align:left;white-space:pre-wrap;overflow-wrap:anywhere;}
+#copy-review .cr-file input{max-width:100%;display:block;margin-top:6px;font:inherit;}
+#copy-review .cr-status{white-space:pre-wrap;color:#bce2d4;margin-top:10px;font-size:13px;}
+body.cr-reviewing #game{cursor:default!important;}
+@media(max-width:760px){#copy-review{font-size:13px;}#copy-review .cr-toolbar{right:5px;top:5px;gap:4px;padding:5px;}#copy-review .cr-toolbar button{padding:6px 7px;}#copy-review .cr-count{display:none;}#copy-review .cr-panel{top:60px;right:8px;width:min(430px,calc(100vw - 16px));max-height:calc(100dvh - 78px);padding:14px;}}

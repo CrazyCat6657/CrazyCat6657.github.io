@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Element Fusion TD v9.2.1 — Stabilization</title>
+  <meta name="theme-color" content="#211c21">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div id="orientationGate" class="orientation-gate"><div class="rotate-glyph">↻</div><b>旋转设备进入战场</b><span>Element Fusion TD v9.2.1 全程采用横屏布局</span></div>
+<div id="devBadge" class="dev-badge">DEV · 全权限</div>
+<div id="menuScreen" class="menu-screen show">
+  <div class="menu-sky"></div><div class="menu-castle">🏰</div>
+  <div class="menu-card campaign-menu-card">
+    <div class="chapter-kicker">ELEMENT ALCHEMY DEFENSE · v9.2.1 STABILIZATION</div>
+    <h1>Element Fusion TD</h1>
+    <p>中型战场 · 元素构筑型策略塔防。守住元素核心，读懂敌军机制，在不断变化的战场上完成元素构筑。</p>
+    <div id="profileSummary" class="profile-summary">指挥官档案加载中…</div>
+    <div class="menu-actions">
+      <button data-modal="levelModal" class="primary big">开始战役</button>
+      <button id="continueCampaign">继续战役</button>
+      <button id="endlessMenuBtn" data-mode="endless">🔒 无尽模式</button>
+      <button id="creativeMenuBtn" data-mode="creative">🔒 创造模式</button>
+      <button id="bossrushMenuBtn" data-mode="bossrush">🔒 Boss Rush</button>
+      <button id="grandMenuBtn" data-mode="grand">🔒 Grand Battlefield</button>
+    </div>
+    <div class="menu-sub">
+      <button data-modal="codexModal">元素战争图鉴 <span id="codexNew" class="new-dot"></span></button>
+      <button data-modal="guideModal">指挥官作战档案</button>
+      <button data-modal="achievementModal">成就 <span id="achievementNew" class="new-dot"></span></button>
+      <button data-modal="snapshotModal">实验 / 无尽存档</button>
+      <button data-modal="profileModal">档案与长期存档</button>
+      <button data-modal="settingsModal">设置</button><button id="quitGame" class="native-only">退出游戏</button>
+    </div>
+    <small>v9.2.1 — Stabilization · 全横屏 · 战斗连续性保护</small>
+  </div>
+</div>
+
+<div id="app" class="game-app hidden">
+<header class="topbar">
+  <div class="brand"><span class="brand-sigil">✦</span><div><b>ELEMENT FUSION TD</b><small id="modeLabel">战役</small></div></div>
+  <div class="resource-bar"><span class="resource-chip">补给 <b id="gold">0</b>G</span><button class="resource-chip castle-chip" id="castleChip">城堡 <b id="life">0</b>/<i id="maxLife">0</i> · 护盾 <b id="shield">0</b></button><span class="resource-chip">波次 <b id="wave">0/0</b></span></div>
+  <div class="controls"><button id="speed">1×</button><button id="pause">暂停</button><button id="sound">声音：开</button><button id="labBtn" data-modal="labModal" class="lab-only">实验室</button><button id="runSaveBtn" data-modal="snapshotModal" class="run-save">局内存档</button><button id="restartBattle">重新开始</button><button id="backMenu">主菜单</button><button data-modal="codexModal">图鉴</button><button data-modal="settingsModal">设置</button></div>
+</header>
+<section class="workshop-strip"><div class="workshop-title"><b>元素工坊</b><span>只建 Lv.1 · 点击塔升级 · 拖动异元素塔融合</span></div><div id="buildGrid" class="build-grid"></div><div class="workshop-actions"><button class="recipe-shortcut" data-modal="recipeModal">融合配方 <span id="recipeNew" class="new-dot"></span></button><button id="cancelBuild">取消建造</button></div></section>
+<main class="play-layout">
+  <section class="battle-shell">
+    <div class="boss-hud" id="bossHud"><div class="boss-head"><b id="bossName">Boss</b><small></small></div><div class="boss-track"><i class="boss-fill"></i></div><div class="boss-status" id="bossStatus"></div></div>
+    <div id="objectiveHud" class="objective-hud"><button id="objectiveToggle" class="objective-toggle" title="收起任务">×</button><div class="objective-copy"><small>PRIMARY OBJECTIVE</small><b id="objectiveTitle">守住元素核心</b><span id="objectiveDetail"></span></div><span class="objective-mini" aria-hidden="true">🎯</span></div>
+    <div id="battleComms" class="battle-comms"><small>前线通讯</small><b></b><p></p></div>
+    <canvas id="game"></canvas>
+    <div class="map-legend"><span>👹 裂隙入口</span><span>🏰 防线核心</span></div>
+    <div class="toast" id="toast"></div>
+    <div class="mobile-battle-tools"><button id="tacticalView">战术视图</button><button id="mobileInfo">详情</button><span class="camera-hint">空地拖动 · 双指缩放</span></div>
+    <div class="tower-quick" id="towerQuick"><button id="quickUpgrade" class="quick-up">升级</button><button id="quickRepair" class="repair-action">维修</button><button id="quickPriority">优先：前线</button><button id="quickSell" class="quick-sell">出售</button></div>
+    <div class="fusion-preview" id="fusionPreview"><div class="fusion-preview-head"><b id="fusionTitle">融合预览</b><button id="fusionClose">×</button></div><div id="fusionBody"></div><div class="fusion-actions"><button id="fusionCancel">← 返回</button><button id="fusionConfirm" class="primary">确认融合</button></div></div>
+  </section>
+  <aside class="sidebar"><button id="mobileInfoClose" class="mobile-info-close">×</button>
+    <section class="panel workshop-info"><div class="panel-title"><div><b>工坊详情</b><small>建造前看清定位、数值、科技上限</small></div></div><div class="build-detail" id="buildDetail"></div></section>
+    <section class="panel context-panel">
+      <div class="panel-title compact"><div><b id="infoTitle">当前对象</b><small id="infoSubtitle">点击塔、怪物或城堡查看</small></div></div>
+      <div class="context-scroll"><div id="infoBody" class="info-body"></div><div id="branchRow" class="branch-row"></div><details class="advisor-card" open><summary>战术顾问 <span id="advisorAlert"></span></summary><div id="advisorBody" class="info-body"></div></details></div>
+      <div class="action-row context-actions"><button id="upgradeBtn">升级</button><button id="repairBtn" class="repair-action">维修</button><button id="priorityBtn">目标优先级</button><button id="sellBtn">出售</button></div>
+    </section>
+  </aside>
+</main>
+<footer class="bottom-dock"><section class="skill-dock"><div class="dock-title"><b>战术技能</b><span>1 / 2 / 3 / 4 · ESC 取消 · Space 暂停 · F 变速</span></div><div class="skill-bar" id="skillBar"></div></section><section class="intel-dock"><div class="intel-head"><div><b>下一波情报</b><span id="waveModeText">来袭模式</span></div><span id="enemyCount" class="count-pill">0 敌人</span></div><div id="intel" class="intel"></div><div class="wave-controls"><div id="waveModeButtons" class="wave-mode-buttons"><button data-wave-mode="manual">手动</button><button data-wave-mode="auto">自动</button><button data-wave-mode="rush">连续进攻</button></div><button id="startWave" class="primary start-wave">开始第一波</button></div></section></footer>
+</div>
+
+<div class="modal" id="introModal"><div class="modal-card intro-card campaign-briefing-card"><button class="modal-close">×</button><div class="chapter-kicker" id="introChapter">第一章</div><small id="introKicker">战役</small><h1 id="introTitle">关卡</h1><p class="location-line" id="introLocation"></p><div id="introBody" class="briefing-copy"></div><div class="objective-box"><small>本次任务</small><b id="introObjective"></b></div><div id="introTech" class="tech-strip"></div><div id="introUnlocks" class="unlock-strip"></div><div class="intro-actions"><button data-modal="guideModal">玩法指南</button><button id="introStart" class="primary">开始部署</button></div></div></div>
+
+<div class="modal" id="levelModal"><div class="modal-card wide campaign-map-card atlas-card"><button class="modal-close">×</button><div class="chapter-kicker">CAMPAIGN ATLAS · BATTLEFIELD IDENTITY</div><h2>v9.x · 战役地图册 · 40 张独立战场</h2><div class="difficulty-row"><span>作战难度</span><button data-difficulty="easy">轻松</button><button data-difficulty="standard" class="active">标准</button><button data-difficulty="expert">专家</button></div><p class="lead" id="difficultyDesc"></p><div id="chapterLegend" class="chapter-legend"></div><div class="campaign-atlas-layout"><div class="level-map atlas-level-map" id="levelMap"></div><aside class="atlas-preview-panel"><canvas id="atlasPreview" width="560" height="300"></canvas><div class="atlas-preview-copy"><small id="atlasChapter">BATTLEFIELD PREVIEW</small><h3 id="atlasTitle">选择一张已解锁地图</h3><p id="atlasTactical">提前观察路线、入口、核心与已公开战术结构，再决定如何部署。</p><div id="atlasTags" class="atlas-tags"></div><div id="atlasSignature" class="atlas-signature"></div><button id="atlasDeploy" class="primary" disabled>部署到此战场</button></div></aside></div></div></div>
+
+<div class="modal" id="guideModal"><div class="modal-card wide codex-rule-card"><button class="modal-close">×</button><div class="chapter-kicker">COMMANDER CODEX</div><h2>指挥官作战档案</h2><p class="lead">这里是完整规则说明书，也是已触发战场教程的回看入口。规则会讲清具体条件；尚未遭遇的敌军、Boss 与融合仍遵守知识解锁。</p><div id="guideTabs" class="guide-tabs"></div><div id="guideBody" class="guide-body"></div></div></div>
+
+<div class="modal" id="recipeModal"><div class="modal-card wide"><button class="modal-close">×</button><div class="chapter-kicker">ALCHEMY RESEARCH</div><h2>元素融合手册</h2><p class="lead" id="recipeLead">未授权配方不会提前公开；已授权但尚未亲手完成的反应只显示研究线索。</p><div id="recipeGrid" class="recipe-grid"></div></div></div>
+
+<div class="modal" id="codexModal"><div class="modal-card codex-modal-card"><button class="modal-close">×</button><div class="codex-heading"><span class="chapter-kicker">ELEMENT WAR ARCHIVE</span><h2>元素战争图鉴</h2><p id="codexSummary">指挥部只记录你已经获得授权或亲自遭遇的内容。</p></div><div class="codex-tabs"><button data-codex="towers" class="active">元素塔</button><button data-codex="fusions">融合塔</button><button data-codex="enemies">敌军</button><button data-codex="boss">Boss</button></div><div id="codexBody"></div></div></div>
+
+<div class="modal" id="profileModal"><div class="modal-card wide profile-card"><button class="modal-close">×</button><div class="chapter-kicker">LOCAL COMMAND ARCHIVE</div><h2>指挥官档案与本地存档</h2><p class="lead"><b>战役</b>禁止玩家主动存读档，但会维护单一隐藏的异常中断恢复状态；<b>实验室与无尽</b>继续使用独立的玩家可控快照系统。</p><div id="profileSlots" class="profile-slots"></div><div class="profile-toolbar"><button id="exportSave">导出当前档 JSON</button><button id="importSave">导入到当前档</button><input id="importSaveFile" type="file" accept="application/json,.json" hidden><button id="resetSave" class="danger">清空当前档</button></div><div id="profileDetails" class="profile-details"></div><h3>最近战斗记录</h3><div id="historyList" class="history-list"></div></div></div>
+
+<div class="modal" id="settingsModal"><div class="modal-card settings-card"><button class="modal-close">×</button><h2>设置</h2><div class="settings-grid"><label>特效质量 <select id="fxQuality"><option value="auto">自动</option><option value="high">高</option><option value="medium">中</option><option value="low">低</option></select></label><label>UI 大小 <select id="uiScale"><option value="auto">自动</option><option value="small">小</option><option value="normal">标准</option><option value="large">大</option></select></label><label>帧率上限 <select id="fpsLimit"><option value="30">30 FPS</option><option value="60">60 FPS</option></select></label><label>屏幕震动 <input id="shakeSetting" type="range" min="0" max="100" value="70"></label><label>镜头灵敏度 <input id="cameraSensitivity" type="range" min="60" max="160" value="100"></label><label>触觉反馈 <input id="hapticSetting" type="checkbox" checked></label><label>伤害数字 <input id="damageNumbers" type="checkbox" checked></label><label>减少闪光 <input id="reduceFlash" type="checkbox"></label><label>教学提示 <select id="tutorialMode"><option value="full">完整</option><option value="compact">精简</option><option value="off">关闭</option></select></label></div><div class="developer-access"><small>Developer Access</small><p>开发者档案与普通进度完全隔离，仅用于测试全内容。</p><div class="dev-input-row"><input id="devCode" inputmode="numeric" placeholder="输入开发者访问码"><button id="devActivate">启用 DEV</button></div><button id="devReturn" class="secondary">返回普通档案</button><div id="devStatus" class="dev-status"></div></div></div></div>
+
+<div class="modal" id="labModal"><div class="modal-card wide lab-card"><button class="modal-close">×</button><div class="chapter-kicker">COMBAT LABORATORY · BATTLEFIELD FORGE</div><h2>元素实验场</h2><p class="lead">创造模式专用：先预览 40 张正式战场，也可以打开“战场工坊”自己设计路线、塔位与地标，再立即进入实战实验。</p><div class="lab-map-browser"><div class="lab-map-row"><label>实验地图 <select id="labMap"></select></label><label class="checkline"><input id="labFullRules" type="checkbox"> 启用完整地图规则</label><button id="labApplyMap">加载地图</button><button id="openForge">战场工坊</button></div><div class="lab-map-preview"><canvas id="labMapPreview" width="480" height="255"></canvas><div><b id="labMapTitle">地图预览</b><p id="labMapInfo">选择地图即可查看路线和战术命题。</p><div id="labMapTags" class="atlas-tags"></div></div></div></div><div class="lab-grid"><section><h3>生成单位</h3><label>单位 <select id="labEnemy"></select></label><label>数量 <input id="labCount" type="number" min="1" max="80" value="5"></label><label>间隔（秒） <input id="labInterval" type="number" min="0.05" max="8" step="0.05" value="0.4"></label><label>生命倍率 <input id="labHp" type="number" min="0.05" max="20" step="0.05" value="1"></label><label>速度倍率 <input id="labSpeed" type="number" min="0.05" max="5" step="0.05" value="1"></label><label>护甲倍率 <input id="labArmor" type="number" min="0" max="3" step="0.05" value="1"></label><div class="lab-actions"><button id="labSpawnNow">立即全部生成</button><button id="labSpawnInterval">按间隔生成</button><button id="labAddQueue">加入实验队列</button></div></section><section><h3>自定义波次队列</h3><div id="labQueue" class="lab-queue"></div><div class="lab-actions"><button id="labStartQueue" class="primary">测试这一波</button><button id="labClearQueue">清空队列</button><button id="labClearField" class="danger">清空战场敌人</button></div></section></div></div></div>
+
+<div class="modal" id="forgeModal"><div class="modal-card wide forge-card"><button class="modal-close">×</button><div class="chapter-kicker">LABORATORY · BATTLEFIELD FORGE</div><h2>战场工坊</h2><p class="lead">点击画布编辑路线、塔位和地标。正式地图与玩家地图共用同一套路径/环境数据；保存前会进行路径合法性检查。</p><div class="forge-toolbar"><label>名称 <input id="forgeName" maxlength="28" value="我的战场"></label><label>环境 <select id="forgeBiome"><option value="meadow">草原</option><option value="valley">峡谷</option><option value="crystal">晶洞</option><option value="wildwood">古木</option><option value="warfront">战争前线</option><option value="corrupted">腐化荒野</option><option value="elemental">元素崩解</option><option value="citadel">裂隙堡垒</option><option value="forge">实验工坊</option></select></label><label>当前路线 <select id="forgeRoute"><option value="main">主路线</option></select></label><button id="forgeAddRoute">+ 路线</button></div><div class="forge-tools" id="forgeTools"><button data-forge-tool="path" class="active">道路节点</button><button data-forge-tool="slot">塔位</button><button data-forge-tool="landmark">地标</button><button data-forge-tool="bridge">桥梁</button><button data-forge-tool="tunnel">隧道</button><button data-forge-tool="portal">Portal</button><button data-forge-tool="gate">闸门</button><button data-forge-tool="facility">设施</button><button data-forge-tool="erase">橡皮</button></div><div class="forge-layout"><div><canvas id="forgeCanvas" width="960" height="510"></canvas><small class="forge-help">道路节点：点击添加中间节点；Alt+点击重设入口；Shift+点击重设核心。其余工具点击放置塔位、地标、桥梁、隧道、Portal、闸门或设施；橡皮删除最近对象。Portal 建议成对布置。</small></div><aside><h3>实时验证</h3><div id="forgeValidation" class="forge-validation"></div><div class="forge-actions"><button id="forgeUndo">撤销</button><button id="forgeRedo">重做</button><button id="forgeReset">重置模板</button><button id="forgeSave">保存地图</button><button id="forgePlay" class="primary">保存并进入实验</button></div><p class="muted">玩家地图保存在本机应用存储。Campaign 存档哲学不受影响。</p></aside></div></div></div>
+
+<div class="modal" id="tutorialModal"><div class="modal-card tutorial-card"><div class="chapter-kicker">FIELD BRIEFING</div><h2 id="tutorialTitle">战场教学</h2><p id="tutorialBody" class="lead"></p><div class="tutorial-actions"><button id="tutorialCodex">查看完整规则</button><button id="tutorialContinue" class="primary">继续</button></div></div></div>
+
+<div class="modal" id="snapshotModal"><div class="modal-card wide snapshot-card"><button class="modal-close">×</button><div class="chapter-kicker">MODE SNAPSHOTS</div><h2>实验室 / 无尽局内存档</h2><p class="lead">Campaign 的 Continuity Recovery 是隐藏且不可选历史的安全机制；本页仍只管理 Laboratory 与 Endless 的玩家可控快照。每种模式提供 12 个手动档位和 1 个自动恢复档。</p><div class="snapshot-mode-tabs"><button data-snapshot-mode="creative" class="active">实验室</button><button data-snapshot-mode="endless">无尽</button></div><div id="snapshotCurrent" class="snapshot-current"></div><div id="snapshotGrid" class="snapshot-grid"></div></div></div>
+
+<div class="modal" id="achievementModal"><div class="modal-card wide"><button class="modal-close">×</button><div class="chapter-kicker">TACTICAL ACHIEVEMENTS</div><h2>战术成就</h2><p class="lead">成就用于鼓励不同战略，也记录一些不那么严肃的战场瞬间。未遭遇的剧情与 Boss 成就会保持隐藏。</p><div id="achievementGrid" class="achievement-grid"></div></div></div>
+
+<div class="modal" id="bossRushRewardModal"><div class="modal-card bossrush-reward-card"><div class="chapter-kicker">RIFT HUNT · FIELD CHOICE</div><h2>讨伐阶段奖励</h2><p id="bossRushRewardLead" class="lead">选择一项局内补给，然后继续下一轮。</p><div id="bossRushRewardChoices" class="bossrush-reward-choices"></div></div></div>
+<div class="modal" id="evolutionModal"><div class="modal-card evolution-card"><button id="evolutionBack" class="modal-back">← 返回</button><h2 id="evolutionTitle">选择最终进化</h2><p class="lead small" id="evolutionHint">确认后才扣除金币。</p><div id="evolutionChoices" class="evolution-choices"></div></div></div>
+
+<div class="modal show-on-recovery" id="recoveryModal"><div class="modal-card recovery-card"><div class="chapter-kicker">BATTLE CONTINUITY</div><h2>战斗时间线已恢复</h2><p class="lead" id="recoveryDetail">检测到上一场战斗被异常中断。</p><div class="recovery-note">这是单一隐藏恢复槽，不是手动存档。恢复后继续原本的敌军、塔、Boss、冷却、结构值与随机数时间线；主动返回主菜单会永久放弃本局。</div><div class="recovery-actions"><button id="recoveryAbandon" class="danger">放弃本局</button><button id="recoveryContinue" class="primary">继续战斗</button></div></div></div>
+
+<div class="modal" id="result"><div class="modal-card result-card result-card-wide"><div class="chapter-kicker" id="resultKicker">AFTER ACTION REPORT</div><h2>战斗结束</h2><p id="resultStory" class="lead"></p><div class="result-copy"></div><div id="resultUnlocks" class="result-unlocks"></div><div class="result-actions"><button id="nextLevel" class="primary">下一关</button><button id="restart">再来一局</button><button id="resultMenu">返回主菜单</button></div></div></div>
+
+<script src="dist/standalone.js"></script>
+</body></html>

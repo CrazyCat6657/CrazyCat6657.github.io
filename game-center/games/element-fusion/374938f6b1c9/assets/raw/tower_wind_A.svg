@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs>
+    <filter id="shadow"><feDropShadow dx="0" dy="7" stdDeviation="5" flood-opacity=".36"/></filter>
+    <filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#d8c7b1"/><stop offset=".5" stop-color="#8b7568"/><stop offset="1" stop-color="#493b3b"/></linearGradient>
+    </defs><rect width="256" height="256" fill="none"/><ellipse cx="128" cy="220" rx="80" ry="18" fill="#171217" opacity=".34"/><path d="M52 194L76 222H180L204 194Z" fill="#665044" stroke="#2c2323" stroke-width="8"/><path d="M75 190L88 130H168L181 190Z" fill="#5c8a69" stroke="#304c3a" stroke-width="8"/>
+<circle cx="128" cy="128" r="48" fill="#325845" stroke="#8bd5a4" stroke-width="8"/>
+<circle cx="128" cy="128" r="14" fill="#d8f7c9" filter="url(#glow)"/>
+<g fill="#88d8a4" stroke="#315e46" stroke-width="5"><path d="M128 114C106 87 96 74 100 60C125 72 139 88 137 112Z"/><path d="M142 128C169 106 184 100 197 105C185 129 168 142 144 138Z"/><path d="M128 142C150 169 158 184 153 197C129 185 116 168 119 144Z"/><path d="M114 128C87 150 72 157 59 151C72 127 88 115 112 118Z"/></g></svg>

@@ -1,0 +1,14 @@
+{
+  "gameId": "one-thread",
+  "version": "7.2.1",
+  "revision": "sha256:8b345231344a72a6f5e540470908a4e1fe69715bf2924e96d43e57bd433e7644",
+  "build": "077d2f79bf1d",
+  "adapter": "none",
+  "files": [
+    {
+      "path": "index.html",
+      "size": 546167,
+      "sha256": "8b345231344a72a6f5e540470908a4e1fe69715bf2924e96d43e57bd433e7644"
+    }
+  ]
+}

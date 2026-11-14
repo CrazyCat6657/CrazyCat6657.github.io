@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 256 256"><defs>
+<filter id="shadow"><feDropShadow dx="0" dy="6" stdDeviation="5" flood-opacity=".42"/></filter>
+<filter id="glow"><feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+<linearGradient id="steel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#c7cbd1"/><stop offset="1" stop-color="#59616b"/></linearGradient>
+<linearGradient id="rift" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f177ff"/><stop offset="1" stop-color="#6330a4"/></linearGradient>
+</defs><rect width="256" height="256" fill="none"/><ellipse cx="128" cy="219" rx="65" ry="17" fill="#17131a" opacity=".30"/><g filter="url(#shadow)"><ellipse cx="128" cy="151" rx="83" ry="66" fill="#76566e" stroke="#342a34" stroke-width="10"/><ellipse cx="128" cy="107" rx="52" ry="50" fill="#955f83" stroke="#422f40" stroke-width="8"/><path d="M76 145L38 112M72 163L29 176M180 145L218 111M184 164L228 177" stroke="#4d3a49" stroke-width="14" stroke-linecap="round"/><circle cx="108" cy="105" r="8" fill="#ff9ed1"/><circle cx="148" cy="105" r="8" fill="#ff9ed1"/><path d="M101 132Q128 153 156 132" fill="none" stroke="#f8d9dd" stroke-width="7"/><circle cx="128" cy="165" r="31" fill="#c56c9c" filter="url(#glow)"/></g></svg>

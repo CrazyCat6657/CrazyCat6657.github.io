@@ -1,0 +1,14 @@
+{
+  "serverUrl": "",
+  "clientBuild": "bell-original-5b",
+  "protocolVersion": 1,
+  "gameId": "bell-corridor",
+  "mode": "coop",
+  "revision": "482eb52491217855113b3731591d101dde703f8b",
+  "runtimeIdentity": "bell-corridor-runtime-v1:sha256:d5c4d4f845b9ae91db685a9546e4be0c6e4bb03825c6631d7c377dd0816e4682",
+  "contentHash": "aa4bc258f01a8ea7203eeaad35f6201dfea40694e6a55fa79d7930bfb9facf89",
+  "protocol": "bell-original-coop-v2",
+  "sourceRevision": "482eb52491217855113b3731591d101dde703f8b",
+  "source": "bell-corridor-runtime-v1:sha256:d5c4d4f845b9ae91db685a9546e4be0c6e4bb03825c6631d7c377dd0816e4682",
+  "presentationReady": true
+}

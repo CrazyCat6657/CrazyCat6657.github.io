@@ -1,0 +1,36 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>相位裂隙 · 联机</title><link rel="icon" href="data:,"><link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="pvp.css"></head><body class="pvp-page">
+<canvas id="scene" aria-label="相位裂隙联机画面"></canvas><header class="pvp-bar"><a href="../index.html">← 游戏中心</a><span>相位裂隙 · 联机测试版</span><span id="rtt"></span><button id="exit-room" hidden>离开房间</button></header>
+<section class="pvp-menu" id="menu"><div class="pvp-title"><p>残响站 · 中庭</p><h1>相位裂隙</h1><span>自由对战 · 五波防守 · 双人战役</span></div><div class="pvp-panel"><h2 id="panel-title">邀请朋友一起玩</h2><div id="entrance"><button class="button" id="create">创建房间 <span>＋</span></button><p id="join-hint" class="join-hint" hidden></p><form id="join-form"><label for="code">或输入朋友的邀请码</label><div class="code-row"><input id="code" maxlength="6" autocomplete="off" spellcheck="false" placeholder="六位邀请码" required><button class="button secondary">加入</button></div></form></div><div id="room" hidden><p class="invite-label">邀请码</p><div id="room-code"></div><button class="link-button" id="copy">复制邀请链接</button><input id="invite-url" class="invite-url" readonly aria-label="完整邀请链接" title="复制完整链接发给朋友"><ul id="players"></ul><p id="rule-summary" class="rule-summary"></p>
+<details id="rule-settings"><summary>房间规则</summary><form id="settings-form"><fieldset id="settings-fields">
+<label>地图<select name="mapId"><option value="atrium">残响站 · 中庭</option><option value="reactor">裂隙反应堆</option></select></label>
+<div class="settings-row"><label>玩法<select name="format"><option value="duel">双人对战</option><option value="teams">四人组队 · 2 对 2</option><option value="ffa">自由混战 · 2 至 4 人</option><option value="coop">五波防守</option><option value="campaign">双人战役 · 二十波</option></select></label><label id="neutral-rule">中立敌人<select name="neutral"><option value="none">不加入</option><option value="mobs">载波体</option><option value="boss">矩阵首领</option><option value="both">载波体与首领</option></select></label></div>
+<p id="campaign-rule" class="rule-summary" hidden>双人共闯二十波。使用原版起始装备，途中选卡和补给。</p><div id="custom-rules">
+<div class="settings-row"><label>赛制<select name="winCondition"><option value="frags">连续击杀计分</option><option value="rounds">回合对战</option><option value="series">十局金币赛</option></select></label><label>获胜分数 / 局数<input name="targetScore" type="number" min="1" max="20" value="3" required></label></div>
+<div class="settings-row"><label>总时限（秒）<input name="durationSeconds" type="number" min="60" max="900" value="180" required></label><label>每回合（秒）<input name="roundSeconds" type="number" min="30" max="180" value="60" required></label></div>
+<div class="check-list"><label><input type="checkbox" name="weapon" value="ar9" checked> AR-9 步枪</label><label><input type="checkbox" name="weapon" value="sniper"> SR-1 狙击枪</label></div>
+<label class="check-label"><input type="checkbox" name="allowAttributes"> 允许自由调属性</label>
+<label>天赋方式<select name="talentMode"><option value="none">不加天赋</option><option value="shared">公开 · 全员相同</option><option value="hidden">私选 · 各自保密</option></select></label>
+<label>天赋次数<select name="talentBudget"><option value="0">0</option><option value="1">1</option><option value="2" selected>2</option><option value="3">3</option></select></label>
+<div id="shared-talents" class="talent-options"></div></div><button class="button secondary" type="submit">保存房间规则</button></fieldset></form></details>
+<details id="build-settings"><summary>个人构筑</summary><form id="build-form"><fieldset id="attribute-fields"><div class="attribute-grid">
+<label>生命<input name="health" type="number" min="60" max="400" step="10" value="120" required></label><label>护盾<input name="shield" type="number" min="0" max="150" step="5" value="0" required></label>
+<label>移速倍率<input name="move" type="number" min="0.6" max="1.6" step="0.05" value="1" required></label><label>攻速倍率<input name="fireRate" type="number" min="0.5" max="1.6" step="0.05" value="1" required></label><label>伤害倍率<input name="damage" type="number" min="0.5" max="1.6" step="0.05" value="1" required></label></div></fieldset>
+<p id="talent-hint"></p><div id="personal-talents" class="talent-options"></div><button class="button secondary" type="submit">保存个人构筑</button></form></details>
+<p id="build-overview" class="build-overview"></p><div id="team-picker" hidden><label>你的队伍<select id="team-select"><option value="0">青队</option><option value="1">橙队</option></select></label></div><p id="mode-hint" class="rule-summary"></p><button id="ready" class="button">准备</button><button id="start" class="button secondary" disabled>开始对局</button></div><p id="feedback" role="status" aria-live="polite"></p><details><summary>声音、操作与连接</summary><label>音量<input id="volume" type="range" min="0" max="1" step="0.05" value="0.45"></label><label>鼠标灵敏度<input id="sensitivity" type="range" min="0.3" max="2" step="0.1" value="1"></label><input id="server-url" aria-label="联机服务地址" placeholder="wss://你的服务地址/socket"><button class="link-button" id="save-server">保存地址</button></details></div><p class="pvp-rules">同相位才能互相命中 · 青色标记为队友</p></section>
+<div class="pvp-hud" id="hud" hidden><div class="match-score"><span id="score">0 : 0</span><small id="time">3:00</small></div><div class="reticle" id="reticle">＋</div><div class="health"><small>生命</small><strong id="health">120</strong><span id="phase-label">实体相位</span></div><div class="ammo"><strong id="ammo">48</strong><small id="reserve">/ 336</small><small id="heat-state"></small><span id="reload-state">AR-9 脉冲步枪</span></div><p class="fight-status" id="fight-status"></p><button class="button enter-fight" id="enter-fight">点击进入对局</button><p class="keys">WASD 移动 · 鼠标射击 · 右键瞄准 · Q 切相 · R 换弹 · 1–9 选装备 · 滚轮循环全部装备 · 空格跳跃<span id="campaign-keys" hidden> · F 相位爆裂</span></p></div>
+<p id="combat-notice" role="status"></p><p id="loadout"></p><div id="death-screen" hidden><strong id="death-title"></strong><span id="death-detail"></span></div>
+<div id="scope" hidden aria-hidden="true"><i></i><b></b></div><div id="hit-text" aria-live="off"></div>
+<section id="shop" class="shop-overlay" hidden aria-labelledby="shop-title"><div class="shop-panel"><p class="invite-label" id="shop-round"></p><h2 id="shop-title">回合补给</h2><p id="shop-wallet"></p><div id="shop-items" class="shop-items"></div><p id="shop-owned" class="rule-summary"></p><p id="shop-players" class="rule-summary"></p><button id="shop-ready" class="button">准备下一回合</button><p id="shop-clock" class="rule-summary" role="status"></p></div></section>
+<section id="campaign-break" class="shop-overlay" hidden aria-labelledby="campaign-title">
+  <div class="shop-panel">
+    <p id="campaign-wave" class="invite-label"></p>
+    <h2 id="campaign-title" tabindex="-1">战役补给</h2>
+    <p id="campaign-wallet"></p>
+    <label id="campaign-gear-target" hidden>改装目标<select id="campaign-gear"></select></label>
+    <div id="campaign-items" class="shop-items"></div>
+    <p id="campaign-status" class="rule-summary" role="status"></p>
+    <button id="campaign-ready" type="button" class="button">准备下一波</button>
+    <p id="campaign-error" class="rule-summary" role="status" hidden></p>
+  </div>
+</section>
+<script type="module" src="game.mjs"></script></body></html>

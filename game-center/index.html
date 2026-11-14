@@ -1,0 +1,12 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#101e2b"><meta name="description" content="我的个人游戏作品，包含动作、射击、地牢探索与策略塔防。打开浏览器，选一款开始玩。"><title>游戏中心</title><link rel="icon" href="data:,"><link rel="stylesheet" href="styles.css"></head>
+<body><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark" aria-hidden="true">✦</span> 游戏中心</a><nav aria-label="主导航"><a href="../index.html">个人主页 ↗</a><a href="#multiplayer">联机游戏</a></nav></header>
+<main class="library"><section class="intro"><h1>挑一款，开始玩。</h1></section>
+<section id="owner-panel" class="owner-panel" aria-label="本机游玩控制" hidden>
+<div class="owner-row"><span class="owner-label">游玩方式</span><div class="owner-modes" role="group" aria-label="游玩范围"><button data-mode="local" aria-pressed="false">自己玩</button><button data-mode="lan" aria-pressed="false">和朋友玩</button></div><span id="owner-state" role="status"></span><button id="owner-stop" class="owner-stop">停止服务</button></div>
+<div id="owner-sharing" class="owner-sharing" hidden><label for="owner-share-url">大厅地址</label><input id="owner-share-url" readonly><button id="owner-copy">复制</button><span>房间邀请在游戏内发送。</span></div><p id="owner-message" role="status" aria-live="polite"></p>
+</section>
+<section aria-label="游戏列表"><p id="load-message" role="status">正在读取游戏列表…</p><div id="games" class="game-grid"></div></section>
+<aside class="network-note" id="multiplayer"><div><h2>相位裂隙 · 联机</h2><p>单挑 / 组队 / 混战 / 双人战役</p></div><a class="button secondary" href="phase-pvp/">创建或加入房间 <span>↗</span></a></aside>
+<aside class="network-note"><div><h2>沉钟回廊 · 双人合作</h2><p>三章十五关 · 双人远征</p></div><a class="button secondary" href="bell-coop/">一起出发 <span>↗</span></a></aside></main>
+<dialog id="game-about" aria-labelledby="about-title"><form method="dialog"><button class="about-close" aria-label="关闭游戏简介">×</button></form><h2 id="about-title"></h2><p id="about-copy"></p></dialog><script type="module" src="app.mjs"></script><script type="module" src="owner-panel.mjs"></script></body></html>
