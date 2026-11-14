@@ -17,3 +17,22 @@ function render(filter='all'){container.replaceChildren(...games.filter(g=>filte
 try{const response=await fetch('manifest.json',{cache:'no-store'});if(!response.ok)throw Error();const manifest=await response.json();if(manifest.schemaVersion!==1||!Array.isArray(manifest.games))throw Error();games=manifest.games;render();status.textContent='';}catch{status.textContent='游戏列表暂时无法读取。请刷新页面；离线合集请通过“启动游戏中心”打开。';}
 for(const button of document.querySelectorAll('[data-filter]'))button.addEventListener('click',()=>{for(const other of document.querySelectorAll('[data-filter]')){other.classList.toggle('active',other===button);other.setAttribute('aria-pressed',String(other===button));}render(button.dataset.filter);});
 const about=document.querySelector('#game-about');about.addEventListener('click',event=>{if(event.target===about){const rect=about.getBoundingClientRect();if(event.clientX<rect.left||event.clientX>rect.right||event.clientY<rect.top||event.clientY>rect.bottom)about.close();}});
+// A static host has no room service. Say so in the lobby instead of letting a
+// visitor walk into a connection failure; the note disappears once config.json
+// carries a real serverUrl.
+for(const entry of document.querySelectorAll('[data-network]')){
+  const status=entry.querySelector('.network-status');
+  try{
+    const response=await fetch(entry.dataset.network+'/config.json',{cache:'no-store'});
+    const config=response.ok?await response.json():{};
+    if(!config.serverUrl){
+      entry.dataset.offline='true';
+      status.textContent='联机服务尚未接入公网：现在只能在开启服务的电脑上开两个窗口测试。';
+      status.hidden=false;
+    }
+  }catch{
+    entry.dataset.offline='true';
+    status.textContent='联机配置暂时无法读取，请稍后刷新。';
+    status.hidden=false;
+  }
+}
