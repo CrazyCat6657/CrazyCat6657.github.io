@@ -1,5 +1,5 @@
 {
-  "serverUrl": "",
+  "serverUrl": "wss://hp-server.taild7a485.ts.net/socket",
   "clientBuild": "bell-original-5b",
   "protocolVersion": 1,
   "gameId": "bell-corridor",

@@ -1,5 +1,5 @@
 {
-  "serverUrl": "",
+  "serverUrl": "wss://hp-server.taild7a485.ts.net/socket",
   "clientBuild": "phase-pvp-0.7.0",
   "protocolVersion": 1,
   "gameId": "phase-rift",
