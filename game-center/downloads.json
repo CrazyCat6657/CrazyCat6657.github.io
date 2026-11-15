@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "updated": "2026-11-15",
+  "note": "安装包由各项目发行目录归档，sha256 与体积来自实际文件。",
+  "items": [
+    {
+      "gameId": "element-fusion",
+      "platform": "windows",
+      "label": "Windows 安装包",
+      "version": "9.2.1",
+      "note": "x64 安装程序，双击安装",
+      "file": "downloads/element-fusion/Element-Fusion-TD_9.2.1_x64-setup.exe",
+      "bytes": 2949563,
+      "sha256": "39f14e31a0d46614806fdc0b92b4be6a6a7880e1859265b1189e14d0c7a7b54d"
+    },
+    {
+      "gameId": "bell-corridor",
+      "platform": "windows",
+      "label": "Windows 单机版",
+      "version": "1.7.0",
+      "note": "解压即玩，无需安装",
+      "file": "downloads/bell-corridor/BellCorridor-PC-v1.7.0-single.zip",
+      "bytes": 2943093,
+      "sha256": "9bc3f132ead0c93cf79ca924ba9fd42d7514f61ae5941224b64f24faf1cf7a1b"
+    },
+    {
+      "gameId": "bell-corridor",
+      "platform": "android",
+      "label": "安卓版",
+      "version": "1.6.0",
+      "note": "安装包落后于网页版 1.7.0，缺少本轮新增内容",
+      "file": "downloads/bell-corridor/EmberDescent-Android-v1.6.0.apk",
+      "bytes": 4565418,
+      "sha256": "6269f289bf2405a16519dc98a148978e7a9f8564bd3289194e9b4266b9863e53"
+    },
+    {
+      "gameId": "phase-rift",
+      "platform": "android",
+      "label": "安卓版（调试）",
+      "version": "1.4.3-rc.1",
+      "note": "debug 构建，体积偏大，仅供试玩",
+      "file": "downloads/phase-rift/phase-rift-1.4.3-rc.1-debug.apk",
+      "bytes": 5543763,
+      "sha256": "a1e6480b8f98d7ee65d77cfcc14be31ab16affc91f2f67a774bb26dcfd8db4fb"
+    },
+    {
+      "gameId": "one-thread",
+      "platform": "android",
+      "label": "安卓版",
+      "version": "7.2.1",
+      "note": "内置离线网页，无需联网",
+      "file": "downloads/one-thread/one-thread-v7.2.1.apk",
+      "bytes": 176661,
+      "sha256": "48240af727bd8f0ce97c7a4a8bfb018ca2c294e0935f3ba87a60009aa6dc6b6b"
+    }
+  ]
+}
