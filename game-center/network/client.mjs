@@ -30,7 +30,7 @@ export class RoomClient extends EventTarget{
       const socket=new WebSocket(this.url);this.socket=socket;let settled=false;
       const finish=(error)=>{if(settled)return;settled=true;clearTimeout(timeout);error?reject(error):resolve();};
       this.cancelOpening=()=>finish(Error('连接已取消。'));
-      const timeout=setTimeout(()=>{finish(Error('无法连接联机服务，请检查地址或确认服务已启动。'));this.failSocket(socket);},Math.max(1,Math.min(this.config.connectTimeoutMs??6000,deadline-Date.now())));
+      const timeout=setTimeout(()=>{finish(Error('无法连接联机服务，请检查地址或确认服务已启动。'));this.failSocket(socket);},Math.max(1,Math.min(this.config.connectTimeoutMs??15000,deadline-Date.now())));
       socket.addEventListener('open',()=>{if(this.socket!==socket||this.explicit){socket.close();return;}this.send({type:'hello',protocolVersion:this.config.protocolVersion,clientBuild:this.config.clientBuild,gameId:this.config.gameId??'network-lab',mode:this.config.mode??'duel',...(this.config.contentHash?{contentHash:this.config.contentHash}:{}),...(this.config.gameId==='bell-corridor'?{coopProtocol:this.config.protocol,sourceRevision:this.config.sourceRevision,source:this.config.source,profile:bellCredential(this.url)}:{} )});});
       socket.addEventListener('message',event=>{
         if(this.socket!==socket||this.explicit||this.epoch!==epoch)return;
